@@ -169,7 +169,8 @@ export default function ViewDokter() {
         />
       )}
 
-      {validate.general && <Toaster />}
+      {/* {validate.general && <Toaster />} */}
+      <Toaster />
     </>
   );
 }

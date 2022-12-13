@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import toast, { Toaster } from "react-hot-toast";
 import FormInput from "../../../components/FormInput";
 import { ButtonMain, ButtonOutline } from "../../../components/Button";
 import {
@@ -34,8 +35,12 @@ export default function EditDokter({ handleClose }) {
           )
         );
       });
-      dispatch(setUpdated(true));
-      dispatch(setValidate(true));
+      // dispatch(setUpdated(true));
+      // dispatch(setValidate(true));
+      toast.success("Data telah berhasil diubah!", {
+        duration: 2000,
+        position: "top-right",
+      });
     } catch {
       dispatch(setUpdated(false));
     }
