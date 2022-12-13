@@ -16,7 +16,7 @@
   "dokter": [
     {
       "id": 1,
-      "nama": "drg. Putu Andyy Herawan, Sp. Ort",
+      "nama": "drg. Putu Andy Herawan, Sp. Ort",
       "spesialis": "Orthodontist (Spesialis Kawat Gigi)"
     },
     {
@@ -58,6 +58,26 @@
       "id": 9,
       "nama": "drg. Maria Eva Kumalasari, SKG",
       "spesialis": "General Practitioner (Dokter Gigi Umum)"
+    },
+    {
+      "id": 10,
+      "nama": "aaaa",
+      "spesialis": "Ob"
+    },
+    {
+      "id": 11,
+      "nama": "ddddddx",
+      "spesialis": "xx"
+    },
+    {
+      "id": 12,
+      "nama": "wwwdd",
+      "spesialis": "bbbb"
+    },
+    {
+      "id": 13,
+      "nama": "x",
+      "spesialis": "x"
     }
   ],
   "studio": [

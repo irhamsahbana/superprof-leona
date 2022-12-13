@@ -7,6 +7,7 @@ import {
   Dashboard,
   NotFound,
   ViewDokter,
+  AddDokter,
   AddJadwal,
   JadwalOperasi,
   History,
@@ -15,7 +16,6 @@ import {
   RekamMedis,
   CurrentRekamMedis,
   Odontogram,
-
   Kasir,
   Invoice,
   ProsesInvoice,
@@ -41,6 +41,14 @@ function Routing() {
           element={
             <PrivateRoute>
               <ViewDokter />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/dokter/add"
+          element={
+            <PrivateRoute>
+              <AddDokter />
             </PrivateRoute>
           }
         />
@@ -92,7 +100,7 @@ function Routing() {
               <SearchRekamMedis />
             </PrivateRoute>
           }
-        />{" "}
+        />
         <Route
           path="/rekam-medis/selected"
           element={
@@ -110,47 +118,47 @@ function Routing() {
           }
         />
 
-<Route
-            path="/kasir"
-            element={
-              <PrivateRoute>
-                <Kasir />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/invoice"
-            element={
-              <PrivateRoute>
-                <Invoice />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/proses-invoice"
-            element={
-              <PrivateRoute>
-                <ProsesInvoice />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/ubah-invoice"
-            element={
-              <PrivateRoute>
-                <EditInvoice />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/pembayaran"
-            element={
-              <PrivateRoute>
-                <Pembayaran />
-              </PrivateRoute>
-            }
-          />
-          
+        <Route
+          path="/kasir"
+          element={
+            <PrivateRoute>
+              <Kasir />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/invoice"
+          element={
+            <PrivateRoute>
+              <Invoice />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/proses-invoice"
+          element={
+            <PrivateRoute>
+              <ProsesInvoice />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/ubah-invoice"
+          element={
+            <PrivateRoute>
+              <EditInvoice />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/pembayaran"
+          element={
+            <PrivateRoute>
+              <Pembayaran />
+            </PrivateRoute>
+          }
+        />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </MainLayout>

@@ -148,7 +148,7 @@ export default function ViewDokter() {
         </h1>
       </div>
       <div className="flex flex-row h-8">
-        <ButtonAdd onClick={() => navigate("/add-dokter")} />
+        <ButtonAdd onClick={() => navigate("/dokter/add")} />
       </div>
       {loading ? (
         <TableContentLoader />
