@@ -14,6 +14,7 @@ import Table from "../../components/Table";
 import {
   ButtonIcon,
   ButtonOutline,
+  ButtonAdd,
   ButtonTextIcon,
 } from "../../components/Button";
 import SalinDropdown from "./SalinDropdown";
@@ -211,13 +212,8 @@ export default function JadwalOperasi() {
           <SelectDate />
         </div>
 
-        <ButtonTextIcon
-          bgColor="bg-blue-400"
-          hoverColor="hover:bg-blue-600"
-          icon={<IoMdAdd />}
-          text="Tambah data"
-          onClick={() => navigate("/jadwal/add")}
-        />
+        <ButtonAdd onClick={() => navigate("/jadwal/add")} />
+
         <div>
           <ExportToExcel excelData={data} fileName="JadwalOperasi_22092022" />
         </div>

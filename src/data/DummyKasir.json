@@ -1,0 +1,46 @@
+[
+  {
+    "id": "INV-2209-0001",
+    "nama": "Clare Resimont",
+    "jenis_tindakan": "Orthodontics",
+    "tindakan": [
+      {
+        "tindakan": "Control Metal Braces Standard",
+        "biaya": 200000,
+        "diskon": 0
+      },
+      {
+        "tindakan": "Control From Another Orthodontist",
+        "biaya": 150000,
+        "diskon": 0
+      }
+    ],
+    "status": "Belum Lunas"
+  },
+  {
+    "id": "INV-2209-0002",
+    "nama": "Jessica Josephine",
+    "jenis_tindakan": "Orthodontics",
+    "tindakan": [
+      {
+        "tindakan": "Control Braces Damon Clear",
+        "biaya": 400000,
+        "diskon": 0
+      }
+    ],
+    "status": "Belum Lunas"
+  },
+  {
+    "id": "INV-2209-0003",
+    "nama": "Ramona",
+    "jenis_tindakan": "Conservative Treatment",
+    "tindakan": [
+      {
+        "tindakan": "Teeth Whitening",
+        "biaya": 3500000,
+        "diskon": 0
+      }
+    ],
+    "status": "Lunas"
+  }
+]
