@@ -1,37 +1,52 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 // components
 import MainLayout from "../layouts/MainLayout";
 import PrivateRoute from "../components/PrivateRoute";
-import { Login, Dashboard, NotFound, ViewDokter } from "../pages";
+import {
+  Login,
+  Dashboard,
+  NotFound,
+  ViewDokter,
+  JadwalOperasi,
+} from "../pages";
 
-export default function index() {
+function Routing() {
   return (
-    <BrowserRouter>
-      <MainLayout>
-        <Routes>
-          <Route path="/" element={<Login />} />
+    <MainLayout>
+      <Routes>
+        <Route path="/" element={<Login />} />
 
-          <Route
-            path="/home"
-            element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
-            }
-          />
+        <Route
+          path="/home"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
 
-          <Route
-            path="/view-dokter"
-            element={
-              <PrivateRoute>
-                <ViewDokter />
-              </PrivateRoute>
-            }
-          />
+        <Route
+          path="/dokter"
+          element={
+            <PrivateRoute>
+              <ViewDokter />
+            </PrivateRoute>
+          }
+        />
 
+        <Route
+          path="/jadwal"
+          element={
+            <PrivateRoute>
+              <JadwalOperasi />
+            </PrivateRoute>
+          }
+        >
           <Route path="*" element={<NotFound />} />
-        </Routes>
-      </MainLayout>
-    </BrowserRouter>
+        </Route>
+      </Routes>
+    </MainLayout>
   );
 }
+
+export { Routing };

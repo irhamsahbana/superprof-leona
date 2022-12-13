@@ -2,19 +2,17 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FormInput from "../../../components/FormInput";
 import { ButtonMain, ButtonOutline } from "../../../components/Button";
-import { 
+import {
   setDokter,
-  setSelectedData
+  setUpdated,
+  setSelectedData,
+  setValidate
 } from "../../../redux/dokterSlice";
 import DokterService from "../../../services/DokterService";
 
-export default function EditDokter({
-  handleClose,
-}) {
+export default function EditDokter({ handleClose }) {
   const dispatch = useDispatch();
-  const { selectedData, dokter } = useSelector(
-    (state) => state.dokter
-  );
+  const { selectedData, dokter } = useSelector((state) => state.dokter);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,16 +23,22 @@ export default function EditDokter({
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(selectedData.id);
-    DokterService.updateData(selectedData.id, selectedData).then((res) => {
-      console.log(res.data);
-      dispatch(
-        setDokter(
-          setDokter.map((dokter) =>
-          dokter.id !== selectedData.id ? dokter : res.data
+    try {
+      DokterService.updateData(selectedData.id, selectedData).then((res) => {
+        console.log(res.data);
+        dispatch(
+          setDokter(
+            setDokter.map((dokter) =>
+              dokter.id !== selectedData.id ? dokter : res.data
+            )
           )
-        )
-      );
-    });
+        );
+      });
+      dispatch(setUpdated(true));
+      dispatch(setValidate(true));
+    } catch {
+      dispatch(setUpdated(false));
+    }
     handleClose();
   };
 
@@ -47,7 +51,7 @@ export default function EditDokter({
           </h3>
         </div>
         <div className="my-4 w-max">
-        {Object.keys(selectedData).map((selected) => (
+          {Object.keys(selectedData).map((selected) => (
             <FormInput
               text={selected}
               name={selected}

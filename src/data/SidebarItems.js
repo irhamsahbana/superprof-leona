@@ -20,7 +20,7 @@ const SidebarItems = [
     dropdownItems: [
       {
         name: "Dokter",
-        link: "/view-dokter",
+        link: "/dokter",
       },
       {
         name: "Pasien",

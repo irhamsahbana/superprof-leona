@@ -22,7 +22,7 @@
     {
       "id": 2,
       "nama": "drg. A.A Manik Swayoga, Sp. BM",
-      "spesialis": "Oral and Maxillofacial Surgeon (Spesialis Bedah Mulut)"
+      "spesialis": "Oral & Maxillofacial Surgeon (Spesialis Bedah Mulut)"
     },
     {
       "id": 3,
@@ -31,7 +31,7 @@
     },
     {
       "id": 4,
-      "nama": "drg. Made Talitha S Pinatih, Sp. Perio",
+      "nama": "drg. Wayan Talitha S Pinatih, Sp. Perio",
       "spesialis": "Periodontist (Spesialis Gusi dan Jaringan Penyangga Gigi)"
     },
     {
@@ -56,18 +56,23 @@
     },
     {
       "id": 9,
-      "nama": "drg. Maria Yosefha Kumalasari, SKG",
+      "nama": "drg. Maria Eva Kumalasari, SKG",
       "spesialis": "General Practitioner (Dokter Gigi Umum)"
     },
     {
-      "id": 10,
-      "nama": "drg. Intan Pramiasti, SKG",
-      "spesialis": "General Practitioner (Dokter Gigi Umum)"
+      "id": 12,
+      "nama": "drg. Halilintar",
+      "spesialis": "Ortho"
     },
     {
-      "id": 11,
-      "nama": "X-Ray",
-      "spesialis": "Radiology"
+      "id": 13,
+      "nama": "drg. Halilintar",
+      "spesialis": "Prostho"
+    },
+    {
+      "id": 14,
+      "nama": "drg.Astika",
+      "spesialis": "Radio"
     }
   ],
   "studio": [
@@ -116,6 +121,14 @@
     {
       "id": 8,
       "nama": "Dental X-Ray"
+    },
+    {
+      "id": "90",
+      "nama": "llcoolj"
+    },
+    {
+      "id": "99",
+      "nama": "abcss"
     }
   ],
   "tindakan": [
@@ -274,14 +287,6 @@
       "email": "blofting7@tamu.edu",
       "dob": "7/29/2001",
       "phone": "816-365-4948"
-    },
-    {
-      "id": 9,
-      "full_name": "Joanne Spinley",
-      "address": "3 Surrey Terrace",
-      "email": "jspinley8@cam.ac.uk",
-      "dob": "10/28/2013",
-      "phone": "721-639-7260"
     },
     {
       "id": 10,
@@ -3402,6 +3407,14 @@
       "email": "tmorrallb2@boston.com",
       "dob": "5/31/2012",
       "phone": "405-322-3365"
+    },
+    {
+      "id": "1092",
+      "nama": "Ramona",
+      "address": "Jl. Ida Ayu",
+      "email": "ramona@gmail.com",
+      "dob": "19/20/2000",
+      "phone": "081-9090-2222"
     }
   ],
   "rekam_medis": [
@@ -3427,6 +3440,7 @@
     {
       "now": [
         {
+          "no_rm": "C-21110009",
           "nama": "Clare Resimont",
           "jenis_tindakan": "Orthodontics",
           "dokter": "drg. Putu Andy Herawan, Sp. Ort",
@@ -3434,9 +3448,10 @@
           "keterangan": "kontrol",
           "jam_mulai": "16:00",
           "jam_selesai": "16:30",
-          "status": "Belum datang"
+          "status": "Sedang berlangsung"
         },
         {
+          "no_rm": "S-21110012",
           "nama": "Sarah Sampaio",
           "jenis_tindakan": "Orthodontics",
           "dokter": "drg. Putu Andy Herawan, Sp. Ort",
@@ -3447,6 +3462,7 @@
           "status": "Belum datang"
         },
         {
+          "no_rm": "S-191000124",
           "nama": "Sabrina Carpenter",
           "jenis_tindakan": "Orthodontics",
           "dokter": "drg. Putu Andy Herawan, Sp. Ort",
@@ -3457,6 +3473,7 @@
           "status": "Belum datang"
         },
         {
+          "no_rm": "J-21110009",
           "nama": "Jessica Josephine",
           "jenis_tindakan": "Orthodontics",
           "dokter": "drg. Putu Andy Herawan, Sp. Ort",
@@ -3467,6 +3484,7 @@
           "status": "Belum datang"
         },
         {
+          "no_rm": "M-20070077",
           "nama": "Mona Lisa",
           "jenis_tindakan": "Orthodontics",
           "dokter": "drg. Putu Andy Herawan, Sp. Ort",
@@ -3474,9 +3492,10 @@
           "keterangan": "kontrol",
           "jam_mulai": "18:00",
           "jam_selesai": "18:30",
-          "status": "Belum datang"
+          "status": "Cancelled"
         },
         {
+          "no_rm": "T-19110001",
           "nama": "Tyler Howard",
           "jenis_tindakan": "Orthodontics",
           "dokter": "drg. Putu Andy Herawan, Sp. Ort",
@@ -3487,6 +3506,7 @@
           "status": "Belum datang"
         },
         {
+          "no_rm": "N-22080018",
           "nama": "Nina Simone",
           "jenis_tindakan": "Pedodontics",
           "dokter": "drg. Mustika Pramidi, Sp. KGA",
@@ -3497,6 +3517,7 @@
           "status": "Belum datang"
         },
         {
+          "no_rm": "D-21110009",
           "nama": "Dylon Keith",
           "jenis_tindakan": "Pedodontics",
           "dokter": "drg. Mustika Pramidi, Sp. KGA",
@@ -3504,29 +3525,32 @@
           "keterangan": "check-up",
           "jam_mulai": "15:30",
           "jam_selesai": "16:00",
-          "status": "Belum datang"
+          "status": "Sedang berlangsung"
         },
         {
+          "no_rm": "J-22110009",
           "nama": "Jhonathan Swift",
           "jenis_tindakan": "Pedodontics",
           "dokter": "drg. Mustika Pramidi, Sp. KGA",
           "ruangan": "Studio Pedo",
           "keterangan": "filling+exo",
           "jam_mulai": "16:00",
-          "jam_selesai": "17:00",
+          "jam_selesai": "16:30",
           "status": "Belum datang"
         },
         {
-          "nama": "Jhonathan Swift",
+          "no_rm": "T-221100010",
+          "nama": "Taylor Swift",
           "jenis_tindakan": "Pedodontics",
           "dokter": "drg. Mustika Pramidi, Sp. KGA",
           "ruangan": "Studio Pedo",
           "keterangan": "filling+exo",
-          "jam_mulai": "16:00",
+          "jam_mulai": "16:30",
           "jam_selesai": "17:00",
           "status": "Belum datang"
         },
         {
+          "no_rm": "Y-22120111",
           "nama": "Yaroslav",
           "jenis_tindakan": "Conservative Treatment",
           "dokter": "drg. Intan Pramisati, SKG",
@@ -3537,6 +3561,7 @@
           "status": "Selesai"
         },
         {
+          "no_rm": "A-22080188",
           "nama": "Anais Mason",
           "jenis_tindakan": "Conservative Treatment",
           "dokter": "drg. Intan Pramisati, SKG",
