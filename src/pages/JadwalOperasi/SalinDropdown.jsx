@@ -3,7 +3,7 @@ import React from "react";
 export default function SalinDropdown({ handleFetchJadwal, handleFetchRM }) {
   return (
     <div>
-      <div className="absolute mt-8 left-[27%] top-36 mr-3 px-3 py-2 bg-white rounded-md shadow-lg overflow-hidden z-20 duration-100">
+      <div className="absolute mt-8 left-[38%] top-36 mr-3 px-3 py-2 bg-white rounded-md shadow-lg overflow-hidden z-20 duration-100">
         <div className="px-4 py-3 hover:bg-gray-100">
           <p
             onClick={handleFetchJadwal}

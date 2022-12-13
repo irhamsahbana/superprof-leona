@@ -7,7 +7,9 @@ import {
   Dashboard,
   NotFound,
   ViewDokter,
+  AddJadwal,
   JadwalOperasi,
+  History,
 } from "../pages";
 
 function Routing() {
@@ -41,9 +43,36 @@ function Routing() {
               <JadwalOperasi />
             </PrivateRoute>
           }
-        >
-          <Route path="*" element={<NotFound />} />
-        </Route>
+        />
+        <Route
+          path="/jadwal/add"
+          element={
+            <PrivateRoute>
+              <AddJadwal />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/history-transaksi"
+          element={
+            <PrivateRoute>
+              <History />
+            </PrivateRoute>
+          }
+        />
+        
+        {/* TODO: change to nested; add id */}
+        <Route
+          path="/history-transaksi/selected"
+          element={
+            <PrivateRoute>
+              <History />
+            </PrivateRoute>
+          }
+        />
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </MainLayout>
   );

@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from "react";
 // third-party
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { BsFillTrashFill, BsPencilFill } from "react-icons/bs";
 import { FiRefreshCcw, FiCopy } from "react-icons/fi";
@@ -8,6 +8,8 @@ import { IoMdAdd } from "react-icons/io";
 import { Tag } from "antd";
 import toast, { Toaster } from "react-hot-toast";
 // components, data, slices
+import ExportToExcel from "../../components/ExportToExcel";
+import SelectDate from "../../components/SelectDate";
 import Table from "../../components/Table";
 import {
   ButtonIcon,
@@ -15,42 +17,30 @@ import {
   ButtonTextIcon,
 } from "../../components/Button";
 import SalinDropdown from "./SalinDropdown";
-import ExportToExcel from "../../components/ExportToExcel";
 import DeleteModal from "../../components/DeleteModal";
-import MessageModal from "./SalinJadwalModal";
 import TableContentLoader from "../../components/TableContentLoader";
 import UbahStatus from "./UbahStatus";
-import FormInput from "../../components/FormInput";
-import DokterService from "../../services/DokterService";
-import RuanganService from "../../services/RuanganService";
 import JadwalService from "../../services/JadwalService";
-import { setJadwal } from "../../redux/jadwalSlice";
 import SalinJadwalModal from "./SalinJadwalModal";
 
 export default function JadwalOperasi() {
+  const { dokter } = useSelector((state) => state.dokter);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showChangeStatus, setShowChangeStatus] = useState(false);
 
-  const [deleteIndex, setDeleteIndex] = useState(0);
-
   const [loading, setLoading] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
   const [jadwal, setJadwal] = useState([]);
 
   // -- salin states
   const [showSalin, setShowSalin] = useState(false);
   const [salin, setSalin] = useState({ jadwal: false, noRm: false });
 
-  const [tempJadwal, setTempJadwal] = useState([]);
-  const [dokter, setDokter] = useState([]);
-  const [tindakan, setTindakan] = useState([]);
-  const [ruangan, setRuangan] = useState([]);
-
   useEffect(() => {
     getAllJadwal();
+    console.log(dokter);
   }, []);
 
   // useEffect(() => {
@@ -87,8 +77,18 @@ export default function JadwalOperasi() {
       })
       .catch((e) => console.log(`Error: ${e}`));
   };
+
   const handleCloseDelete = () => {
     setShowDeleteModal(!showDeleteModal);
+  };
+
+  // dummy remove
+  const handleDelete = () => {
+    setShowDeleteModal(!showDeleteModal);
+    toast.success("Jadwal berhasil dihapus!", {
+      duration: 4000,
+      position: "top-right",
+    });
   };
 
   const handleCloseMessage = () => {
@@ -98,18 +98,6 @@ export default function JadwalOperasi() {
 
   const handleCloseChangeStatus = () => {
     setShowChangeStatus(!showChangeStatus);
-  };
-
-  const handleDelete = (i) => {
-    JadwalService.removeData(i)
-      .then((resp) => {
-        handleCloseDelete();
-        navigate(0);
-      })
-      .catch((err) => {
-        console.warn(err);
-        handleCloseDelete();
-      });
   };
 
   const handleFetchJadwal = () => {
@@ -128,6 +116,13 @@ export default function JadwalOperasi() {
 
   const cols = [
     {
+      Header: "No.",
+      Cell: (row) => {
+        return <div>{Number(row.row.index + 1)}</div>;
+      },
+    },
+    {
+      // TODO: make link
       Header: "Nama",
       accessor: "nama",
     },
@@ -177,14 +172,13 @@ export default function JadwalOperasi() {
               onClick={() => {
                 console.log(row);
                 setShowDeleteModal(true);
-                setDeleteIndex(row.id);
               }}
               icon={<BsFillTrashFill />}
             />
             <div>
               <ButtonIcon
-                bgColor="bg-purple-400"
-                hoverColor="hover:bg-purple-500"
+                bgColor="bg-sky-400"
+                hoverColor="hover:bg-sky-500"
                 onClick={() => {
                   console.log("Ubah Status !!!");
                   setShowChangeStatus(true);
@@ -202,7 +196,6 @@ export default function JadwalOperasi() {
   const showSalinDropdown = () => {
     setShowSalin(!showSalin);
     console.log(showSalin);
-    console.log("SHOWING SALIN DD");
   };
 
   const columns = useMemo(() => cols, []);
@@ -211,22 +204,22 @@ export default function JadwalOperasi() {
   return (
     <>
       <div className="mb-3">
-        <h1>Jadwal Operasi</h1>
+        <h1>Jadwal Operasional</h1>
       </div>
       <div className="flex flex-row">
-        {/* <div className="mr-2">
-          <FormInput name="date" type="date" onChange={(e) => setDate(e)} />
-        </div> */}
+        <div className="mr-4">
+          <SelectDate />
+        </div>
 
         <ButtonTextIcon
           bgColor="bg-blue-400"
           hoverColor="hover:bg-blue-600"
           icon={<IoMdAdd />}
           text="Tambah data"
-          onClick={() => navigate("/add-jadwal")}
+          onClick={() => navigate("/jadwal/add")}
         />
         <div>
-          <ExportToExcel excelData={data} fileName="Jadwal_Operasi" />
+          <ExportToExcel excelData={data} fileName="JadwalOperasi_22092022" />
         </div>
         <div>
           <ButtonOutline
@@ -277,11 +270,11 @@ export default function JadwalOperasi() {
       {showDeleteModal && (
         <DeleteModal
           handleClose={handleCloseDelete}
-          handleDelete={handleDelete(deleteIndex)}
+          handleDelete={handleDelete}
         />
       )}
       {showChangeStatus && <UbahStatus handleClose={handleCloseChangeStatus} />}
-      <Toaster/>
+      <Toaster />
     </>
   );
 }

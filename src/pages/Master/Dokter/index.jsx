@@ -65,13 +65,16 @@ export default function ViewDokter() {
       .then((res) => {
         handleCloseDelete();
         navigate(0);
-        setAlertDelete(true);
       })
       .catch((err) => {
         console.warn(err);
         handleCloseDelete();
         navigate(0);
       });
+    toast.success("Jadwal berhasil dihapus!", {
+      duration: 4000,
+      position: "top-right",
+    });
   };
 
   const getDokter = (id) => {
@@ -169,7 +172,6 @@ export default function ViewDokter() {
         />
       )}
 
-      {/* {validate.general && <Toaster />} */}
       <Toaster />
     </>
   );

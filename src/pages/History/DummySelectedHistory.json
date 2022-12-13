@@ -1,0 +1,38 @@
+[
+  {
+    "id_transaksi": "INV-2209-0098",
+    "nama": "Jessica Josephine",
+    "tanggal": "21 September 2022",
+    "tindakan": "Scalling + Air Flow",
+    "diagnosa": "Caries",
+    "dokter": "drg. I Nyoman Putra Mahendra Suyoga",
+    "status": "Lunas",
+    "total": "Rp. 700.000",
+    "diskon": "Rp. 0",
+    "keterangan": "-"
+  },
+  {
+    "id_transaksi": "INV-2207-0099",
+    "nama": "Jessica Josephine",
+    "tanggal": "2 July 2022",
+    "diagnosa": "Periodontitis",
+    "tindakan": "Gingivectomy",
+    "dokter": "drg. Made Talitha S Pinatih, Sp. Perio",
+    "status": "Lunas",
+    "total": "Rp. 2.500.000",
+    "diskon": "Rp. 0",
+    "keterangan": "-"
+  },
+  {
+    "id_transaksi": "INV-2203-0100",
+    "nama": "Jessica Josephine",
+    "tanggal": "3 Maret 2022",
+    "diagnosa": "Caries",
+    "tindakan": "Composite Filling (1 Surface)",
+    "dokter": "drg. I Nyoman Putra Mahendra Suyoga",
+    "status": "Lunas",
+    "total": "Rp. 700.000",
+    "diskon": "Rp. 0",
+    "keterangan": "-"
+  }
+]

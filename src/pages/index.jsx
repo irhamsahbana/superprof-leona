@@ -8,3 +8,8 @@ export { default as EditDokter } from "./Master/Dokter/edit";
 
 // jadwal operasional
 export { default as JadwalOperasi } from "./JadwalOperasi";
+export { default as AddJadwal } from "./JadwalOperasi/add";
+
+// history 
+export {default as History} from "./History";
+export {default as HistorySelected} from "./History/HistorySelected";
