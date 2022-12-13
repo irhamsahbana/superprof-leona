@@ -16,6 +16,7 @@ export default function OdontogramElement(props) {
         height="10.5"
         onClick={() => props.onFill(0)}
         fill={props.fillColor[0]}
+        className="cursor-pointer"
         stroke="black"
         stroke-width="0.5"
       />
@@ -83,6 +84,7 @@ export default function OdontogramElement(props) {
         height="10.5"
         onClick={() => props.onFill(1)}
         fill={props.fillColor[1]}
+        className="cursor-pointer"
         stroke="black"
         stroke-width="0.5"
       />
@@ -181,9 +183,9 @@ export default function OdontogramElement(props) {
         y="122.75"
         width="10.5"
         height="10.5"
-        // onClick={() => props.onFill(2)}
-        // fill={props.fillColor[2]}
-        fill="red"
+        onClick={() => props.onFill(2)}
+        fill={props.fillColor[2]}
+        className="cursor-pointer"
         stroke="black"
         stroke-width="0.5"
       />
@@ -249,9 +251,9 @@ export default function OdontogramElement(props) {
         y="122.75"
         width="10.5"
         height="10.5"
-        // onClick={() => props.onFill(3)}
-        // fill={props.fillColor[3]}
-        fill="red"
+        onClick={() => props.onFill(3)}
+        fill={props.fillColor[3]}
+        className="cursor-pointer"
         stroke="black"
         stroke-width="0.5"
       />
@@ -286,6 +288,7 @@ export default function OdontogramElement(props) {
         height="10.5"
         onClick={() => props.onFill(4)}
         fill={props.fillColor[4]}
+        className="cursor-pointer"
         stroke="black"
         stroke-width="0.5"
       />
@@ -318,7 +321,9 @@ export default function OdontogramElement(props) {
         y="122.75"
         width="10.5"
         height="10.5"
-        fill="white"
+        onClick={() => props.onFill(5)}
+        fill={props.fillColor[5]}
+        className="cursor-pointer"
         stroke="black"
         stroke-width="0.5"
       />
@@ -337,7 +342,9 @@ export default function OdontogramElement(props) {
       <path
         d="M130.25 122.75L137 116V140L130.25 133.25V122.75Z"
         stroke="black"
-        fill="red"
+        onClick={() => props.onFill(6)}
+        fill={props.fillColor[6]}
+        className="cursor-pointer"
         stroke-width="0.5"
         stroke-linejoin="round"
       />
@@ -349,7 +356,9 @@ export default function OdontogramElement(props) {
       />
       <path
         d="M165 6H141L147 13.5H159L165 6Z"
-        fill="red"
+        onClick={() => props.onFill(7)}
+        fill={props.fillColor[7]}
+        className="cursor-pointer"
         stroke="black"
         stroke-width="0.5"
         stroke-linejoin="round"
@@ -486,7 +495,9 @@ export default function OdontogramElement(props) {
       <path
         d="M421.75 12.75L415 6V30L421.75 23.25V12.75Z"
         stroke="black"
-        fill="red"
+        onClick={() => props.onFill(8)}
+        fill={props.fillColor[8]}
+        className="cursor-pointer"
         stroke-width="0.5"
         stroke-linejoin="round"
       />
@@ -594,7 +605,9 @@ export default function OdontogramElement(props) {
       />
       <path
         d="M303 6H327L321 13.5H309L303 6Z"
-        fill="red"
+        onClick={() => props.onFill(9)}
+        fill={props.fillColor[9]}
+        className="cursor-pointer"
         stroke="black"
         stroke-width="0.5"
         stroke-linejoin="round"

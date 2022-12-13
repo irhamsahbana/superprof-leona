@@ -6,10 +6,12 @@ import { Input } from "antd";
 import { ButtonBack } from "../../components/Button";
 
 export default function Odontogram() {
-  const [fillColor, setFillColor] = useState(Array(4).fill("white"));
+  const [fillColor, setFillColor] = useState(Array(9).fill("white"));
   const [currentColor, setCurrentColor] = useState("white");
 
   const onFillColor = (i) => {
+    console.log(i)
+
     let newFillColors = fillColor.slice(0);
     newFillColors[i] = currentColor;
     setFillColor(newFillColors);
@@ -34,7 +36,7 @@ export default function Odontogram() {
           />
         </Container>
         <Container text="Keadaan Gigi" className="ml-5">
-          {/* <ToothPalette selectedColor={setCurrentColor} /> */}
+          <ToothPalette selectedColor={setCurrentColor} />
           <p className="font-bold">Diagnosa :</p>
           <p className="font-bold">Tindakan :</p>
           <p className="font-bold">Dokter :</p>
@@ -79,22 +81,5 @@ export default function Odontogram() {
         </div>
       </Container>
     </div>
-    //          <ToothPalette selectedColor={setCurrentColor} />
-
-    // const [fillColor, setFillColor] = useState(Array(12).fill("white"));
-    // const [currentColor, setCurrentColor] = useState("white");
-
-    // const onFillColor = (i) => {
-    //   let newFillColors = fillColor.slice(0)
-    //   newFillColors[i] = currentColor
-    //   setFillColor(newFillColors)
-    // }
-
-    // return (
-    //   <div className="App">
-    //     <Flower fillColor={fillColor} onFill={onFillColor}/>
-    //     <ColorPalette selectedColor={setCurrentColor}/>
-    //   </div>
-    // );
   );
 }

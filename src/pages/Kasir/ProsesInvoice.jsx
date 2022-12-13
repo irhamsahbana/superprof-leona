@@ -21,7 +21,7 @@ export default function ProsesInvoice() {
           <h1>Proses Invoice</h1>
         </div>
         <div className="flex flex-row">
-          <div>
+          {/* <div>
             <ButtonIcon
               bgColor="bg-blue-400"
               hoverColor="hover:bg-blue-500"
@@ -30,7 +30,7 @@ export default function ProsesInvoice() {
               }}
               icon={<AiFillEdit />}
             />
-          </div>
+          </div> */}
           <div>
             <ButtonMain
               bgColor="bg-blue-400"
