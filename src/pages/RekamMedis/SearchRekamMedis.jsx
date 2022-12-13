@@ -4,6 +4,7 @@ import Table from "../../components/Table";
 import { AiFillEye } from "react-icons/ai";
 import { ButtonIcon } from "../../components/Button";
 import HistoryData from "../../data/HistoryData.json";
+import { useSpinner } from "../../utils/customHooks";
 
 export default function SearchRekamMedis() {
   const [showHistory, setShowHistory] = useState(false);
@@ -11,6 +12,7 @@ export default function SearchRekamMedis() {
   const historyData = HistoryData[0].now;
 
   const navigate = useNavigate();
+  const showSpinner = useSpinner();
   const handleClose = () => {
     setShowHistory(false);
   };
@@ -64,6 +66,7 @@ export default function SearchRekamMedis() {
 
   return (
     <>
+      {showSpinner}
       <div className="mb-5">
         <h1>Rekam Medis</h1>
       </div>
