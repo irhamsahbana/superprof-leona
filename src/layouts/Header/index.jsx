@@ -7,9 +7,7 @@ import { Dropdown } from "antd";
 import { logout } from "../../redux/userSlice";
 
 export default function Header() {
-  const { showSidebar, showProfileDropdown } = useSelector(
-    (state) => state.utils
-  );
+  const { showSidebar } = useSelector((state) => state.utils);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -40,7 +38,6 @@ export default function Header() {
     <div className="flex justify-between w-full h-14 pt-2 pr-16 offset-x shadow-lg bg-slate-50">
       <button
         className="text-slate-900 text-lg pl-10"
-        // this the issue all the time
         onClick={() => dispatch(setShowSidebar(!showSidebar))}
       >
         <HiMenu />

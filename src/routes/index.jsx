@@ -2,11 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import { useSelector } from "react-redux";
 import PrivateRoute from "../components/PrivateRoute";
-import {
-  Login,
-  Dashboard,
-  NotFound
-} from "../pages";
+import { Login, Dashboard, NotFound } from "../pages";
 
 export default function index() {
   const { isLoggedIn } = (state) => state.user;
@@ -14,7 +10,7 @@ export default function index() {
     <BrowserRouter>
       <MainLayout>
         <Routes>
-          <Route path="/" exact element={<Login />} />
+          <Route path="/" element={<Login />} />
 
           <Route
             path="/home"
@@ -24,7 +20,6 @@ export default function index() {
               </PrivateRoute>
             }
           />
-        
           <Route path="*" element={<NotFound />} />
         </Routes>
       </MainLayout>

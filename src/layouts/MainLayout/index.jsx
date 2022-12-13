@@ -1,19 +1,18 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { Outlet } from "react-router-dom";
 // components
 import Sidebar from "../Sidebar";
 import Header from "../Header";
 
 export default function MainLayout({ children }) {
-  const { showSidebar } = useSelector(
-    (state) => state.utils
-  );
+  const { showSidebar } = useSelector((state) => state.utils);
 
   let { isLoggedIn } = useSelector((state) => state.user);
 
   useEffect(() => {
     console.log(isLoggedIn);
-  }, []); 
+  }, []);
 
   return (
     <>
@@ -23,13 +22,13 @@ export default function MainLayout({ children }) {
             {showSidebar && <Sidebar />}
 
             <div className="flex-1 min-w-max">
-              <Header /> 
-              <div className="pt-8 pl-16 pr-16 min-w-max">{children} </div>
+              <Header />
+              <div className="pt-8 pl-16 pr-16 min-w-max">{children}</div>
             </div>
           </div>
         </>
       ) : (
-        <>{children} </>
+        <>{children}</>
       )}
     </>
   );

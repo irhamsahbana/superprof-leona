@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../../assets/logo-transparent.png";
 import SidebarItems from "../../data/SidebarItems";
-import { useSelector } from "react-redux";
 
 export default function Sidebar() {
   // TODO: dropdown area hover active class (on location), transition effect

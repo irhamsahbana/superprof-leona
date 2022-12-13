@@ -8,10 +8,10 @@ export default function Dashboard() {
   const { isLoggedIn } = useSelector((state) => state.user);
 
   useEffect(() => console.log(isLoggedIn), []);
-  
+
   return (
     <div>
-      <h1 className="mb-12">Welcome Home</h1>
+      <h1 className="mb-8">Welcome Home</h1>
 
       <div className="flex flex-col md:flex-row lg:flex-row mb-3">
         <OverviewArea />
@@ -27,3 +27,4 @@ export default function Dashboard() {
     </div>
   );
 }
+ 
