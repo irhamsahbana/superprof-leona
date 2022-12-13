@@ -7,7 +7,7 @@ export default function ButtonBack() {
   return (
     <>
       <button onClick={() => navigate(-1)}>
-        <IoArrowBack />
+       <span><IoArrowBack /></span> 
       </button>
     </>
   );

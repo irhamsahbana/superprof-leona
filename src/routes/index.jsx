@@ -10,6 +10,7 @@ import {
   AddJadwal,
   JadwalOperasi,
   History,
+  HistorySelected
 } from "../pages";
 
 function Routing() {
@@ -61,13 +62,13 @@ function Routing() {
             </PrivateRoute>
           }
         />
-        
+
         {/* TODO: change to nested; add id */}
         <Route
           path="/history-transaksi/selected"
           element={
             <PrivateRoute>
-              <History />
+              <HistorySelected />
             </PrivateRoute>
           }
         />

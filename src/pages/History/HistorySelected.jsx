@@ -1,5 +1,7 @@
-import React, {useState, useMemo} from "react";
-import { ButtonIcon } from "../../components/Button";
+import React, { useState, useMemo } from "react";
+import { ButtonIcon, ButtonBack, ButtonOutline } from "../../components/Button";
+import { FiCopy } from "react-icons/fi";
+import ExportToExcel from "../../components/ExportToExcel";
 import Table from "../../components/Table";
 import HistoryModal from "./HistoryModal";
 import { AiFillEye } from "react-icons/ai";
@@ -43,8 +45,8 @@ export default function HistorySelected(props) {
         <>
           <div>
             <ButtonIcon
-              bgColor="bg-red-400"
-              hoverColor="hover:bg-red-500"
+              bgColor="bg-sky-400"
+              hoverColor="hover:bg-sky-500"
               onClick={() => {
                 console.log("view");
                 setSelectedIndex(i);
@@ -65,16 +67,25 @@ export default function HistorySelected(props) {
   return (
     <>
       <div className="mb-5">
-        <h1>         {" "}
+        <ButtonBack />
+        <h1>
           Data Transaksi:{" "}
-          <span className="text-blue-500 text-2xl">Jessica Josephine</span></h1>
-          <p>History Transaksi Jessica Josephine</p>
+          <span className="text-blue-500 text-2xl">Jessica Josephine</span>
+        </h1>
+        <p className="pt-1">Semua transaksi pasien</p>
+      </div>
+
+      <div className="flex flex-row">
+        <div>
+          <ExportToExcel excelData={selectedHistory} fileName="Transaksi_JessicaJosephine" />
+        </div>
       </div>
 
       <Table columns={columns} data={data} />
       {showHistory && (
         <HistoryModal
           handleClose={handleClose}
+          hidden={"hidden"}
           historyData={selectedHistory}
           i={selectedIndex}
         />

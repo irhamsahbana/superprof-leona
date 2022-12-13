@@ -4,6 +4,7 @@ import { AiFillEye } from "react-icons/ai";
 import { ButtonIcon } from "../../components/Button";
 import HistoryData from "../../data/HistoryData.json";
 import HistoryModal from "./HistoryModal";
+import SelectDate from "../../components/SelectDate";
 
 export default function History() {
   const [showHistory, setShowHistory] = useState(false);
@@ -68,16 +69,20 @@ export default function History() {
 
   return (
     <>
-      <div className="mb-3">
+      <div className="mb-4">
         <h1>
           Data Transaksi:{" "}
           <span className="text-blue-500 text-2xl">History</span>
         </h1>
       </div>
 
+      <div>
+        <SelectDate />
+      </div>
       <Table columns={columns} data={data} />
       {showHistory && (
         <HistoryModal
+          text={"View More"}
           handleClose={handleClose}
           historyData={historyData}
           i={selectedIndex}

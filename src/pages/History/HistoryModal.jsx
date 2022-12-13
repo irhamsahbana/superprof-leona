@@ -3,7 +3,7 @@ import { ButtonMain, ButtonOutline } from "../../components/Button";
 import { Tag } from "antd";
 import { useNavigate } from "react-router-dom";
 
-export default function HistoryModal({ handleClose, historyData, i }) {
+export default function HistoryModal({ handleClose, historyData, i, text, hidden }) {
   const navigate = useNavigate();
   const handleNavigateViewMore = () => {
     navigate("/history-transaksi/selected");
@@ -30,7 +30,7 @@ export default function HistoryModal({ handleClose, historyData, i }) {
           </div>
           <div className="flex flex-row justify-between pb-2">
             <p className="w-24 mr-8 text-slate-500">Tindakan</p>
-            <p className="w-44">{historyData[i].tindakan}</p>
+            <p className="w-44 font-semibold">{historyData[i].tindakan}</p>
           </div>
 
           <div className="flex flex-row justify-between pb-2">
@@ -61,15 +61,15 @@ export default function HistoryModal({ handleClose, historyData, i }) {
 
         <div className="float-right mt-4 flex flex-row">
           <ButtonOutline
-            text="Cancel"
+            text="Close"
             hoverColor="hover:bg-slate-50"
             textColor="text-blue-400"
             borderColor="border-blue-400"
             onClick={handleClose}
           />
           <ButtonMain
-            text="View More"
-            hoverColor="hover:bg-blue-500"
+            text={text}
+            hoverColor={`hover:bg-blue-500 ${hidden}`}
             bgColor="bg-blue-400"
             onClick={handleNavigateViewMore}
           />
