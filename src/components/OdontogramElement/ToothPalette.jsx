@@ -1,16 +1,35 @@
 import React from "react";
 
 export default function ToothPalette(props) {
-  const colors = ["red", "green", "blue"];
+
+  // TODO: testing
+  const colors = [
+    {
+      color: "red",
+      name: "Cavity",
+    },
+    {
+      color: "green",
+      name: "Filling",
+    },
+    {
+      color: "blue",
+      name: "Crown",
+    },
+  ];
+
   return (
-    <div>
-      {colors.map((color, index) => (
-        <div
-          key={index}
-          className="w-8 h-8 mx-8 my-8 flex flex-row cursor-pointer"
-          style={{ backgroundColor: color }}
-          onClick={() => props.selectedColor(color)}
-        ></div>
+    <div className="mb-3">
+      {Object.values(colors).map((color, index) => (
+        <div className="grid grid-cols-2">
+          <div
+            key={index}
+            className="w-8 h-8 mb-2 flex flex-row cursor-pointer"
+            style={{ backgroundColor: color.color }}
+            onClick={() => props.selectedColor(color.color)}
+          ></div>
+          <p>{color.name}</p>
+        </div>
       ))}
     </div>
   );

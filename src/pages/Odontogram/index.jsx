@@ -24,7 +24,7 @@ export default function Odontogram() {
     <div>
       <ButtonBack/>
       <h1>Odontogram</h1>
-      <p className="my-3">Last edited by drg. I Nyoman Putra Mahendra Suyoga</p>
+      <p className="mt-2">Last edited by drg. I Nyoman Putra Mahendra Suyoga</p>
 
       <div className="flex flex-row">
         <Container>

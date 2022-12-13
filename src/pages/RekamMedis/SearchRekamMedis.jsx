@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "../../components/Table";
-import { AiFillEye } from "react-icons/ai";
+import { AiFillEye, AiOutlineRight } from "react-icons/ai";
 import { ButtonIcon } from "../../components/Button";
 import HistoryData from "../../data/HistoryData.json";
 import { useSpinner } from "../../utils/customHooks";
@@ -52,7 +52,7 @@ export default function SearchRekamMedis() {
                 setSelectedIndex(i);
                 setShowHistory(navigate(`/rekam-medis/selected`));
               }}
-              icon={<AiFillEye />}
+              icon={<AiOutlineRight />}
             />
           </div>
         </>

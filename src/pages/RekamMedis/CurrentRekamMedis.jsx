@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import Container from "../../layouts/Container";
 import { ButtonIcon, ButtonMain } from "../../components/Button";
 import Table from "../../components/Table";
-import { AiFillEye } from "react-icons/ai";
+import { AiFillEye, AiOutlineRight } from "react-icons/ai";
 import DummySelectedHistory from "../History/DummySelectedHistory.json";
 import { useNavigate } from "react-router-dom";
 import TindakanModal from "./TindakanModal";
