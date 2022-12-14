@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ButtonMain } from "../../components/Button";
 import Card from "../../components/Card";
 import Container from "../../layouts/Container";
@@ -7,9 +7,17 @@ import KasirTable from "../Kasir/KasirTable";
 import { Transaksi } from "../../data/Transaksi";
 import { BsCashStack } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import BaseModal from "../../layouts/BaseModal";
+import FormInput from "../../components/FormInput";
 
 export default function Pembayaran() {
   const navigate = useNavigate();
+  const [showBayarModal, setShowBayarModal] = useState(false);
+
+  const handleShowBayarModal = () => {
+    setShowBayarModal(true);
+  };
+  
   return (
     <>
       <div className="flex flex-row justify-between mb-5">
@@ -18,7 +26,7 @@ export default function Pembayaran() {
           text="Proses Invoice"
           bgColor="bg-blue-400"
           hoverColor="hover:bg-blue-500"
-          onClick={() => navigate('/invoice')}
+          onClick={() => navigate("/invoice")}
         />
       </div>
 
@@ -57,15 +65,15 @@ export default function Pembayaran() {
             <div className="ml-3 mt-3 md:ml-12 lg:ml-12 flex float-right">
               <Card width="w-full" height="h-max" bgColor="bg-green-300">
                 <div className="flex flex-row">
-                  <span className="text-5xl h-auto pt-6 pl-2">
+                  <span className="text-2xl h-auto pt-10 pl-2">
                     <BsCashStack />
                   </span>
                   <div className="flex flex-col p-8">
                     <div className="flex flex-row">
                       <p>Saldo Deposit:</p>
-                      <p className="ml-3 font-bold">Rp. 300.000</p>
+                      <p className="ml-3 font-bold">Rp. 10.000.000</p>
                     </div>
-                    <p className="text-sm mt-3">
+                    <p className="text-sm mt-1">
                       Untuk deposit 50% pemasangan KLAR
                     </p>
                   </div>
@@ -80,14 +88,13 @@ export default function Pembayaran() {
         <div className="mr-10 sm:mt-8"></div>
         <Container>
           <div className="flex flex-row justify-between">
-            <p className="font-bold text-xl mt-6 mb-2 ml-4">
-              Metode Pembayaran
-            </p>
+            <p className="font-bold text-xl mt-6 mb-2 ml-4">Pembayaran</p>
             <div className="mt-3">
               <ButtonMain
                 bgColor="bg-blue-400"
                 hoverColor="hover:bg-blue-500"
                 text="Tambah"
+                onClick={handleShowBayarModal}
               />
             </div>
           </div>
@@ -110,12 +117,12 @@ export default function Pembayaran() {
                 <div className="flex flex-row mb-2 mt-8">
                   <p className="w-44">Grand Total</p>
                   <p className="mx-3">:</p>
-                  <p className="w-max font-semibold">Rp. 0</p>
+                  <p className="w-max font-semibold">Rp. 2.000.000</p>
                 </div>
                 <div className="flex flex-row mb-2">
                   <p className="w-44 ">Total Bayar</p>
                   <p className="mx-3">:</p>
-                  <p className="w-max font-semibold">Rp. 0</p>
+                  <p className="w-max font-semibold">Rp. 2.000.000</p>
                 </div>
                 <div className="flex flex-row mb-2">
                   <p className="w-44 ">Kembalian</p>
@@ -127,6 +134,31 @@ export default function Pembayaran() {
           </Container>
         </div>
       </div>
+
+      {showBayarModal && (
+        <BaseModal
+          text="Simpan"
+          handleClose={() => setShowBayarModal(false)}
+          onClick={() => setShowBayarModal(false)}
+        >
+          <h1 className="text-center pb-4">Proses Pembayaran</h1>
+          <div className="my-4 w-full">
+            <FormInput
+              text="Metode Pembayaran"
+              name="metode"
+              // value={selectedData[selected]}
+              // onChange={handleChange}
+            />
+            <div className="h-5"></div>
+            <FormInput
+              text="Nominal"
+              name="nominal"
+              // value={selectedData[selected]}
+              // onChange={handleChange}
+            />
+          </div>
+        </BaseModal>
+      )}
     </>
   );
 }

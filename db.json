@@ -60,11 +60,6 @@
       "spesialis": "General Practitioner (Dokter Gigi Umum)"
     },
     {
-      "id": 10,
-      "nama": "aaaa",
-      "spesialis": "Ob"
-    },
-    {
       "id": 11,
       "nama": "ddddddx",
       "spesialis": "xx"
@@ -76,8 +71,28 @@
     },
     {
       "id": 13,
-      "nama": "x",
+      "nama": "xdrg",
       "spesialis": "x"
+    },
+    {
+      "id": 15,
+      "nama": "drg.Chelsea",
+      "spesialis": "Radiologi"
+    },
+    {
+      "id": 16,
+      "nama": "drg.Fani",
+      "spesialis": "Ortho"
+    },
+    {
+      "id": 17,
+      "nama": "drg.fani",
+      "spesialis": "fani"
+    },
+    {
+      "id": 18,
+      "nama": "drg.leona",
+      "spesialis": "leona"
     }
   ],
   "studio": [
@@ -3443,194 +3458,198 @@
   ],
   "jadwal": [
     {
-      "now": [
-        {
-          "no_rm": "C-21110009",
-          "nama": "Clare Resimont",
-          "jenis_tindakan": "Orthodontics",
-          "dokter": "drg. Putu Andy Herawan, Sp. Ort",
-          "ruangan": "Studio 2",
-          "keterangan": "kontrol",
-          "jam_mulai": "16:00",
-          "jam_selesai": "16:30",
-          "status": "Sedang berlangsung"
-        },
-        {
-          "no_rm": "S-21110012",
-          "nama": "Sarah Sampaio",
-          "jenis_tindakan": "Orthodontics",
-          "dokter": "drg. Putu Andy Herawan, Sp. Ort",
-          "ruangan": "Studio 2",
-          "keterangan": "kontrol",
-          "jam_mulai": "16:30",
-          "jam_selesai": "17:00",
-          "status": "Belum datang"
-        },
-        {
-          "no_rm": "S-191000124",
-          "nama": "Sabrina Carpenter",
-          "jenis_tindakan": "Orthodontics",
-          "dokter": "drg. Putu Andy Herawan, Sp. Ort",
-          "ruangan": "Studio 2",
-          "keterangan": "kontrol",
-          "jam_mulai": "17:00",
-          "jam_selesai": "17:30",
-          "status": "Belum datang"
-        },
-        {
-          "no_rm": "J-21110009",
-          "nama": "Jessica Josephine",
-          "jenis_tindakan": "Orthodontics",
-          "dokter": "drg. Putu Andy Herawan, Sp. Ort",
-          "ruangan": "Studio 2",
-          "keterangan": "kontrol",
-          "jam_mulai": "17:30",
-          "jam_selesai": "18:00",
-          "status": "Belum datang"
-        },
-        {
-          "no_rm": "M-20070077",
-          "nama": "Mona Lisa",
-          "jenis_tindakan": "Orthodontics",
-          "dokter": "drg. Putu Andy Herawan, Sp. Ort",
-          "ruangan": "Studio 2",
-          "keterangan": "kontrol",
-          "jam_mulai": "18:00",
-          "jam_selesai": "18:30",
-          "status": "Cancelled"
-        },
-        {
-          "no_rm": "T-19110001",
-          "nama": "Tyler Howard",
-          "jenis_tindakan": "Orthodontics",
-          "dokter": "drg. Putu Andy Herawan, Sp. Ort",
-          "ruangan": "Studio 2",
-          "keterangan": "kontrol",
-          "jam_mulai": "18:30",
-          "jam_selesai": "19:00",
-          "status": "Belum datang"
-        },
-        {
-          "no_rm": "N-22080018",
-          "nama": "Nina Simone",
-          "jenis_tindakan": "Pedodontics",
-          "dokter": "drg. Mustika Pramidi, Sp. KGA",
-          "ruangan": "Studio Pedo",
-          "keterangan": "kontrol",
-          "jam_mulai": "15:00",
-          "jam_selesai": "15:30",
-          "status": "Belum datang"
-        },
-        {
-          "no_rm": "D-21110009",
-          "nama": "Dylon Keith",
-          "jenis_tindakan": "Pedodontics",
-          "dokter": "drg. Mustika Pramidi, Sp. KGA",
-          "ruangan": "Studio Pedo",
-          "keterangan": "check-up",
-          "jam_mulai": "15:30",
-          "jam_selesai": "16:00",
-          "status": "Sedang berlangsung"
-        },
-        {
-          "no_rm": "J-22110009",
-          "nama": "Jhonathan Swift",
-          "jenis_tindakan": "Pedodontics",
-          "dokter": "drg. Mustika Pramidi, Sp. KGA",
-          "ruangan": "Studio Pedo",
-          "keterangan": "filling+exo",
-          "jam_mulai": "16:00",
-          "jam_selesai": "16:30",
-          "status": "Belum datang"
-        },
-        {
-          "no_rm": "T-221100010",
-          "nama": "Taylor Swift",
-          "jenis_tindakan": "Pedodontics",
-          "dokter": "drg. Mustika Pramidi, Sp. KGA",
-          "ruangan": "Studio Pedo",
-          "keterangan": "filling+exo",
-          "jam_mulai": "16:30",
-          "jam_selesai": "17:00",
-          "status": "Belum datang"
-        },
-        {
-          "no_rm": "Y-22120111",
-          "nama": "Yaroslav",
-          "jenis_tindakan": "Conservative Treatment",
-          "dokter": "drg. Intan Pramisati, SKG",
-          "ruangan": "Studio 1",
-          "keterangan": "bleaching",
-          "jam_mulai": "10:00",
-          "jam_selesai": "12:00",
-          "status": "Selesai"
-        },
-        {
-          "no_rm": "A-22080188",
-          "nama": "Anais Mason",
-          "jenis_tindakan": "Conservative Treatment",
-          "dokter": "drg. Intan Pramisati, SKG",
-          "ruangan": "Studio 1",
-          "keterangan": "scalling",
-          "jam_mulai": "13.00",
-          "jam_selesai": "14:00",
-          "status": "Selesai"
-        }
-      ]
+      "id": 1,
+      "no_rm": "A-22080188",
+      "nama": "Anais Mason",
+      "jenis_tindakan": "Conservative Treatment",
+      "dokter": "drg. Intan Pramisati, SKG",
+      "ruangan": "Studio 1",
+      "keterangan": "scalling",
+      "jam_mulai": "13.00",
+      "jam_selesai": "14:00",
+      "status": "Selesai"
     },
     {
-      "20/09/2022": [
-        {
-          "nama": "Anais Mason",
-          "jenis_tindakan": "Conservative Treatment",
-          "dokter": "drg. Intan Pramisati, SKG",
-          "ruangan": "Studio 1",
-          "keterangan": "scalling",
-          "jam_mulai": "13.00",
-          "jam_selesai": "14:00",
-          "status": "Selesai"
-        },
-        {
-          "nama": "Clare Resimont",
-          "jenis_tindakan": "Orthodontics",
-          "dokter": "drg. Putu Andy Herawan, Sp. Ort",
-          "ruangan": "Studio 2",
-          "keterangan": "kontrol",
-          "jam_mulai": "16:00",
-          "jam_selesai": "16:30",
-          "status": "Selesai"
-        },
-        {
-          "nama": "Molard Candice",
-          "jenis_tindakan": "Orthodontics",
-          "dokter": "drg. Putu Andy Herawan, Sp. Ort",
-          "ruangan": "Studio 2",
-          "keterangan": "kontrol",
-          "jam_mulai": "17:00",
-          "jam_selesai": "17:30",
-          "status": "Cancelled"
-        },
-        {
-          "nama": "Gede Agastya",
-          "jenis_tindakan": "Orthodontics",
-          "dokter": "drg. Putu Andy Herawan, Sp. Ort",
-          "ruangan": "Studio 2",
-          "keterangan": "pasang behel Damon Clear",
-          "jam_mulai": "17:30",
-          "jam_selesai": "20:00",
-          "status": "Selesai"
-        },
-        {
-          "nama": "Jessica",
-          "jenis_tindakan": "Pedodontics",
-          "dokter": "drg. Mustika Pramidi, Sp. KGA",
-          "ruangan": "Studio Pedo",
-          "keterangan": "filling+exo",
-          "jam_mulai": "15:00",
-          "jam_selesai": "16:30",
-          "status": "Selesai"
-        }
-      ]
+      "id": 2,
+      "no_rm": "S-21110012",
+      "nama": "Sarah Sampaio",
+      "jenis_tindakan": "Orthodontics",
+      "dokter": "drg. Putu Andy Herawan, Sp. Ort",
+      "ruangan": "Studio 2",
+      "keterangan": "kontrol",
+      "jam_mulai": "16:30",
+      "jam_selesai": "17:00",
+      "status": "Belum datang"
+    },
+    {
+      "id": 3,
+      "no_rm": "S-191000124",
+      "nama": "Sabrina Carpenter",
+      "jenis_tindakan": "Orthodontics",
+      "dokter": "drg. Putu Andy Herawan, Sp. Ort",
+      "ruangan": "Studio 2",
+      "keterangan": "kontrol",
+      "jam_mulai": "17:00",
+      "jam_selesai": "17:30",
+      "status": "Belum datang"
+    },
+    {
+      "id": 4,
+      "no_rm": "J-21110009",
+      "nama": "Jessica Josephine",
+      "jenis_tindakan": "Orthodontics",
+      "dokter": "drg. Putu Andy Herawan, Sp. Ort",
+      "ruangan": "Studio 2",
+      "keterangan": "kontrol",
+      "jam_mulai": "17:30",
+      "jam_selesai": "18:00",
+      "status": "Belum datang"
+    },
+    {
+      "id": 5,
+      "no_rm": "M-20070077",
+      "nama": "Mona Lisa",
+      "jenis_tindakan": "Orthodontics",
+      "dokter": "drg. Putu Andy Herawan, Sp. Ort",
+      "ruangan": "Studio 2",
+      "keterangan": "kontrol",
+      "jam_mulai": "18:00",
+      "jam_selesai": "18:30",
+      "status": "Cancelled"
+    },
+    {
+      "id": 6,
+      "no_rm": "T-19110001",
+      "nama": "Tyler Howard",
+      "jenis_tindakan": "Orthodontics",
+      "dokter": "drg. Putu Andy Herawan, Sp. Ort",
+      "ruangan": "Studio 2",
+      "keterangan": "kontrol",
+      "jam_mulai": "18:30",
+      "jam_selesai": "19:00",
+      "status": "Belum datang"
+    },
+    {
+      "id": 7,
+      "no_rm": "N-22080018",
+      "nama": "Nina Simone",
+      "jenis_tindakan": "Pedodontics",
+      "dokter": "drg. Mustika Pramidi, Sp. KGA",
+      "ruangan": "Studio Pedo",
+      "keterangan": "kontrol",
+      "jam_mulai": "15:00",
+      "jam_selesai": "15:30",
+      "status": "Belum datang"
+    },
+    {
+      "id": 8,
+      "no_rm": "D-21110009",
+      "nama": "Dylon Keith",
+      "jenis_tindakan": "Pedodontics",
+      "dokter": "drg. Mustika Pramidi, Sp. KGA",
+      "ruangan": "Studio Pedo",
+      "keterangan": "check-up",
+      "jam_mulai": "15:30",
+      "jam_selesai": "16:00",
+      "status": "Sedang berlangsung"
+    },
+    {
+      "id": 9,
+      "no_rm": "J-22110009",
+      "nama": "Jhonathan Swift",
+      "jenis_tindakan": "Pedodontics",
+      "dokter": "drg. Mustika Pramidi, Sp. KGA",
+      "ruangan": "Studio Pedo",
+      "keterangan": "filling+exo",
+      "jam_mulai": "16:00",
+      "jam_selesai": "16:30",
+      "status": "Belum datang"
+    },
+    {
+      "id": 10,
+      "no_rm": "T-221100010",
+      "nama": "Taylor Swift",
+      "jenis_tindakan": "Pedodontics",
+      "dokter": "drg. Mustika Pramidi, Sp. KGA",
+      "ruangan": "Studio Pedo",
+      "keterangan": "filling+exo",
+      "jam_mulai": "16:30",
+      "jam_selesai": "17:00",
+      "status": "Belum datang"
+    },
+    {
+      "id": 11,
+      "no_rm": "Y-22120111",
+      "nama": "Yaroslav",
+      "jenis_tindakan": "Conservative Treatment",
+      "dokter": "drg. Intan Pramisati, SKG",
+      "ruangan": "Studio 1",
+      "keterangan": "bleaching",
+      "jam_mulai": "10:00",
+      "jam_selesai": "12:00",
+      "status": "Selesai"
+    },
+    {
+      "id": 12,
+      "no_rm": "A-22080188",
+      "nama": "Anais Mason",
+      "jenis_tindakan": "Conservative Treatment",
+      "dokter": "drg. Intan Pramisati, SKG",
+      "ruangan": "Studio 1",
+      "keterangan": "scalling",
+      "jam_mulai": "13.00",
+      "jam_selesai": "14:00",
+      "status": "Selesai"
+    },
+    {
+      "nama": "Anais Mason",
+      "jenis_tindakan": "Conservative Treatment",
+      "dokter": "drg. Intan Pramisati, SKG",
+      "ruangan": "Studio 1",
+      "keterangan": "scalling",
+      "jam_mulai": "13.00",
+      "jam_selesai": "14:00",
+      "status": "Selesai"
+    },
+    {
+      "nama": "Clare Resimont",
+      "jenis_tindakan": "Orthodontics",
+      "dokter": "drg. Putu Andy Herawan, Sp. Ort",
+      "ruangan": "Studio 2",
+      "keterangan": "kontrol",
+      "jam_mulai": "16:00",
+      "jam_selesai": "16:30",
+      "status": "Selesai"
+    },
+    {
+      "nama": "Molard Candice",
+      "jenis_tindakan": "Orthodontics",
+      "dokter": "drg. Putu Andy Herawan, Sp. Ort",
+      "ruangan": "Studio 2",
+      "keterangan": "kontrol",
+      "jam_mulai": "17:00",
+      "jam_selesai": "17:30",
+      "status": "Cancelled"
+    },
+    {
+      "nama": "Gede Agastya",
+      "jenis_tindakan": "Orthodontics",
+      "dokter": "drg. Putu Andy Herawan, Sp. Ort",
+      "ruangan": "Studio 2",
+      "keterangan": "pasang behel Damon Clear",
+      "jam_mulai": "17:30",
+      "jam_selesai": "20:00",
+      "status": "Selesai"
+    },
+    {
+      "nama": "Jessica",
+      "jenis_tindakan": "Pedodontics",
+      "dokter": "drg. Mustika Pramidi, Sp. KGA",
+      "ruangan": "Studio Pedo",
+      "keterangan": "filling+exo",
+      "jam_mulai": "15:00",
+      "jam_selesai": "16:30",
+      "status": "Selesai"
     }
   ],
   "kasir": [

@@ -14,7 +14,7 @@ export default function BaseModal(props) {
         </div>
         <div className="flex flex-row float-right">
           <ButtonOutline
-            text="Cancel"
+            text="Close"
             hoverColor="hover:bg-slate-50"
             textColor="text-blue-400"
             borderColor="border-blue-400"

@@ -21,12 +21,6 @@ export default function History() {
 
   const cols = [
     {
-      Header: "No.",
-      Cell: (row) => {
-        return <div>{Number(row.row.index + 1)}</div>;
-      },
-    },
-    {
       Header: "Nama Pasien",
       accessor: "nama",
     },

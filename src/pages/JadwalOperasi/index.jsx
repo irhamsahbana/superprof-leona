@@ -26,6 +26,8 @@ import SalinJadwalModal from "./SalinJadwalModal";
 
 export default function JadwalOperasi() {
   const { dokter } = useSelector((state) => state.dokter);
+  const { statusJadwal } = useSelector((state) => state.utils);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showUpdateModal, setShowUpdateModal] = useState(false);
@@ -35,6 +37,9 @@ export default function JadwalOperasi() {
   const [loading, setLoading] = useState(false);
   const [jadwal, setJadwal] = useState([]);
 
+  const [rowIndex, setRowIndex] = useState();
+  const [selectedData, setSelectedData] = useState();
+  const [tempData, setTempData] = useState([]);
   // -- salin states
   const [showSalin, setShowSalin] = useState(false);
   const [salin, setSalin] = useState({ jadwal: false, noRm: false });
@@ -73,14 +78,31 @@ export default function JadwalOperasi() {
   const getAllJadwal = () => {
     JadwalService.getAll()
       .then((res) => {
-        setJadwal(res.data[0].now);
-        console.log(res.data[0].now);
+        setJadwal(res);
+        console.log(res);
       })
       .catch((e) => console.log(`Error: ${e}`));
   };
 
   const handleCloseDelete = () => {
     setShowDeleteModal(!showDeleteModal);
+  };
+
+  const handleUbahStatus = (i) => {
+    JadwalService.get(i)
+      .then((res) => {
+        console.log(res.data.status);
+        setSelectedData(res.data.status);
+      })
+      .catch((e) => console.log(`Error: ${e}`));
+
+    console.log(statusJadwal);
+
+    // TODO: this
+    // console.log(tempData)
+    // JadwalService.updateData(i, selectedData).then((res) => {
+    //   console.log(res.data);
+    // });
   };
 
   // dummy remove
@@ -183,6 +205,8 @@ export default function JadwalOperasi() {
                 onClick={() => {
                   console.log("Ubah Status !!!");
                   setShowChangeStatus(true);
+                  console.log(i);
+                  setRowIndex(i + 1);
                 }}
                 icon={<FiRefreshCcw />}
               />
@@ -269,7 +293,12 @@ export default function JadwalOperasi() {
           handleDelete={handleDelete}
         />
       )}
-      {showChangeStatus && <UbahStatus handleClose={handleCloseChangeStatus} />}
+      {showChangeStatus && (
+        <UbahStatus
+          handleClose={handleCloseChangeStatus}
+          handleClick={handleUbahStatus(rowIndex)}
+        />
+      )}
       <Toaster />
     </>
   );

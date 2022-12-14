@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   showSidebar: true,
-  showProfileDropdown: false
+  showProfileDropdown: false,
+  statusJadwal : ""
 };
 
 const utilSlice = createSlice({
@@ -14,11 +15,12 @@ const utilSlice = createSlice({
     },
     setShowProfileDropdown: (state, action) => {
       state.showProfileDropdown = action.payload;
+    },
+    setStatusJadwal: (state, action) => {
+    state.statusJadwal = action.payload;
     }
   },
 });
 
-export const { setShowSidebar, setShowProfileDropdown } = utilSlice.actions;
+export const { setShowSidebar, setShowProfileDropdown, setStatusJadwal } = utilSlice.actions;
 export default utilSlice.reducer;
-
-//TOOD: set timeout for logout button, if ga lama di klik, unshow it

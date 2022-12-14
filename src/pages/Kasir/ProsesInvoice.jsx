@@ -112,9 +112,9 @@ export default function ProsesInvoice() {
               <div className="flex flex-row justify-between">
                 Grand Total <span className="font-bold">Rp.2.000.000</span>
               </div>
-              <div className="flex flex-row justify-between">
+              {/* <div className="flex flex-row justify-between">
                 Bayar <span className="font-bold">Rp.2.000.000</span>
-              </div>
+              </div> */}
               <div className="flex flex-row justify-between">
                 Kembali <span className="font-bold">Rp.0</span>
               </div>

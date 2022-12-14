@@ -14,7 +14,7 @@
       },
       {
         "id_transaksi": "INV-2209-0099",
-        "nama": "Mona Lisa",
+        "nama": "Jessi Julius",
         "tanggal": "21 September 2022",
         "tindakan": "RCT",
         "dokter": "drg. Made Talitha S Pinatih, Sp. Perio",
@@ -31,6 +31,61 @@
         "dokter": "drg. I Nyoman Putra Mahendra Suyoga",
         "status": "Lunas",
         "total": "Rp. 700.000",
+        "diskon": "Rp. 0",
+        "keterangan": "-"
+      },
+      {
+        "id_transaksi": "INV-2209-0100",
+        "nama": "Jessica Ridyananti",
+        "tanggal": "5 Agustus 2022",
+        "tindakan": "Composite Filling (1 Surface)",
+        "dokter": "drg. I Nyoman Putra Mahendra Suyoga",
+        "status": "Lunas",
+        "total": "Rp. 500.000",
+        "diskon": "Rp. 0",
+        "keterangan": "-"
+      },
+      {
+        "id_transaksi": "INV-2209-0100",
+        "nama": "Jili Jess",
+        "tanggal": "19 Agustus 2022",
+        "tindakan": "Scalling + Air Flow",
+        "dokter": "drg. I Nyoman Putra Mahendra Suyoga",
+        "status": "Lunas",
+        "total": "Rp. 700.000",
+        "diskon": "Rp. 0",
+        "keterangan": "-"
+      },
+      {
+        "id_transaksi": "INV-2209-0100",
+        "nama": "Jesinna Nadiya",
+        "tanggal": "19 Agustus 2022",
+        "tindakan": "Scalling + Air Flow",
+        "dokter": "drg. I Nyoman Putra Mahendra Suyoga",
+        "status": "Lunas",
+        "total": "Rp. 700.000",
+        "diskon": "Rp. 0",
+        "keterangan": "-"
+      },
+      {
+        "id_transaksi": "INV-2209-0100",
+        "nama": "Jessica Josephine",
+        "tanggal": "19 Agustus 2022",
+        "tindakan": "Scalling + Air Flow",
+        "dokter": "drg. I Nyoman Putra Mahendra Suyoga",
+        "status": "Lunas",
+        "total": "Rp. 700.000",
+        "diskon": "Rp. 0",
+        "keterangan": "-"
+      },
+      {
+        "id_transaksi": "INV-2209-0100",
+        "nama": "Jessica",
+        "tanggal": "19 Agustus 2022",
+        "tindakan": "Composite Filling (1 Surface)",
+        "dokter": "drg. I Nyoman Putra Mahendra Suyoga",
+        "status": "Lunas",
+        "total": "Rp. 800.000",
         "diskon": "Rp. 0",
         "keterangan": "-"
       }

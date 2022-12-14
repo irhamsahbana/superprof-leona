@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import Container from "../../layouts/Container";
-import { ButtonIcon, ButtonMain } from "../../components/Button";
+import { ButtonIcon, ButtonMain, ButtonBack } from "../../components/Button";
 import Table from "../../components/Table";
 import { AiFillEye, AiOutlineRight } from "react-icons/ai";
 import DummySelectedHistory from "../History/DummySelectedHistory.json";
@@ -71,6 +71,8 @@ export default function CurrentRekamMedis() {
   return (
     <div>
       <div className="mb-5">
+        <ButtonBack />
+
         <div className="flex flex-row justify-between">
           <div className="flex flex-row">
             <h1>Rekam Medis:</h1>
@@ -93,6 +95,7 @@ export default function CurrentRekamMedis() {
           <Container text="Biodata">
             <div className="flex flex-row">
               <div className="flex flex-col font-bold">
+                <p>No. Rekam Medis</p>
                 <p>Nama</p>
                 <p>Tempat, Tanggal Lahir</p>
                 <p>Alamat</p>
@@ -103,8 +106,10 @@ export default function CurrentRekamMedis() {
                 <p>:</p>
                 <p>:</p>
                 <p>:</p>
+                <p>:</p>
               </div>
               <div className="flex flex-col ml-3">
+                <p>J-21090011</p>
                 <p>Jessica Josephine</p>
                 <p>Jakarta, 16 September 2000</p>
                 <p>Jl. Bayu II, Mengwi</p>

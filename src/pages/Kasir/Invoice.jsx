@@ -90,7 +90,7 @@ export default function Invoice() {
           <div className="col-span-2 float-right">
             <ReactToPrint
               trigger={() => (
-                <button className="bg-red-400 hover:bg-red-500 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300">
+                <button className="bg-blue-400 hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300">
                   Cetak Nota
                 </button>
               )}
@@ -119,6 +119,9 @@ export default function Invoice() {
             <div className="flex flex-col">
               <p>
                 Nama: <span className="font-bold">Jessica Josephine</span>
+              </p>
+              <p>
+                Diagnosa: <span className="font-bold italic">Gingivitis</span>
               </p>
             </div>
           </div>

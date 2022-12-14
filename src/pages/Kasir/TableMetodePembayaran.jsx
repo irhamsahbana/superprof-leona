@@ -15,7 +15,7 @@ export default function TableMetodePembayaran() {
               <tbody >
                 <tr>
                   <td className="w-44 pr-8 p-3">Cash</td>
-                  <td className="w-32 pr-8 p-3">Rp.100.000</td>
+                  <td className="w-32 pr-8 p-3">Rp.2.000.000</td>
                   <td className="w-auto pr-8 p-3">-</td>
                 </tr>
               </tbody>
