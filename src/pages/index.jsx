@@ -7,6 +7,11 @@ export { default as ViewDokter } from "./Master/Dokter";
 export { default as EditDokter } from "./Master/Dokter/edit";
 export { default as AddDokter } from "./Master/Dokter/add";
 
+// master - studio
+export { default as ViewStudio } from "./Master/Studio";
+
+// master - tindakan
+export { default as ViewTindakan } from "./Master/Tindakan";
 
 // jadwal operasional
 export { default as JadwalOperasi } from "./JadwalOperasi";
@@ -30,3 +35,6 @@ export { default as Invoice } from "./Kasir/Invoice";
 export { default as ProsesInvoice } from "./Kasir/ProsesInvoice";
 export { default as EditInvoice } from "./Kasir/EditInvoice";
 export { default as Pembayaran } from "./Pembayaran";
+
+// pages for role = doctor
+export { default as DokDashboard } from "./DokDashboard";

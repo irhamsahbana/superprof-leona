@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Logo from "../../assets/logo-transparent.png";
 import SidebarItems from "../../data/SidebarItems";
+import DokSidebarItems from "../../data/DokSidebarItems";
 
 export default function Sidebar() {
   // TODO: dropdown area hover active class (on location), transition effect
+  const { role } = useSelector((state) => state.user);
+
   let location = useLocation();
   let [dropdown1, setDropdown1] = useState(false); // dropdown master data
   let [dropdown2, setDropdown2] = useState(false); // dropdown data transaksi
@@ -43,7 +47,7 @@ export default function Sidebar() {
         </div>
 
         <ul>
-          {SidebarItems.map((menuItem, i) => (
+          {(role.role === "admin" ? SidebarItems : DokSidebarItems).map((menuItem, i) => (
             <div key={i}>
               {menuItem.dropdown ? (
                 <>

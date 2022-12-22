@@ -4,11 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, Outlet, useNavigate } from "react-router-dom";
 import { BsFillTrashFill, BsPencilFill } from "react-icons/bs";
 // components, data, slices
-import Table from "../../../components/Table";
-
-// import { Box, Typography, useTheme } from "@mui/material";
-// import { DataGrid } from "@mui/x-data-grid";
-
 import MaterialReactTable from "material-react-table";
 import { Delete, Edit } from "@mui/icons-material";
 import {
@@ -134,7 +129,7 @@ export default function ViewDokter() {
           renderRowActions={({ row, table }) => (
             <Box sx={{ display: "flex", gap: "1rem" }}>
               <Tooltip arrow placement="left" title="Edit">
-                <IconButton onClick={() => table.setEditingRow(row)}>
+                <IconButton onClick={() => {table.setEditingRow(row); console.log(row)}}>
                   <Edit />
                 </IconButton>
               </Tooltip>

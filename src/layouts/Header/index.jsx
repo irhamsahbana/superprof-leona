@@ -8,6 +8,8 @@ import { logout } from "../../redux/userSlice";
 
 export default function Header() {
   const { showSidebar } = useSelector((state) => state.utils);
+  const { role } = useSelector((state) => state.user);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -19,7 +21,13 @@ export default function Header() {
   const items = [
     {
       key: "1",
-      label: <p className="text-sm font-bold">Admin</p>,
+      label: (
+        <p className="text-sm font-bold">
+          {JSON.parse(role.role === "admin")
+            ? "Admin"
+            : "Drg. Andy"}
+        </p>
+      ),
     },
     {
       key: "2",

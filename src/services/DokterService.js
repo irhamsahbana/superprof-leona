@@ -5,11 +5,7 @@ const baseUrl = "http://localhost:3001/doctors";
 const getAll = async () => {
     const response = await axios.get(baseUrl);
     return response.data;
-
 }
-const get = (id) => {
-    return axios.get(`${baseUrl}/${id}`);
-  };
 
 const addData = async (data) => {
     const response = await axios.post(baseUrl, data);
@@ -26,4 +22,4 @@ const removeData =  async (id) => {
     return response.data;
 }
 
-export default {getAll, get, addData, updateData, removeData};
+export default {getAll, addData, updateData, removeData};

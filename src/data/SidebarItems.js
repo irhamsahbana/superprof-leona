@@ -24,23 +24,23 @@ const SidebarItems = [
       },
       {
         name: "Pasien",
-        link: "/view-pasien",
+        link: "/pasien",
       },
       {
         name: "Studio",
-        link: "/view-studio",
+        link: "/studio",
       },
       {
         name: "User",
-        link: "/view-user",
+        link: "/user",
       },
       {
         name: "Tindakan",
-        link: "/view-tindakan",
+        link: "/tindakan",
       },
       {
         name: "Jenis Tindakan",
-        link: "/view-jenis-tindakan",
+        link: "/jenis-tindakan",
       },
     ],
   },

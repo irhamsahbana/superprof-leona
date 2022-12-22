@@ -15,11 +15,6 @@
   ],
   "doctors": [
     {
-      "id": 1,
-      "nama": "drg. Putu Andy Herawan, Sp. Ort",
-      "spesialis": "Orthodontist (Spesialis Kawat Gigi)"
-    },
-    {
       "id": 2,
       "nama": "drg. A.A Manik Swayoga, Sp. BM",
       "spesialis": "Oral and Maxillofacial Surgeon (Spesialis Bedah Mulut)"
@@ -50,14 +45,24 @@
       "spesialis": "General Practitioner (Dokter Gigi Umum)"
     },
     {
-      "id": 11,
-      "nama": "X-Rayd",
-      "spesialis": "Radiology"
+      "id": 8,
+      "nama": "drg. I Nyoman Putra Mahendra Suyoga, SKG",
+      "spesialis": "General Practitioner (Dokter Gigi Umum)"
     },
     {
-      "id": 12,
-      "nama": "drg. Halilintar",
-      "spesialis": "Radiologi"
+      "id": 9,
+      "nama": "drg. Maria Yosefha Kumalasari, SKG",
+      "spesialis": "General Practitioner (Dokter Gigi Umum)"
+    },
+    {
+      "id": 10,
+      "nama": "drg. Intan Pramiasti, SKG",
+      "spesialis": "General Practitioner (Dokter Gigi Umum)"
+    },
+    {
+      "id": 11,
+      "nama": "X-Ray",
+      "spesialis": "Radiology"
     }
   ],
   "studios": [

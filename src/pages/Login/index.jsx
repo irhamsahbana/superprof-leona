@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { login } from "../../redux/userSlice";
+import { login, setRole } from "../../redux/userSlice";
 import { useNavigate } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 // components
@@ -32,6 +32,12 @@ export default function Login() {
       setIsError({ general: false });
       setErrorMsg("");
     }
+
+    if (inputValues.username === "admin") {
+      dispatch(setRole({ role: "admin" }));
+    } else {
+      dispatch(setRole({ role: "dokter" }));
+    }
   };
 
   const handleSubmit = (e) => {
@@ -40,13 +46,19 @@ export default function Login() {
       setIsError({ ...isError, username: true, general: true });
       setErrorMsg("Harap isi field");
     } else if (
-      inputValues.username !== "admin" ||
-      inputValues.password !== "admin123"
+      //TODO: not complete with pwd validation
+      inputValues.username !== "admin" &&
+      inputValues.username !== "drgandy"
     ) {
       setIsError({ ...isError, authorized: true, general: true });
       setErrorMsg("Username/ password tidak terdaftar");
     } else {
-      dispatch(login());
+      if (inputValues.username === "admin") {
+        dispatch(setRole({ role: "admin" }));
+      } else {
+        dispatch(setRole({ role: "dokter" }));
+      }
+      dispatch(login(inputValues));
       setErrorMsg("");
       navigate("/home");
     }

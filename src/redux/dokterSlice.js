@@ -30,7 +30,7 @@ const dokterSlice = createSlice({
     setValidate: (state, action) => {
       state.validate.general = action.payload;
     },
-    // add, update, deletr
+    // add, update, deletw
     setAdded: (state, action) => {
       state.validate.specific.add = action.payload;
     },

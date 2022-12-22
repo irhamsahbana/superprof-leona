@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 // components
 import MainLayout from "../layouts/MainLayout";
 import PrivateRoute from "../components/PrivateRoute";
+import { useSelector } from "react-redux";
 import {
   Login,
   Dashboard,
@@ -9,6 +10,8 @@ import {
   ViewDokter,
   AddDokter,
   AddJadwal,
+  ViewStudio,
+  ViewTindakan,
   JadwalOperasi,
   History,
   HistorySelected,
@@ -21,9 +24,11 @@ import {
   ProsesInvoice,
   EditInvoice,
   Pembayaran,
+  DokDashboard
 } from "../pages";
 
 function Routing() {
+  const { role } = useSelector((state) => state.user);
   return (
     <MainLayout>
       <Routes>
@@ -32,7 +37,7 @@ function Routing() {
           path="/home"
           element={
             <PrivateRoute>
-              <Dashboard />
+              {role.role === "admin" ? <Dashboard /> : <DokDashboard/>}
             </PrivateRoute>
           }
         />
@@ -49,6 +54,23 @@ function Routing() {
           element={
             <PrivateRoute>
               <AddDokter />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/studio"
+          element={
+            <PrivateRoute>
+              <ViewStudio />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/tindakan"
+          element={
+            <PrivateRoute>
+              <ViewTindakan />
             </PrivateRoute>
           }
         />
