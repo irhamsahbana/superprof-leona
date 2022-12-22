@@ -96,7 +96,6 @@ export default function JadwalOperasi() {
       })
       .catch((e) => console.log(`Error: ${e}`));
 
-    console.log(statusJadwal);
 
     // TODO: this
     // console.log(tempData)

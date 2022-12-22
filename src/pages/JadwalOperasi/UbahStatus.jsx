@@ -10,6 +10,7 @@ export default function UbahStatus({ value, handleClose, handleClick }) {
     { id: 2, name: "Menunggu" },
     { id: 3, name: "Sedang berlangsung" },
     { id: 4, name: "Cancelled" },
+    { id: 5, name: "Selesai" },
   ];
 
   return (

@@ -106,7 +106,7 @@ export default function AddDokter() {
                   </td>
                   <td className="w-3/12">
                     <FormInput
-                      placeholder="Name Lengkap"
+                      placeholder="Nama Lengkap Dokter"
                       name="nama"
                       onChange={(e) => handleChange(i, e)}
                     />
