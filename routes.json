@@ -1,0 +1,3 @@
+{
+    "/patients/:patientId": "/transactions/:transactionId"
+}

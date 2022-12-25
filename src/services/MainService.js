@@ -7,6 +7,7 @@ const getAll = async (endpoint) => {
     return response.data;
 }
 
+
 const addData = async (endpoint, data) => {
     const response = await axios.post(`http://localhost:3001/${endpoint}`, data);
     return response.data;

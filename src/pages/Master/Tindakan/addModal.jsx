@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import MainService from "../../../services/MainService";
 import {
   Box,
   Button,
@@ -13,22 +14,40 @@ import {
   InputLabel,
   OutlinedInput,
 } from "@mui/material";
+import { setSelectedData } from "../../../redux/dokterSlice";
 
 export const TambahDataModal = ({ open, columns, onClose, onSubmit }) => {
-  const [values, setValues] = useState(() =>
-    columns.reduce((acc, column) => {
-      acc[column.accessorKey ?? ""] = "";
-      return acc;
-    }, {})
-  );
+  // const [values, setValues] = useState(() =>
+  //   columns.reduce((acc, column) => {
+  //     acc[column.accessorKey ?? ""] = "";
+  //     return acc;
+  //   }, {})
+  // );
+
+  const initialForm = {
+    tindakan: "",
+    biaya: 0,
+    categoryId: 0,
+  };
+  const [inputData, setInputData] = useState(initialForm);
+  const [relationData, setRelationData] = useState([]);
+
+  const [selected, setSelected] = useState(1);
+
+  useEffect(() => {
+    MainService.getAll("categories").then((res) => {
+      console.log(res);
+      setRelationData(res);
+    });
+  }, []);
 
   const handleSubmit = () => {
     //put your validation logic here
-    onSubmit(values);
+    onSubmit(inputData);
     onClose();
   };
 
-  const keys = ["tindakan", "biaya", "categoryId"]
+  const keys = ["tindakan", "biaya", "categoryId"];
 
   return (
     <Dialog open={open}>
@@ -42,16 +61,41 @@ export const TambahDataModal = ({ open, columns, onClose, onSubmit }) => {
               gap: "1.5rem",
             }}
           >
-            {columns.map((column, index) => (
-              <TextField
-                key={column.accessorKey}
-                label={column.header}
-                name={keys[index]}
-                onChange={(e) =>
-                  setValues({ ...values, [e.target.name]: e.target.value })
-                }
-              />
-            ))}
+            {keys.map((k, index) =>
+              index < 2 ? (
+                <TextField
+                  key={index}
+                  label={k}
+                  name={k}
+                  onChange={(e) =>
+                    setInputData({
+                      ...inputData,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                />
+              ) : (
+                // <select>
+                //   {relationData.map((data) => (
+                //     <option value={data.id}>{data.nama}</option>
+                //   ))}
+                // </select>
+                <Select
+                  name="categoryId"
+                  key={index}
+                  value={selected}
+                  label="Menu"
+                  onChange={(e) => {
+                    setInputData({ ...inputData, categoryId: e.target.value });
+                    setSelected(e.target.value);
+                  }}
+                >
+                  {relationData.map((data) => (
+                    <MenuItem value={data.id}>{data.nama}</MenuItem>
+                  ))}
+                </Select>
+              )
+            )}
             {/* <Box sx={{ minWidth: 120 }}>
               <InputLabel id="demo-simple-select-standard-label">
                 Age

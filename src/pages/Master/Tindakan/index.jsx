@@ -44,12 +44,20 @@ export default function ViewTindakan() {
         return;
       }
       console.log(row);
-      MainService.removeData(ENDPOINT, row.original.id);
-      setTindakanList([...tindakanList]);
-      toast.success("Jadwal berhasil dihapus!", {
-        duration: 4000,
-        position: "top-right",
-      });
+      try {
+        MainService.removeData("treatments", row.original.id).then((res) => {
+          toast.success("Jadwal berhasil dihapus!", {
+            duration: 4000,
+            position: "top-right",
+          });
+          setTindakanList([...tindakanList]);
+        });
+      } catch {
+        toast.error("Jadwal tidak dapat dihapus!", {
+          duration: 4000,
+          position: "top-right",
+        });
+      }
     },
     [tindakanList]
   );
@@ -57,14 +65,27 @@ export default function ViewTindakan() {
   const handleCreateData = (values) => {
     // tindakanList.push(values);
     // setTableData([...tableData]);
-    console.log(values)
+    try {
+      MainService.addData("treatments", values).then((res) => {
+        console.log(res);
+        toast.success("Data telah berhasil ditambah!", {
+          duration: 2000,
+          position: "top-right",
+        });
+      });
+    } catch {
+      console.log("error");
+    }
+    setTindakanList([...tindakanList]);
+
+    console.log(values);
   };
 
   const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
     console.log(row.index);
     console.log(values);
     //send/receive api updates here, then refetch or update local table data for re-render
-    MainService.updateData(ENDPOINT, row.original.id, values);
+    MainService.updateData("treatments", row.original.id, values);
     setTindakanList([...tindakanList, values]);
     toast.success("Data telah berhasil diubah!", {
       duration: 2000,
@@ -145,8 +166,7 @@ export default function ViewTindakan() {
         columns={cols}
         open={createModalOpen}
         onClose={() => setCreateModalOpen(false)}
-        onSubmit={handleCreateData}
-      />
+       />
     </>
   );
 }

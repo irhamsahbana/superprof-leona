@@ -197,6 +197,18 @@
       "tindakan": "Teeth Whitening",
       "biaya": 3500000,
       "categoryId": 4
+    },
+    {
+      "tindakan": "CEPHALO",
+      "biaya": "2000000",
+      "categoryId": 7,
+      "id": 16
+    },
+    {
+      "tindakan": "Allignat",
+      "biaya": "320",
+      "category.nama": "Orthodontics",
+      "id": 17
     }
   ],
   "patients": [

@@ -1,0 +1,284 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "username": "drgandy",
+      "password": "andy123",
+      "role": "dokter"
+    }
+  ],
+  "doctors": [
+    {
+      "id": 2,
+      "nama": "drg. A.A Manik Swayoga, Sp. BM",
+      "spesialis": "Oral and Maxillofacial Surgeon (Spesialis Bedah Mulut)"
+    },
+    {
+      "id": 3,
+      "nama": "drg. Mustika Pramidi, Sp. KGA",
+      "spesialis": "Pedodontist (Spesialis Gigi Anak)"
+    },
+    {
+      "id": 4,
+      "nama": "drg. Made Talitha S Pinatih, Sp. Perio",
+      "spesialis": "Periodontist (Spesialis Gusi dan Jaringan Penyangga Gigi)"
+    },
+    {
+      "id": 5,
+      "nama": "drg. Anak Agung Gde Dananjaya Agung, Sp. R.K.G.",
+      "spesialis": "Radiologist (Spesialis Radiologi)"
+    },
+    {
+      "id": 6,
+      "nama": "drg. I Made Agus Astika, Sp. Rad. O. M.",
+      "spesialis": "Radiologist (Spesialis Radiologi)"
+    },
+    {
+      "id": 7,
+      "nama": "drg. I Gusti Ngurah Agung Hostiadhi S, SKG",
+      "spesialis": "General Practitioner (Dokter Gigi Umum)"
+    },
+    {
+      "id": 8,
+      "nama": "drg. I Nyoman Putra Mahendra Suyoga, SKG",
+      "spesialis": "General Practitioner (Dokter Gigi Umum)"
+    },
+    {
+      "id": 9,
+      "nama": "drg. Maria Yosefha Kumalasari, SKG",
+      "spesialis": "General Practitioner (Dokter Gigi Umum)"
+    },
+    {
+      "id": 10,
+      "nama": "drg. Intan Pramiasti, SKG",
+      "spesialis": "General Practitioner (Dokter Gigi Umum)"
+    },
+    {
+      "id": 11,
+      "nama": "X-Ray",
+      "spesialis": "Radiology"
+    }
+  ],
+  "studios": [
+    {
+      "id": 1,
+      "studio": "Studio 1"
+    },
+    {
+      "id": 2,
+      "studio": "Studio 2"
+    },
+    {
+      "id": 3,
+      "studio": "Studio Pedo"
+    },
+    {
+      "studio": "Ruangan X-Ray",
+      "id": 4
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "nama": "Oral & Maxilofacial Surgeon"
+    },
+    {
+      "id": 2,
+      "nama": "Orthodontics"
+    },
+    {
+      "id": 3,
+      "nama": "Periodontics"
+    },
+    {
+      "id": 4,
+      "nama": "Conservative Treatments"
+    },
+    {
+      "id": 5,
+      "nama": "Endodontics"
+    },
+    {
+      "id": 6,
+      "nama": "Prosthodontics"
+    },
+    {
+      "id": 7,
+      "nama": "Dental X-Ray"
+    }
+  ],
+  "treatments": [
+    {
+      "id": 1,
+      "tindakan": "Scalling",
+      "biaya": 500000,
+      "jenis_tindakan": "Conservative Treatment"
+    },
+    {
+      "id": 2,
+      "tindakan": "Dental Filling",
+      "biaya": 700000,
+      "jenis_tindakan": "Conservative Treatment"
+    },
+    {
+      "id": 3,
+      "tindakan": "Control Metal Braces Standard",
+      "biaya": 200000,
+      "jenis_tindakan": "Orthodontics"
+    },
+    {
+      "id": 4,
+      "tindakan": "Damon Clear Braces Insertion",
+      "biaya": 20000000,
+      "jenis_tindakan": "Orthodontics"
+    },
+    {
+      "id": 5,
+      "tindakan": "Mini Screw",
+      "biaya": 3000000,
+      "jenis_tindakan": "Orthodontics"
+    },
+    {
+      "id": 6,
+      "tindakan": "Root Canal Treatment",
+      "biaya": 2500000,
+      "jenis_tindakan": "Endodontics"
+    },
+    {
+      "id": 7,
+      "tindakan": "Deep Cleaning",
+      "biaya": 2000000,
+      "jenis_tindakan": "Periodontics"
+    },
+    {
+      "id": 8,
+      "tindakan": "Crown Zirconia",
+      "biaya": 14000000,
+      "jenis_tindakan": "Oral & Maxilofacial Treatment"
+    },
+    {
+      "tindakan": "All on 4 Implants",
+      "biaya": "175000000",
+      "jenis_tindakan": "Oral & Maxilofacial Treatment",
+      "id": 9
+    },
+    {
+      "id": 10,
+      "tindakan": "Odontectomy (Ringan)",
+      "biaya": 2500000,
+      "jenis_tindakan": "Oral & Maxilofacial Treatment"
+    },
+    {
+      "id": 11,
+      "tindakan": "Odontectomy (Reguler)",
+      "biaya": 3500000,
+      "jenis_tindakan": "Oral & Maxilofacial Treatment"
+    },
+    {
+      "id": 12,
+      "tindakan": "Odontectomy (Berat)",
+      "biaya": 4500000,
+      "jenis_tindakan": "Oral & Maxilofacial Treatment"
+    },
+    {
+      "id": 13,
+      "tindakan": "Extraction (Ringan)",
+      "biaya": 7000000,
+      "jenis_tindakan": "Conservative Treatment"
+    },
+    {
+      "id": 14,
+      "tindakan": "Extraction (Reguler)",
+      "biaya": 800000,
+      "jenis_tindakan": "Conservative Treatment"
+    },
+    {
+      "tindakan": "Teeth Whitening",
+      "biaya": "3500000",
+      "jenis_tindakan": "Conservative Treatment",
+      "id": 15
+    }
+  ],
+  "patients": [
+    {
+      "id": 1,
+      "full_name": "Anders Couves",
+      "address": "59 Farmco Parkway",
+      "email": "acouves0@xinhuanet.com",
+      "dob": "08/02/2004",
+      "phone": "611-974-2004",
+      "transactions": [
+        {
+          "id": 1,
+          "tanggal": "03/02/2022",
+          "details": [
+            {
+              "id": 1,
+              "tindakan": "All on 4 Implants",
+              "qty": 2,
+              "diskon": 0,
+              "biaya": "200"
+            }
+          ],
+          "total_bayar": 20000000,
+          "jadwal_details": {
+            "dokter": "drg. Andy",
+            "diagnosa": "Pulpivitis"
+          },
+          "status": "Belum Lunas"
+        },
+        {
+          "id": 1,
+          "tanggal": "03/10/2022",
+          "details": [
+            {
+              "id": 1,
+              "tindakan": "Gingivectomy",
+              "qty": 1,
+              "diskon": 0,
+              "biaya": "200"
+            }
+          ],
+          "total_bayar": 1200000,
+          "jadwal_details": {
+            "dokter": "drg. Talitha",
+            "diagnosa": "Pulpivitis"
+          },
+          "status": "Belum Lunas"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "full_name": "Elinore Pitkethly",
+      "address": "9337 Fisk Plaza",
+      "email": "epitkethly1@t-online.de",
+      "dob": "12/04/2008",
+      "phone": "349-384-1555"
+    },
+    {
+      "id": 3,
+      "full_name": "Lynnell Tointon",
+      "address": "8 Fairfield Place",
+      "email": "ltointon2@fotki.com",
+      "dob": "12/02/2008",
+      "phone": "493-835-4615"
+    },
+    {
+      "id": 4,
+      "full_name": "Magdalena Powys",
+      "address": "77898 Barby Way",
+      "email": "mpowys3@devhub.com",
+      "dob": "07/11/2018",
+      "phone": "317-700-0136"
+    }
+  ],
+  "schedules": [],
+  "transactions": []
+}
