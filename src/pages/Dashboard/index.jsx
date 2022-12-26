@@ -3,7 +3,6 @@ import ToDoCard from "./ToDoCard";
 import MainCalendar from "../../components/MainCalendar";
 import OverviewArea from "./OverviewArea";
 import { useSelector } from "react-redux";
-import RowSelectionTable from "../../components/RowSelectionTable";
 
 export default function Dashboard() {
   const { isLoggedIn } = useSelector((state) => state.user);

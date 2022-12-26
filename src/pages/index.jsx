@@ -10,8 +10,14 @@ export { default as AddDokter } from "./Master/Dokter/add";
 // master - studio
 export { default as ViewStudio } from "./Master/Studio";
 
+// master - patients
+export { default as ViewPasien } from "./Master/Pasien";
+
 // master - tindakan
 export { default as ViewTindakan } from "./Master/Tindakan";
+
+// master - jenis tindakan
+export { default as ViewJenisTindakan } from "./Master/JenisTindakan";
 
 // jadwal operasional
 export { default as JadwalOperasi } from "./JadwalOperasi";

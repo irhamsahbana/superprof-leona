@@ -78,10 +78,9 @@ export default function ViewDokter() {
     async ({ exitEditingMode, row, values }) => {
       console.log(row.index);
       console.log(values);
-      //send/receive api updates here, then refetch or update local table data for re-render
       DokterService.updateData(row.original.id, values);
       dispatch(setDokter([...dokter, values]));
-      exitEditingMode(); //required t o exit editing mode and close modal
+      exitEditingMode();
     };
 
 
@@ -140,15 +139,15 @@ export default function ViewDokter() {
               </Tooltip>
             </Box>
           )}
-          // renderTopToolbarCustomActions={() => (
-          //   <Button
-          //     color="primary"
-          //     onClick={() => console.log("he")}
-          //     variant="contained"
-          //   >
-          //     Create New Account
-          //   </Button>
-          // )}
+          renderTopToolbarCustomActions={() => (
+            <Button
+              color="primary"
+              onClick={() => console.log("he")}
+              variant="contained"
+            >
+              Tambah Data
+            </Button>
+          )}
         />
       )}
 

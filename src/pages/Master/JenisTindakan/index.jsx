@@ -1,6 +1,4 @@
 import React, { useState, useMemo, useEffect, useCallback } from "react";
-// third-party
-import { useNavigate } from "react-router-dom";
 // components, data, slices
 import MaterialReactTable from "material-react-table";
 import { Delete, Edit } from "@mui/icons-material";
@@ -10,48 +8,44 @@ import TableContentLoader from "../../../components/TableContentLoader";
 import toast, { Toaster } from "react-hot-toast";
 import { TambahDataModal } from "./addModal";
 
-
-export default function ViewStudio() {
-  const [studioList, setStudioList] = useState([]);
+export default function ViewJenisTindakan() {
+  const [jenisTindakanList, setJenisTindakanList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [createModalOpen, setCreateModalOpen] = useState(false);
 
+  const [createModalOpen, setCreateModalOpen] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const ENDPOINT = "studios";
 
   useEffect(() => {
-    MainService.getAll(ENDPOINT).then((res) => {
-      setStudioList(res);
-      console.log(studioList.length);
+    MainService.getAll("categories").then((res) => {
+      setJenisTindakanList(res);
+      console.log(jenisTindakanList.length);
     });
     setIsLoading(false);
-  }, [studioList.length]);
-
-  const handleCloseDelete = () => {
-    setShowDeleteModal(!showDeleteModal);
-  };
+  }, [jenisTindakanList.length]);
 
   const handleDeleteRow = useCallback(
     (row) => {
-      if (alert(`Are you sure you want to delete ${row.getValue("studio")}`)) {
+      if (
+        alert(`Are you sure you want to delete ${row.getValue("nama")}`)
+      ) {
         return;
       }
       console.log(row);
-      MainService.removeData(ENDPOINT, row.original.id);
-      setStudioList([...studioList]);
-      toast.success("Jadwal berhasil dihapus!", {
+      MainService.removeData("categories", row.original.id);
+      setJenisTindakanList([...jenisTindakanList]);
+      toast.success("Data berhasil dihapus!", {
         duration: 4000,
         position: "top-right",
       });
     },
-    [studioList]
+    [jenisTindakanList]
   );
 
   const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
     console.log(row.index);
     console.log(values);
-    MainService.updateData(ENDPOINT, row.original.id, values);
-    setStudioList([...studioList, values]);
+    MainService.updateData("categories", row.original.id, values);
+    setJenisTindakanList([...jenisTindakanList, values]);
     toast.success("Data telah berhasil diubah!", {
       duration: 2000,
       position: "top-right",
@@ -61,7 +55,7 @@ export default function ViewStudio() {
 
   const handleCreateData = (values) => {
     try {
-      MainService.addData("studios", values).then((res) => {
+      MainService.addData("categories", values).then((res) => {
         console.log(res);
         toast.success("Data telah berhasil ditambah!", {
           duration: 2000,
@@ -71,17 +65,16 @@ export default function ViewStudio() {
     } catch {
       console.log("error");
     }
-    setStudioList([...studioList, values]);
+    setJenisTindakanList([...jenisTindakanList, values]);
 
     console.log(values);
   };
 
-
   const cols = useMemo(
     () => [
       {
-        header: "Studio",
-        accessorKey: "studio",
+        header: "Jenis Tindakan",
+        accessorKey: "nama",
       },
     ],
     []
@@ -91,7 +84,8 @@ export default function ViewStudio() {
     <>
       <div className="mb-5">
         <h1>
-          Master Data: <span className="text-blue-500 text-2xl">Studio</span>
+          Master Data:{" "}
+          <span className="text-blue-500 text-2xl">Jenis Tindakan</span>
         </h1>
       </div>
       {isLoading ? (
@@ -99,7 +93,7 @@ export default function ViewStudio() {
       ) : (
         <MaterialReactTable
           columns={cols}
-          data={studioList}
+          data={jenisTindakanList}
           enableEditing
           onEditingRowSave={handleSaveRowEdits}
           renderRowActions={({ row, table }) => (
@@ -132,6 +126,7 @@ export default function ViewStudio() {
           )}
         />
       )}
+
       <TambahDataModal
         columns={cols}
         open={createModalOpen}

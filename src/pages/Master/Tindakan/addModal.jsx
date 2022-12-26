@@ -31,7 +31,6 @@ export const TambahDataModal = ({ open, columns, onClose, onSubmit }) => {
   };
   const [inputData, setInputData] = useState(initialForm);
   const [relationData, setRelationData] = useState([]);
-
   const [selected, setSelected] = useState(1);
 
   useEffect(() => {
@@ -41,8 +40,9 @@ export const TambahDataModal = ({ open, columns, onClose, onSubmit }) => {
     });
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     //put your validation logic here
+    e.preventDefault();
     onSubmit(inputData);
     onClose();
   };
@@ -53,7 +53,7 @@ export const TambahDataModal = ({ open, columns, onClose, onSubmit }) => {
     <Dialog open={open}>
       <DialogTitle textAlign="center">Tambah Data</DialogTitle>
       <DialogContent>
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form>
           <Stack
             sx={{
               width: "100%",
@@ -75,11 +75,6 @@ export const TambahDataModal = ({ open, columns, onClose, onSubmit }) => {
                   }
                 />
               ) : (
-                // <select>
-                //   {relationData.map((data) => (
-                //     <option value={data.id}>{data.nama}</option>
-                //   ))}
-                // </select>
                 <Select
                   name="categoryId"
                   key={index}
@@ -96,22 +91,6 @@ export const TambahDataModal = ({ open, columns, onClose, onSubmit }) => {
                 </Select>
               )
             )}
-            {/* <Box sx={{ minWidth: 120 }}>
-              <InputLabel id="demo-simple-select-standard-label">
-                Age
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-standard-label"
-                id="demo-simple-select-standard"
-                value={10}
-                label="Age"
-                // onChange={handleChange}
-              >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
-            </Box> */}
           </Stack>
         </form>
       </DialogContent>

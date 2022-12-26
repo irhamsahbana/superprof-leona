@@ -48,19 +48,7 @@ const SidebarItems = [
     id: 3,
     name: "Data Transaksi",
     icon: <BiData />,
-    link: "",
-    dropdown: true,
-    dropdownItems: [
-
-        {
-          name: "History",
-          link: "/history-transaksi"
-        },
-        {
-          name: "Deposit",
-          link: "/deposit"
-        },
-    ]
+    link: "/history-transaksi",
   },
   {
     id: 4,

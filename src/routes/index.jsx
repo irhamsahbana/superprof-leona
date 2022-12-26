@@ -12,6 +12,8 @@ import {
   AddJadwal,
   ViewStudio,
   ViewTindakan,
+  ViewJenisTindakan,
+  ViewPasien,
   JadwalOperasi,
   History,
   HistorySelected,
@@ -24,7 +26,7 @@ import {
   ProsesInvoice,
   EditInvoice,
   Pembayaran,
-  DokDashboard
+  DokDashboard,
 } from "../pages";
 
 function Routing() {
@@ -37,7 +39,7 @@ function Routing() {
           path="/home"
           element={
             <PrivateRoute>
-              {role.role === "admin" ? <Dashboard /> : <DokDashboard/>}
+              {role.role === "admin" ? <Dashboard /> : <DokDashboard />}
             </PrivateRoute>
           }
         />
@@ -57,6 +59,16 @@ function Routing() {
             </PrivateRoute>
           }
         />
+
+        <Route
+          path="/pasien"
+          element={
+            <PrivateRoute>
+              <ViewPasien />
+            </PrivateRoute>
+          }
+        />
+
         <Route
           path="/studio"
           element={
@@ -71,6 +83,15 @@ function Routing() {
           element={
             <PrivateRoute>
               <ViewTindakan />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/jenis-tindakan"
+          element={
+            <PrivateRoute>
+              <ViewJenisTindakan />
             </PrivateRoute>
           }
         />

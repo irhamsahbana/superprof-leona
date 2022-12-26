@@ -18,9 +18,14 @@ const updateData = async (endpoint, id, data) => {
     return response.data;
 }
 
+const updateSelectedData = async (endpoint, id, data) => {
+    const response = await axios.patch(`http://localhost:3001/${endpoint}/${id}`, data);
+    return response.data;
+}
+
 const removeData =  async (endpoint, id) => {
     const response = await axios.delete(`http://localhost:3001/${endpoint}/${id}`);
     return response.data;
 }
 
-export default {getAll, addData, updateData, removeData};
+export default {getAll, addData, updateData, updateSelectedData, removeData};

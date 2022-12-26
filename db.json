@@ -63,12 +63,22 @@
       "id": 11,
       "nama": "X-Ray",
       "spesialis": "Radiology"
+    },
+    {
+      "id": 12,
+      "nama": "drg. Halilintar",
+      "spesialis": "Radiologi"
+    },
+    {
+      "nama": "drg.Chelsea",
+      "spesialis": "Radiologi",
+      "id": 13
     }
   ],
   "studios": [
     {
-      "id": 1,
-      "studio": "Studio 1"
+      "studio": "Studio 1",
+      "id": 1
     },
     {
       "id": 2,
@@ -109,8 +119,8 @@
       "nama": "Prosthodontics"
     },
     {
-      "id": 7,
-      "nama": "Dental X-Ray"
+      "nama": "Dental X-Ray",
+      "id": 7
     }
   ],
   "treatments": [
@@ -199,16 +209,22 @@
       "categoryId": 4
     },
     {
-      "tindakan": "CEPHALO",
-      "biaya": "2000000",
-      "categoryId": 7,
+      "tindakan": "Damon Clear",
+      "biaya": "20000000",
+      "categoryId": 2,
       "id": 16
     },
     {
-      "tindakan": "Allignat",
-      "biaya": "320",
-      "category.nama": "Orthodontics",
+      "tindakan": "Aqua Care",
+      "biaya": "700000",
+      "categoryId": 3,
       "id": 17
+    },
+    {
+      "tindakan": "Gingivectomy",
+      "biaya": "3000000",
+      "categoryId": 3,
+      "id": 18
     }
   ],
   "patients": [
@@ -261,14 +277,6 @@
       "phone": "300-879-9320"
     },
     {
-      "id": 7,
-      "full_name": "Saloma Leverich",
-      "address": "36 Nancy Parkway",
-      "email": "sleverich6@plala.or.jp",
-      "dob": "5/9/2021",
-      "phone": "786-480-4578"
-    },
-    {
       "id": 8,
       "full_name": "Bellanca Lofting",
       "address": "19712 Sauthoff Pass",
@@ -285,12 +293,12 @@
       "phone": "721-639-7260"
     },
     {
-      "id": 10,
-      "full_name": "Robbie Dingivan",
+      "full_name": "Robbie Dingivana",
       "address": "2 Kinsman Plaza",
-      "email": "rdingivan9@census.gov",
+      "phone": "748-532-0279",
       "dob": "9/19/2022",
-      "phone": "748-532-0279"
+      "email": "rdingivan9@census.gov",
+      "id": 10
     },
     {
       "id": 11,
@@ -1011,6 +1019,18 @@
       "email": "bshanley2r@salon.com",
       "dob": "11/11/2003",
       "phone": "541-795-2382"
+    },
+    {
+      "full_name": "Leona Roses",
+      "address": "Jl. Gunung Soputan",
+      "phone": "081234567890",
+      "dob": "19/10/2001",
+      "email": "leona@gmail.com",
+      "id": 101
+    },
+    {
+      "nama": "bbbb",
+      "id": 102
     }
   ],
   "medical_records": [

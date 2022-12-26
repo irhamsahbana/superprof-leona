@@ -1,8 +1,6 @@
 import React, { useState, useMemo, useEffect, useCallback } from "react";
 // third-party
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { BsFillTrashFill, BsPencilFill } from "react-icons/bs";
 // components, data, slices
 import MaterialReactTable from "material-react-table";
 import { Delete, Edit } from "@mui/icons-material";
@@ -63,8 +61,6 @@ export default function ViewTindakan() {
   );
 
   const handleCreateData = (values) => {
-    // tindakanList.push(values);
-    // setTableData([...tableData]);
     try {
       MainService.addData("treatments", values).then((res) => {
         console.log(res);
@@ -76,7 +72,7 @@ export default function ViewTindakan() {
     } catch {
       console.log("error");
     }
-    setTindakanList([...tindakanList]);
+    setTindakanList([...tindakanList, values]);
 
     console.log(values);
   };
@@ -84,13 +80,24 @@ export default function ViewTindakan() {
   const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
     console.log(row.index);
     console.log(values);
-    //send/receive api updates here, then refetch or update local table data for re-render
-    MainService.updateData("treatments", row.original.id, values);
-    setTindakanList([...tindakanList, values]);
-    toast.success("Data telah berhasil diubah!", {
-      duration: 2000,
-      position: "top-right",
-    });
+    try{
+      MainService.updateData("treatments", row.original.id, values);
+      setTindakanList([
+        ...tindakanList,
+        {
+          tindakan: row.original.tindakan,
+          biaya: row.original.biaya,
+          categoryId: row.original.categoryId,
+        },
+      ]);
+      toast.success("Data telah berhasil diubah!", {
+        duration: 2000,
+        position: "top-right",
+      });
+    }catch{
+      console.log("error")
+    }
+   
     exitEditingMode(); //required to exit editing mode and close modal
   };
 
@@ -117,11 +124,8 @@ export default function ViewTindakan() {
     <>
       <div className="mb-5">
         <h1>
-          Master Data: <span className="text-blue-500 text-2xl">Studio</span>
+          Master Data: <span className="text-blue-500 text-2xl">Tindakan</span>
         </h1>
-      </div>
-      <div className="flex flex-row h-8">
-        <ButtonAdd onClick={() => navigate("/tindakanList/add")} />
       </div>
       {isLoading ? (
         <TableContentLoader />
@@ -165,8 +169,9 @@ export default function ViewTindakan() {
       <TambahDataModal
         columns={cols}
         open={createModalOpen}
+        onSubmit={handleCreateData}
         onClose={() => setCreateModalOpen(false)}
-       />
+      />
     </>
   );
 }
