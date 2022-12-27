@@ -14,15 +14,11 @@ export default function Sidebar() {
   let [dropdown2, setDropdown2] = useState(false); // dropdown data transaksi
 
   const handleDropdown1 = () => {
-    console.log("dropdown1");
     setDropdown1(!dropdown1);
-    console.log(dropdown1);
   };
 
   const handleDropdown2 = () => {
-    console.log("dropdown2");
     setDropdown2(!dropdown2);
-    console.log(dropdown2);
   };
 
   const mapDropdownItems = (idx) => {

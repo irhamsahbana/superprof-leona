@@ -1037,14 +1037,8 @@
     {
       "id": "B-22100002",
       "history": {
-        "allergies": [
-          "Paracetamol",
-          "Teroid"
-        ],
-        "medical": [
-          "Sinus",
-          "Jaw Issues"
-        ]
+        "allergies": ["Paracetamol", "Teroid"],
+        "medical": ["Sinus", "Jaw Issues"]
       },
       "patientId": 100,
       "odontogramId": 1
@@ -1052,12 +1046,8 @@
     {
       "id": "N-22100002",
       "history": {
-        "allergies": [
-          "Lateks"
-        ],
-        "medical": [
-          ""
-        ]
+        "allergies": ["Lateks"],
+        "medical": [""]
       },
       "patientId": 97,
       "odontogramId": 2
@@ -1083,6 +1073,27 @@
       }
     }
   ],
-  "schedules": [],
+  "schedules": [
+    {
+      "id": 1,
+      "tanggal": "22/12/2022",
+      "dokter": "drg. A",
+      "ruangan": "Studio 1",
+      "pasien": "Leona",
+      "keterangan": "Scalling",
+      "jam_mulai": "12:00",
+      "jam_selesai": "13:00"
+    },
+    {
+      "id": 2,
+      "tanggal": "22/12/2022",
+      "dokter": "drg. A",
+      "ruangan": "Studio 2",
+      "pasien": "Rose",
+      "keterangan": "Filling",
+      "jam_mulai": "14:00",
+      "jam_selesai": "15:00"
+    }
+  ],
   "transaction": []
 }
