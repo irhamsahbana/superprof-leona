@@ -1,0 +1,18 @@
+[
+  {
+    "id": "_mFPAb7h3Nom6YNkWx570",
+    "name": "Ana Sawayn",
+    "role": "doctor",
+    "specialty": "Cardiology",
+    "email": "Adalberto12@yahoo.com",
+    "password": "xgCtZFnDPcIulp5"
+  },
+  {
+    "id": "2",
+    "name": "Hendra",
+    "role": "admin",
+    "specialty": null,
+    "email": "hen@dra.com",
+    "password": "helloworld"
+  }
+]

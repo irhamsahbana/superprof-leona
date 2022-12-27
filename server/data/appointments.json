@@ -1,0 +1,21 @@
+[
+    {
+        "id": "_mFPAb7h3Nom6YNkWx570dad1",
+        "date": "01/01/2019",
+        "start": "10:00",
+        "end": "11:00",
+        "doctor": {
+            "id": "_mFPAb7h3Nom6YNkWx570",
+            "name": "Ana Sawayn"
+        },
+        "room": {
+            "id": "_mFPAb7h3Nom6YNkWx570",
+            "name": "Room 1"
+        },
+        "patient": {
+            "id": "_mFPAb7h3Nom6YNkWx570",
+            "name": "John Doe"
+        },
+        "notes": "xxx"
+    }
+]
