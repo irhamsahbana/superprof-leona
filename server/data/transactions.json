@@ -1,0 +1,29 @@
+[
+    {
+        "id": "dadcszxf",
+        "invoiceNumber": "1234567890",
+        "doctor" : {
+            "id": "1234567890",
+            "name": "Dr. John Doe"
+        },
+        "patient" : {
+            "id": "1234567890",
+            "name": "John Doe"
+        },
+        "date": "01/01/2019",
+        "treatments": [
+            {
+                "id": "adasd134123xdasc",
+                "name": "Whitening",
+                "price": 1000,
+                "quantity": 1,
+                "discount": 20,
+                "unit": "percent"
+            }
+        ],
+        "total": 800,
+        "status": "paid",
+        "diagnosis": "xxx",
+        "paymentMethod": "cash"
+    }
+]
