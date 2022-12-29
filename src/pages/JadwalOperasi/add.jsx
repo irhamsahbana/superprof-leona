@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // third-party
 import { useSelector } from "react-redux";
 import { BsFillTrashFill } from "react-icons/bs";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 // data
 import { Studio } from "../../data/Studio";
@@ -15,19 +15,16 @@ import { ButtonMain, ButtonIcon } from "../../components/Button";
 import FormInput from "../../components/FormInput";
 
 export default function AddJadwal() {
-  const { dokter } = useSelector((state) => state.dokter);
-  const { state } = useLocation();
   const navigate = useNavigate();
   const initForm = {
     id: null,
-    nama: null,
-    tindakan: null,
-    dokter: null,
-    ruangan: null,
-    date: state,
+    patient: {},
+    notes: null,
+    doctor: {},
+    room: {},
+    date: null,
     start: null,
     end: null,
-    status: "Belum datang",
   };
 
   // data to-be added
@@ -40,9 +37,9 @@ export default function AddJadwal() {
     // });
     navigate("/jadwal");
     toast.success("Jadwal berhasil ditambah!", {
-        duration: 4000,
-        position: "top-right",
-      });
+      duration: 4000,
+      position: "top-right",
+    });
   };
 
   const handleAddRow = () => {
@@ -60,7 +57,6 @@ export default function AddJadwal() {
     copyTemp[i][e.target.name] = e.target.value;
     setTempData(copyTemp);
   };
-
 
   return (
     <div>

@@ -45,8 +45,6 @@ class UserController {
 
     const user = users.find((user) => user.id === id);
 
-    response(res, 200, 'OK', user);
-
     if (user) {
       const index = users.indexOf(user);
       users.splice(index, 1);

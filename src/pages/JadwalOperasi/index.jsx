@@ -14,9 +14,12 @@ export default function JadwalOperasi() {
   const [jadwalList, setJadwalList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  // list doctor, list room, list patient
+
   const [createModalOpen, setCreateModalOpen] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
+  // fetch all lists here
   useEffect(() => {
     MainService.getAll("schedules").then((res) => {
       setJadwalList(res);
