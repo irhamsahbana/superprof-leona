@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 // components, data, slices
 import MaterialReactTable from "material-react-table";
 import { Delete, Edit } from "@mui/icons-material";
-import { Box, IconButton, Tooltip, Button } from "@mui/material";
+import { Box, IconButton, Tooltip, Button, Chip } from "@mui/material";
 import { ButtonIcon, ButtonAdd } from "../../../components/Button";
 import MainService from "../../../services/MainService";
 import TableContentLoader from "../../../components/TableContentLoader";
@@ -80,7 +80,7 @@ export default function ViewTindakan() {
   const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
     console.log(row.index);
     console.log(values);
-    try{
+    try {
       MainService.updateData("treatments", row.original.id, values);
       setTindakanList([
         ...tindakanList,
@@ -94,10 +94,9 @@ export default function ViewTindakan() {
         duration: 2000,
         position: "top-right",
       });
-    }catch{
-      console.log("error")
+    } catch {
+      console.log("error");
     }
-   
     exitEditingMode(); //required to exit editing mode and close modal
   };
 
@@ -115,6 +114,7 @@ export default function ViewTindakan() {
       {
         header: "Jenis Tindakan",
         accessorKey: "category.nama",
+        Cell: ({ cell }) => <Chip label={cell.getValue()} />,
       },
     ],
     []
@@ -133,10 +133,11 @@ export default function ViewTindakan() {
         <MaterialReactTable
           columns={cols}
           data={tindakanList}
+          initialState={{ density: "compact" }}
           enableEditing
           onEditingRowSave={handleSaveRowEdits}
           renderRowActions={({ row, table }) => (
-            <Box sx={{ display: "flex", gap: "1rem" }}>
+            <Box sx={{ display: "flex" }}>
               <Tooltip arrow placement="left" title="Edit">
                 <IconButton
                   onClick={() => {

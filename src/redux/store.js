@@ -3,6 +3,7 @@ import UserReducer from "./userSlice";
 import UtilReducer from "./utilSlice";
 import DokterReducer from "./dokterSlice";
 import JadwalReducer from "./jadwalSlice";
+import RekamMedisReducer from "./rekamMedisSlice"
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     utils: UtilReducer,
     dokter: DokterReducer,
     jadwal: JadwalReducer,
+    rekamMedis: RekamMedisReducer
   },
 });
 

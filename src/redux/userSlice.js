@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  role: { role: "" },
+  role: JSON.parse(localStorage.getItem("role")),
   loginData: localStorage.getItem("loginData")
     ? JSON.parse(localStorage.getItem("loginData"))
     : {

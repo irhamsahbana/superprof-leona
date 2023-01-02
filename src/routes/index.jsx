@@ -34,9 +34,9 @@ function Routing() {
   return (
     <MainLayout>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route
-          path="/home"
+          path="/"
           element={
             <PrivateRoute>
               {role.role === "admin" ? <Dashboard /> : <DokDashboard />}

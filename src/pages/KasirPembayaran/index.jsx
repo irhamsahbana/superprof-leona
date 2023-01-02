@@ -1,14 +1,19 @@
 import React, { useState } from "react";
-import { ButtonMain } from "../../components/Button";
-import Card from "../../components/Card";
-import Container from "../../layouts/Container";
-import TableMetodePembayaran from "../Kasir/TableMetodePembayaran";
-import KasirTable from "../Kasir/KasirTable";
-import { Transaksi } from "../../data/Transaksi";
-import { BsCashStack } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
-import BaseModal from "../../layouts/BaseModal";
+// components
+import { ButtonBack } from "../../components/Button";
 import FormInput from "../../components/FormInput";
+// layouts
+import Container from "../../layouts/Container";
+import BaseModal from "../../layouts/BaseModal";
+// kasir-related
+import TableMetodePembayaran from "./TableMetodePembayaran";
+import KasirTable from "../Kasir/KasirTable";
+import { Transaksi } from "../Kasir/DummyTransaksi";
+// third-party
+import { useNavigate } from "react-router-dom";
+import SaveIcon from "@mui/icons-material/Save";
+import AddIcon from "@mui/icons-material/Add";
+import { Button, Tooltip, IconButton } from "@mui/material";
 
 export default function Pembayaran() {
   const navigate = useNavigate();
@@ -17,23 +22,28 @@ export default function Pembayaran() {
   const handleShowBayarModal = () => {
     setShowBayarModal(true);
   };
-  
+
   return (
     <>
-      <div className="flex flex-row justify-between mb-5">
+      <ButtonBack />
+      <div className="flex flex-row justify-between mb-3">
         <h1>Kasir</h1>
-        <ButtonMain
-          text="Proses Invoice"
-          bgColor="bg-blue-400"
-          hoverColor="hover:bg-blue-500"
+
+        <Button
+          sx={{ textTransform: "none" }}
           onClick={() => navigate("/invoice")}
-        />
+          size="small"
+          variant="contained"
+          startIcon={<SaveIcon />}
+        >
+          Simpan Pembayaran
+        </Button>
       </div>
 
       <div className="flex flex-col lg:flex-row">
         <Container>
-          <div className="flex flex-col lg:flex-row">
-            <div>
+          <div className="flex flex-col lg:flex-row py-2">
+            <div>    
               <div className="flex flex-row mb-2">
                 <p className="w-44">No. Rekam Medis</p>
                 <p className="mx-3">:</p>
@@ -62,40 +72,30 @@ export default function Pembayaran() {
                 <p className="w-max font-semibold">19 Oktober 2000</p>
               </div>
             </div>
-            <div className="ml-3 mt-3 md:ml-12 lg:ml-12 flex float-right">
-              <Card width="w-full" height="h-max" bgColor="bg-green-300">
-                <div className="flex flex-row">
-                  <span className="text-2xl h-auto pt-10 pl-2">
-                    <BsCashStack />
-                  </span>
-                  <div className="flex flex-col p-8">
-                    <div className="flex flex-row">
-                      <p>Saldo Deposit:</p>
-                      <p className="ml-3 font-bold">Rp. 10.000.000</p>
-                    </div>
-                    <p className="text-sm mt-1">
-                      Untuk deposit 50% pemasangan KLAR
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            </div>
           </div>
         </Container>
 
-        {/* <div className="flex flex-col ml-4">
-          <p className="font-bold text-xl mt-6 mb-2">Metode Pembayaran:</p> */}
         <div className="mr-10 sm:mt-8"></div>
         <Container>
           <div className="flex flex-row justify-between">
-            <p className="font-bold text-xl mt-6 mb-2 ml-4">Pembayaran</p>
-            <div className="mt-3">
-              <ButtonMain
-                bgColor="bg-blue-400"
-                hoverColor="hover:bg-blue-500"
-                text="Tambah"
-                onClick={handleShowBayarModal}
-              />
+            <p className="font-bold text-lg mt-1 mb-2 ml-4">Pembayaran</p>
+            <div className="mt-2 mr-3">
+              <Tooltip arrow placement="right" title="Tambah">
+                <IconButton
+                  onClick={handleShowBayarModal}
+                  sx={{
+                    backgroundColor: "#60a5fa",
+                    color: "white",
+                    padding: 0,
+                    ":hover": {
+                      bgcolor: "#3b82f6",
+                      color: "white",
+                    },
+                  }}
+                >
+                  <AddIcon />
+                </IconButton>
+              </Tooltip>
             </div>
           </div>
           <TableMetodePembayaran />
@@ -104,10 +104,8 @@ export default function Pembayaran() {
       {/* </div> */}
 
       <div className="mt-3">
-        {/* <div className="flex flex-row">
-          <div className="mr-3"></div> */}
         <div>
-          <p className="font-bold text-xl mt-6 mb-2">Detail Invoice:</p>
+          <p className="font-bold text-lg mt-6 mb-2">Detail Invoice:</p>
           <Container>
             <div className="mb-3"></div>
             <KasirTable transaksi={Transaksi} />
@@ -132,6 +130,7 @@ export default function Pembayaran() {
               </div>
             </div>
           </Container>
+          <div className="mt-12"></div>
         </div>
       </div>
 

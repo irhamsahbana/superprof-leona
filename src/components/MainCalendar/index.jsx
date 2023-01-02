@@ -6,7 +6,6 @@ import { DummyCalendarData } from "./DummyCalendarData";
 
 export default function MainCalendar(jadwalList) {
   return (
-    <div>
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin]}
         initialView="timeGridDay"
@@ -17,6 +16,5 @@ export default function MainCalendar(jadwalList) {
         }}
         events={DummyCalendarData}
       />
-    </div>
   );
 }

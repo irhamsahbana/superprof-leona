@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Container from "../../../layouts/Container";
 import toast, { Toaster } from "react-hot-toast";
 
+// example of dynamic form
 export default function AddDokter() {
   const dispatch = useDispatch();
   const navigate = useNavigate();

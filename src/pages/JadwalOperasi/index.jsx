@@ -3,11 +3,15 @@ import React, { useState, useMemo, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 // components, data, slices
 import MaterialReactTable from "material-react-table";
+import dayjs from "dayjs";
+import CreateDialog from "../../components/CreateDialog";
+
 import { Delete, Edit } from "@mui/icons-material";
-import { Box, IconButton, Tooltip, Button } from "@mui/material";
+import { Box, IconButton, Tooltip, Button, Chip } from "@mui/material";
 import MainService from "../../services/MainService";
 import TableContentLoader from "../../components/TableContentLoader";
 import toast, { Toaster } from "react-hot-toast";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
 
 export default function JadwalOperasi() {
   const navigate = useNavigate();
@@ -18,6 +22,13 @@ export default function JadwalOperasi() {
 
   const [createModalOpen, setCreateModalOpen] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showStatusModal, setShowStatusModal] = useState(false);
+
+  const statusKehadiran = [
+    { id: 1, status: "Belum datang" },
+    { id: 2, status: "Datang" },
+    { id: 3, status: "Cancelled" },
+  ];
 
   // fetch all lists here
   useEffect(() => {
@@ -95,6 +106,27 @@ export default function JadwalOperasi() {
         header: "Waktu",
         accessorFn: (row) => `${row.jam_mulai} - ${row.jam_selesai}`,
       },
+      {
+        header: "Status",
+        accessorKey: "status",
+        Cell: ({ cell }) => {
+          return cell.getValue() === "Belum datang" ? (
+            <Chip
+              size="small"
+              variant="outlined"
+              color="error"
+              label={cell.getValue()}
+            />
+          ) : (
+            <Chip
+              size="small"
+              variant="outlined"
+              color="success"
+              label={cell.getValue()}
+            />
+          );
+        },
+      },
     ],
     []
   );
@@ -116,7 +148,17 @@ export default function JadwalOperasi() {
           enableEditing
           onEditingRowSave={handleSaveRowEdits}
           renderRowActions={({ row, table }) => (
-            <Box sx={{ display: "flex", gap: "1rem" }}>
+            <Box sx={{ display: "flex" }}>
+              <Tooltip arrow placement="left" title="Ubah Status">
+                <IconButton
+                  onClick={() => {
+                    setShowStatusModal(true);
+                  }}
+                  color="primary"
+                >
+                  <AutorenewIcon />
+                </IconButton>
+              </Tooltip>
               <Tooltip arrow placement="left" title="Edit">
                 <IconButton
                   onClick={() => {
@@ -146,6 +188,24 @@ export default function JadwalOperasi() {
         />
       )}
       <Toaster />
+      <CreateDialog
+        open={showStatusModal}
+        handleClose={() => setShowStatusModal(false)}
+        title="Ubah Status Kehadiran"
+      >
+        <div>
+          <select
+            // onChange={(e) => dispatch(setStatusJadwal(e.target.value))}
+            className="bg-gray-50 h-8 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-sky-500 focus:border-sky-500 block w-full px-2"
+          >
+            {statusKehadiran.map((data, i) => (
+              <option key={i} defaultValue={data.id}>
+                {data.status}
+              </option>
+            ))}
+          </select>
+        </div>
+      </CreateDialog>
     </>
   );
 }

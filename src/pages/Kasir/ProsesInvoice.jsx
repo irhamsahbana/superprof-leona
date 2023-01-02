@@ -1,54 +1,54 @@
 import React from "react";
-import {
-  ButtonMain,
-  ButtonIcon,
-  ButtonTextIcon,
-} from "../../components/Button";
+import { ButtonBack } from "../../components/Button";
 import KasirTable from "./KasirTable";
-import { Transaksi } from "../../data/Transaksi";
+import { Transaksi } from "./DummyTransaksi";
 import { useNavigate } from "react-router-dom";
-import { Button } from "antd";
 import Container from "../../layouts/Container";
 import { AiFillEdit } from "react-icons/ai";
 import { BsCash } from "react-icons/bs";
+import { Box, IconButton, Tooltip, Button } from "@mui/material";
 
 export default function ProsesInvoice() {
   const navigate = useNavigate();
   return (
     <div>
+      <ButtonBack />
       <div id="header-container" className="flex flex-row justify-between">
         <div id="header-left" className="flex flex-col mb-4">
-          <h1>Proses Invoice</h1>
+          <h1>Detail Transaksi</h1>
         </div>
         <div className="flex flex-row">
           {/* <div>
             <ButtonIcon
               bgColor="bg-blue-400"
               hoverColor="hover:bg-blue-500"
-              onClick={() => {
+              onClick={() => {    
                 navigate("/ubah-invoice");
               }}
               icon={<AiFillEdit />}
             />
           </div> */}
           <div>
-            <ButtonMain
-              bgColor="bg-blue-400"
-              hoverColor="hover:bg-blue-500"
-              text="Proses Pembayaran"
+            <Button
+              sx={{ textTransform: "none" }}
               onClick={() => {
                 navigate("/pembayaran");
               }}
-            />
+              size="small"
+              variant="contained"
+              startIcon={<BsCash />}
+            >
+              Proses
+            </Button>
           </div>
         </div>
       </div>
       <div className="mb-3">
         <Container>
           <div className="grid grid-cols-4 gap-4">
-            <div className="col-span-4 font-bold font-Inter text-center">
+            {/* <div className="col-span-4 font-bold font-Inter text-center">
               Detail Transaksi
-            </div>
+            </div> */}
             <div className="col-span-2">
               Ruangan: <span className="font-bold">Studio 2</span>
             </div>

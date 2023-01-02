@@ -1,76 +1,70 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Table from "../../components/Table";
 import { AiFillEye, AiOutlineRight } from "react-icons/ai";
 import { ButtonIcon } from "../../components/Button";
 import HistoryData from "../../data/HistoryData.json";
 import { useSpinner } from "../../utils/customHooks";
+import MaterialReactTable from "material-react-table";
+import { Box, IconButton, Tooltip, Button } from "@mui/material";
+import { Delete, Edit } from "@mui/icons-material";
+import { useSelector } from "react-redux";
 
 export default function SearchRekamMedis() {
   const [showHistory, setShowHistory] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
+
+  const { rekamMedisResults } = useSelector((state) => state.rekamMedis);
   const historyData = HistoryData[0].now;
 
   const navigate = useNavigate();
   const showSpinner = useSpinner();
+
   const handleClose = () => {
     setShowHistory(false);
   };
-
-  const cols = [
-    {
-      Header: "No.",
-      Cell: (row) => {
-        return <div>{Number(row.row.index + 1)}</div>;
+  const cols = useMemo(
+    () => [
+      {
+        header: "No. Rekam Medis",
+        accessorKey: "no_rm",
       },
-    },
-    {
-      Header: "Nama Pasien",
-      accessor: "nama",
-    },
-    {
-      Header: "Tanggal",
-      accessor: "tanggal",
-    },
-    {
-      Header: "Dokter yang menangani",
-      accessor: "dokter",
-    },
-    {
-      Header: "Tindakan",
-      accessor: "tindakan",
-    },
-    {
-      Header: "Action",
-      accessor: (row, i) => (
-        <>
-          <div>
-            <ButtonIcon
-              bgColor="bg-sky-400"
-              hoverColor="hover:bg-sky500"
-              onClick={() => {
-                setSelectedIndex(i);
-                setShowHistory(navigate(`/rekam-medis/selected`));
-              }}
-              icon={<AiOutlineRight />}
-            />
-          </div>
-        </>
-      ),
-      id: "action",
-    },
-  ];
-
-  const columns = useMemo(() => cols, [cols]);
-  const data = useMemo(() => historyData, []);
+      {
+        header: "Nama Pasien",
+        accessorKey: "full_name",
+      },
+      {
+        header: "Transaksi Terakhir",
+        accessorKey: "dob",
+      },
+    ],
+    []
+  );
 
   return (
     <>
-      {showSpinner}
       <div className="mb-5">
-        <h1>Rekam Medis</h1>
+        <h1>
+          Rekam Medis: <span className="text-blue-500 text-2xl">Search</span>
+        </h1>
       </div>
-      <Table columns={columns} data={data} />
+      <MaterialReactTable
+        columns={cols}
+        data={rekamMedisResults}
+        initialState={{ columnVisibility: { dob: false, email: false } }}
+        enableEditing
+        renderRowActions={({ row, table }) => (
+          <Tooltip arrow placement="left" title="Edit">
+            <IconButton
+              onClick={() => {
+                console.log(row);
+              }}
+            >
+              <Edit />
+            </IconButton>
+          </Tooltip>
+        )}
+      />
     </>
   );
 }

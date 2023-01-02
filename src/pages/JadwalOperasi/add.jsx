@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // third-party
 import { useSelector } from "react-redux";
 import { BsFillTrashFill } from "react-icons/bs";
@@ -9,10 +9,12 @@ import { Studio } from "../../data/Studio";
 import { Dokter } from "../../data/Dokter";
 // service
 import JadwalService from "../../services/JadwalService";
+import MainService from "../../services/MainService";
 // components
 import Container from "../../layouts/Container";
 import { ButtonMain, ButtonIcon } from "../../components/Button";
 import FormInput from "../../components/FormInput";
+import { TextField, MenuItem, Select, Autocomplete } from "@mui/material";
 
 export default function AddJadwal() {
   const navigate = useNavigate();
@@ -27,8 +29,26 @@ export default function AddJadwal() {
     end: null,
   };
 
+  const [studioList, setStudioList] = useState([]);
+  const [doctorList, setDoctorList] = useState([]);
+  const [patientList, setPatientList] = useState([]);
+
   // data to-be added
   const [tempData, setTempData] = useState([initForm]);
+
+  useEffect(() => {
+    MainService.getAll("studios").then((res) => {
+      setStudioList(res);
+    });
+
+    MainService.getAll("doctors").then((res) => {
+      setDoctorList(res);
+    });
+
+    MainService.getAll("patients").then((res) => {
+      setPatientList(res);
+    });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -93,17 +113,17 @@ export default function AddJadwal() {
             <div className="flex flex-row">
               <div className="mr-10">
                 <select className="bg-gray-50 h-8 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-max px-2">
-                  {Studio.map((data, i) => (
-                    <option key={i} defaultValue={data}>
-                      {data}
+                  {studioList.map((data, i) => (
+                    <option key={i} defaultValue={data.id}>
+                      {data.studio}
                     </option>
                   ))}
                 </select>
               </div>
-              <div>
+              <div className="w-56">
                 <select className="bg-gray-50 h-8 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-max px-2">
-                  {Dokter.map((data, i) => (
-                    <option key={i} defaultValue={data.nama}>
+                  {doctorList.map((data, i) => (
+                    <option key={i} defaultValue={data.id}>
                       {data.nama}
                     </option>
                   ))}

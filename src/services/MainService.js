@@ -1,9 +1,12 @@
 import axios from "axios";
 
-// const baseUrl = "http://localhost:3001/studios";
-
 const getAll = async (endpoint) => {
     const response = await axios.get(`http://localhost:3001/${endpoint}`);
+    return response.data;
+}
+
+const get = async (endpoint, id) => {
+    const response = await axios.get(`http://localhost:3001/${endpoint}/${id}`);
     return response.data;
 }
 
@@ -17,14 +20,9 @@ const updateData = async (endpoint, id, data) => {
     return response.data;
 }
 
-// const updateSelectedData = async (endpoint, id, data) => {
-//     const response = await axios.patch(`http://localhost:3001/${endpoint}/${id}`, data);
-//     return response.data;
-// }
-
 const removeData =  async (endpoint, id) => {
     const response = await axios.delete(`http://localhost:3001/${endpoint}/${id}`);
     return response.data;
 }
 
-export default {getAll, addData, updateData, updateSelectedData, removeData};
+export default {getAll, get, addData, updateData, removeData};

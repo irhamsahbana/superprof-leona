@@ -1,76 +1,86 @@
 import React, { useRef } from "react";
 import KasirTable from "./KasirTable";
-import { Transaksi } from "../../data/Transaksi";
-import { ButtonMain } from "../../components/Button";
+import { Transaksi } from "./DummyTransaksi";
 import Logo from "../../assets/logo-transparent.png";
-import TableMetodePembayaran from "./TableMetodePembayaran";
+import TableMetodePembayaran from "../KasirPembayaran/TableMetodePembayaran";
 import ReactToPrint from "react-to-print";
 import Container from "../../layouts/Container";
+import { Button } from "@mui/material";
+import LocalPrintshopIcon from "@mui/icons-material/LocalPrintshop";
+import { ButtonBack } from "../../components/Button";
 
 export default function Invoice() {
   const componentRef = useRef();
   return (
     <>
+      <ButtonBack />
+      <div id="header-container" className="flex flex-row justify-between">
+        <div id="header-left" className="flex flex-col mb-4">
+          <h1>Cetak Invoice</h1>
+          <p>Invoice Number: INV-2209-0022 </p>
+        </div>
+        {/* Cetak Button */}
+        <div className="col-span-2 float-right">
+          <ReactToPrint
+            trigger={() => (
+              <Button
+                sx={{ textTransform: "none" }}
+                size="small"
+                variant="contained"
+                startIcon={<LocalPrintshopIcon />}
+              >
+                Cetak Invoice
+              </Button>
+            )}
+            content={() => componentRef.current}
+          />
+        </div>
+      </div>
       <Container>
         <div className="grid grid-cols-4 gap-4">
-          <div className="  col-span-4 font-bold font-Inter text-center">
-            INV-2209-0022
-          </div>
-          <div className="  col-span-2">
-            Ruangan: <span className="font-bold">Studio 2</span>
-          </div>
-          <div className="  col-span-2 text-right">
-            Tanggal: <span className="font-bold">28 September 2022</span>
+          <div className="col-span-4">
+            <div className="flex flex-row justify-between">
+              <div className="flex flex-col">
+                <div className="flex flex-col">
+                  <p>
+                    Nama: <span className="font-bold">Jessica Josephine</span>
+                  </p>
+                  <p>
+                    Diagnosa:{" "}
+                    <span className="font-bold italic">Gingivitis</span>
+                  </p>
+                </div>
+              </div>
+              <div className="  col-span-2 text-right">
+                <div className="flex flex-col">
+                  <p>
+                    Tanggal:{" "}
+                    <span className="font-bold">28 September 2022</span>
+                  </p>
+                  <p>
+                    Dokter:{" "}
+                    <span className="font-bold">
+                      drg. A.A Manik Swayoga, Sp. BM
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="col-span-4">
             <hr />
           </div>
 
-          <div className=" ">
-            <div className="pr-4">
-              <label className="block mb-1 text-gray-900">Nama Pasien</label>
-              <div>
-                <input
-                  type="text"
-                  className="w-auto h-8 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg block py-2 px-3"
-                  value="Jessica Josephine"
-                  disabled
-                />
-              </div>
-            </div>
-          </div>
-          <div className=" ">
-            <div className="pr-4">
-              <label className="block mb-1 text-gray-900">Jenis Tindakan</label>
-              <div>
-                <input
-                  type="text"
-                  className="w-auto h-8 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg block py-2 px-3"
-                  value="Orthodontics"
-                  disabled
-                />
-              </div>
-            </div>
-          </div>
           <div className="col-span-4">
             <KasirTable transaksi={Transaksi} />
           </div>
 
           <div className="col-span-2">
-            <div className="pr-4">
-              <label className="block mb-1 text-gray-900">Keterangan</label>
-              <div>
-                <textarea
-                  type="text"
-                  className="w-full h-fit bg-white border border-gray-300 text-gray-900 rounded-lg block py-2 px-3"
-                  value="Jadwal kontrol 3 minggu lagi; BY"
-                  disabled
-                />
-              </div>
-            </div>
+            <TableMetodePembayaran />
           </div>
-          <div className="col-span-2">
+
+          <div className="col-span-2 mt-3">
             <div className="flex flex-row justify-between">
               Grand Total <span className="font-bold">Rp.2.000.000</span>
             </div>
@@ -80,22 +90,6 @@ export default function Invoice() {
             <div className="flex flex-row justify-between">
               Kembali <span className="font-bold">Rp.0</span>
             </div>
-          </div>
-
-          <div className="col-span-2">
-            <TableMetodePembayaran />
-          </div>
-
-          {/* Cetak Button */}
-          <div className="col-span-2 float-right">
-            <ReactToPrint
-              trigger={() => (
-                <button className="bg-blue-400 hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300">
-                  Cetak Nota
-                </button>
-              )}
-              content={() => componentRef.current}
-            />
           </div>
         </div>
       </Container>
@@ -149,8 +143,10 @@ export default function Invoice() {
           <div className="col-span-2">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="text-left bg-gray-100">
-                <th className="p-3 w-full">Metode Pembayaran</th>
-                <th className="p-3">Nominal</th>
+                <tr>
+                  <th className="p-3 w-full">Metode Pembayaran</th>
+                  <th className="p-3">Nominal</th>
+                </tr>
               </thead>
               <tbody>
                 <tr>

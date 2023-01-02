@@ -1,10 +1,15 @@
 import React, { useEffect, useState, useMemo } from "react";
-import Table from "../../components/Table";
-import { AiFillEye } from "react-icons/ai";
-import { ButtonIcon } from "../../components/Button";
+import PreviewIcon from "@mui/icons-material/Preview";
+import dayjs from "dayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+
 import HistoryData from "../../data/HistoryData.json";
 import HistoryModal from "./HistoryModal";
-import SelectDate from "../../components/SelectDate";
+import MaterialReactTable from "material-react-table";
+import { Box, Button, IconButton, Tooltip, TextField } from "@mui/material";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 
 export default function History() {
   const [showHistory, setShowHistory] = useState(false);
@@ -15,51 +20,35 @@ export default function History() {
     setShowHistory(false);
   };
 
-  // useEffect(() => {
-  //   setHistory(historyData);
-  // }, []);
+  const [value, setValue] = React.useState(dayjs().format());
 
-  const cols = [
-    {
-      Header: "Nama Pasien",
-      accessor: "nama",
-    },
-    {
-      Header: "Tanggal",
-      accessor: "tanggal",
-    },
-    {
-      Header: "Dokter yang menangani",
-      accessor: "dokter",
-    },
-    {
-      Header: "Tindakan",
-      accessor: "tindakan",
-    },
-    {
-      Header: "Action",
-      accessor: (row, i) => (
-        <>
-          <div>
-            <ButtonIcon
-              bgColor="bg-sky-400"
-              hoverColor="hover:bg-sky-500"
-              onClick={() => {
-                console.log("view");
-                setSelectedIndex(i);
-                setShowHistory(!showHistory);
-              }}
-              icon={<AiFillEye />}
-            />
-          </div>
-        </>
-      ),
-      id: "action",
-    },
-  ];
+  const handleChange = (newValue) => {
+    setValue(newValue);
+  };
 
-  const columns = useMemo(() => cols, [cols]);
-  const data = useMemo(() => historyData, []);
+  const cols = useMemo(
+    () => [
+      {
+        Header: "Nama Pasien",
+        accessorKey: "nama",
+      },
+      {
+        Header: "Tanggal",
+        accessorKey: "tanggal",
+      },
+      {
+        Header: "Dokter yang menangani",
+        accessorKey: "dokter",
+      },
+      {
+        Header: "Tindakan",
+        accessorKey: "tindakan",
+      },
+    ],
+    []
+  );
+
+  // const data = useMemo(() => historyData, []);
 
   return (
     <>
@@ -69,11 +58,66 @@ export default function History() {
           <span className="text-blue-500 text-2xl">History</span>
         </h1>
       </div>
-
-      <div>
-        <SelectDate />
+      <div className="mb-4">
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker
+            inputFormat="DD/MM/YYYY"
+            value={value}
+            size="small"
+            onChange={handleChange}
+            renderInput={(params) => (
+              <TextField
+                sx={{
+                  ".MuiInputBase-input": { pt: 1.6, pb: 1.2, width: 98 },
+                  ".MuiInputBase-root-MuiOutlinedInput-root": {
+                    backgroundColor: "white",
+                  },
+                }}
+                {...params}
+              />
+            )}
+          />
+        </LocalizationProvider>
       </div>
-      <Table columns={columns} data={data} />
+      <div className="flex mb-3">
+        <Button
+          sx={{ textTransform: "none", mr: 1 }}
+          // onClick={() => }
+          size="small"
+          variant="contained"
+        >
+          Semua Transaksi
+        </Button>
+        <Button
+          sx={{ textTransform: "none" }}
+          // onClick={() => }
+          size="small"
+          variant="contained"
+          startIcon={<FileDownloadIcon />}
+        >
+          Export
+        </Button>
+      </div>
+      <MaterialReactTable
+        columns={cols}
+        data={historyData}
+        enableEditing
+        renderRowActions={({ row, table }) => (
+          <Box sx={{ display: "flex" }}>
+            <Tooltip arrow placement="left" title="Preview">
+              <IconButton
+                onClick={() => {
+                  console.log(row);
+                }}
+                color="primary"
+              >
+                <PreviewIcon />
+              </IconButton>
+            </Tooltip>
+          </Box>
+        )}
+      />
+
       {showHistory && (
         <HistoryModal
           text={"View More"}

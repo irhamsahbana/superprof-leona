@@ -113,7 +113,7 @@ export default function ViewPasien() {
           enableEditing
           onEditingRowSave={handleSaveRowEdits}
           renderRowActions={({ row, table }) => (
-            <Box sx={{ display: "flex", gap: "1rem" }}>
+            <Box sx={{ display: "flex" }}>
               <Tooltip arrow placement="left" title="Edit">
                 <IconButton
                   onClick={() => {

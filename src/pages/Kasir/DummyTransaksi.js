@@ -14,4 +14,11 @@ export const Transaksi = [
       diskon: "-",
       total: "Rp. 100.000",
     },
+    {
+      tindakan: "Lacossib",
+      qty: 1,
+      biaya: "Rp. 100.000",
+      diskon: "-",
+      total: "Rp. 100.000",
+    },
   ];

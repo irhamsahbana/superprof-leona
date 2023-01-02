@@ -23,9 +23,7 @@ export default function Header() {
       key: "1",
       label: (
         <p className="text-sm font-bold">
-          {JSON.parse(role.role === "admin")
-            ? "Admin"
-            : "Drg. Andy"}
+          {role.role === "admin" ? "Admin" : "Drg. Andy"}
         </p>
       ),
     },
@@ -59,7 +57,7 @@ export default function Header() {
       >
         <img
           className="h-10 w-auto rounded-full cursor-pointer"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAzqAAhPmDrzEXoiqlmhstQQaxG3_lkJgvvh9zz-NyAEdpEBvqh-ZYcwM8LBKaGmwQbFw&usqp=CAU"
+          src="https://cdn-icons-png.flaticon.com/512/64/64572.png?w=1060&t=st=1672611890~exp=1672612490~hmac=888fc9581cf578ba23f24705b94ce06a83ada6ab8e2a410bd38c7c286a0a4139"
           alt="Profile Avatar"
         />
       </Dropdown>

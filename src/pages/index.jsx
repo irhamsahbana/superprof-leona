@@ -40,7 +40,7 @@ export { default as Kasir } from "./Kasir";
 export { default as Invoice } from "./Kasir/Invoice";
 export { default as ProsesInvoice } from "./Kasir/ProsesInvoice";
 export { default as EditInvoice } from "./Kasir/EditInvoice";
-export { default as Pembayaran } from "./Pembayaran";
+export { default as Pembayaran } from "./KasirPembayaran";
 
 // pages for role = doctor
 export { default as DokDashboard } from "./DokDashboard";

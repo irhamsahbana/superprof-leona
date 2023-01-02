@@ -50,7 +50,7 @@ export default function ViewJenisTindakan() {
       duration: 2000,
       position: "top-right",
     });
-    exitEditingMode(); //required to exit editing mode and close modal
+    exitEditingMode(); 
   };
 
   const handleCreateData = (values) => {
@@ -66,7 +66,6 @@ export default function ViewJenisTindakan() {
       console.log("error");
     }
     setJenisTindakanList([...jenisTindakanList, values]);
-
     console.log(values);
   };
 
@@ -97,7 +96,7 @@ export default function ViewJenisTindakan() {
           enableEditing
           onEditingRowSave={handleSaveRowEdits}
           renderRowActions={({ row, table }) => (
-            <Box sx={{ display: "flex", gap: "1rem" }}>
+            <Box sx={{ display: "flex" }}>
               <Tooltip arrow placement="left" title="Edit">
                 <IconButton
                   onClick={() => {

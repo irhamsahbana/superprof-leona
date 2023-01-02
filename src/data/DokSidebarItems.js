@@ -6,7 +6,7 @@ const DokSidebarItems = [
     id: 1,
     name: "Dashboard",
     icon: <AiFillDashboard />,
-    link: "/home",
+    link: "/",
   },
   {
     id: 2,

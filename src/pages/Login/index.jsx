@@ -60,7 +60,7 @@ export default function Login() {
       }
       dispatch(login(inputValues));
       setErrorMsg("");
-      navigate("/home");
+      navigate("/");
     }
     e.target.reset();
   };
