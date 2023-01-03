@@ -1,7 +1,9 @@
 [
     {
         "id": "dadcszxf",
-        "invoiceNumber": "1234567890",
+        "invoice_number": "1234567890",
+        "doctor_id": "1234567890",
+        "patient_id": "1234567890",
         "doctor" : {
             "id": "1234567890",
             "name": "Dr. John Doe"
@@ -10,7 +12,6 @@
             "id": "1234567890",
             "name": "John Doe"
         },
-        "date": "01/01/2019",
         "treatments": [
             {
                 "id": "adasd134123xdasc",
@@ -18,12 +19,23 @@
                 "price": 1000,
                 "quantity": 1,
                 "discount": 20,
-                "unit": "percent"
+                "unit": "percent",
+                "total": 800
+            },
+            {
+                "id": "adasd134123xdasc",
+                "name": "Whitening",
+                "price": 2000,
+                "quantity": 4,
+                "discount": 20,
+                "unit": "percent",
+                "total": 6400
             }
         ],
-        "total": 800,
+        "date": "01/01/2019",
+        "total": 7200,
         "status": "paid",
         "diagnosis": "xxx",
-        "paymentMethod": "cash"
+        "payment_method": "cash"
     }
 ]

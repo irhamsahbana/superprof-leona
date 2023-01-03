@@ -1,20 +1,34 @@
 [
   {
-    "id": "_mFPAb7h3Nom6YNkWx570dad1",
+    "id": "KMw9XE9-LOoQILvQVZSrv",
+    "doctor_id": "_mFPAb7h3Nom6YNkWx570",
+    "patient_id": "dhajkh321",
+    "room_id": "_mFPAb7h3Nom6YNkWx570czxcz",
     "date": "01/01/2019",
-    "start": "10:00",
-    "end": "11:00",
+    "start": "13:00",
+    "end": "14:00",
     "doctor": {
       "id": "_mFPAb7h3Nom6YNkWx570",
-      "name": "Ana Sawayn"
+      "name": "Ana Sawayn",
+      "role": "doctor",
+      "specialty": "Cardiology",
+      "email": "Adalberto12@yahoo.com",
+      "password": "xgCtZFnDPcIulp5"
     },
     "room": {
-      "id": "_mFPAb7h3Nom6YNkWx570",
-      "name": "Room 1"
+      "id": "_mFPAb7h3Nom6YNkWx570czxcz",
+      "name": "The 2019"
     },
+    "notes": "Maybe Whitening 2",
     "patient": {
-      "id": "_mFPAb7h3Nom6YNkWx570",
-      "name": "John Doe"
-    },
-    "notes": "xxx"  }
+      "id": "dhajkh321",
+      "identifier": "J-1",
+      "name": "John Doe",
+      "phone": "1234567890",
+      "email": "jon@doe.com",
+      "address": "123 Main St",
+      "dob": "01/01/1998",
+      "medicalHistory": "None"
+    }
+  }
 ]

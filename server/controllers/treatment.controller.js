@@ -1,4 +1,3 @@
-const fs = require('fs');
 const treatments = require('../data/treatments.json');
 const response = require('../utils/response');
 
