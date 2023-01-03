@@ -1,25 +1,51 @@
 const { nanoid } = require("nanoid");
 const fs = require("fs");
-const appointments = require("../data/appointments.json");
 const response = require("../utils/response");
+
+const appointments = require("../data/appointments.json");
+const doctors = require("../data/users.json");
+const rooms = require("../data/rooms.json");
+const patients = require("../data/patients.json");
 
 class AppointmentsController {
   static index(req, res) {
+    const { date } = req.query;
+
+    if (date) {
+      const filteredAppointments = appointments.filter(
+        (appointment) => appointment.date === date
+      );
+
+      return response(res, 200, "OK", filteredAppointments);
+    }
+
     response(res, 200, "OK", appointments);
   }
 
   static create(req, res) {
-    let { date, start, end, doctor, room, patient, notes } = req.body;
+    const { date, start, end, doctor_id, room_id, patient_id, notes } = req.body;
     const id = nanoid();
 
+    const doctor = doctors.find((doctor) => doctor.id === doctor_id);
+    const room = rooms.find((room) => room.id === room_id);
+    const patient = patients.find((patient) => patient.id === patient_id);
+
+    if (!doctor) return response(res, 404, "Doctor not found", null);
+    if (!room) return response(res, 404, "Room not found", null);
+    if (!patient) return response(res, 404, "Patient not found", null);
+
     appointments.push({
-      date,
-      start,
-      end,
-      doctor,
-      room,
-      notes,
-      patient,
+      id: id,
+      doctor_id: doctor_id,
+      patient_id: patient_id,
+      room_id: room_id,
+      date: date,
+      start: start,
+      end: end,
+      doctor: doctor,
+      room: room,
+      notes: notes,
+      patient: patient,
     });
 
     fs.writeFileSync(
@@ -28,14 +54,17 @@ class AppointmentsController {
     );
 
     response(res, 201, "Created", {
-      id,
-      date,
-      start,
-      end,
-      doctor,
-      room,
-      notes,
-      patient,
+      id: id,
+      doctor_id: doctor_id,
+      patient_id: patient_id,
+      room_id: room_id,
+      doctor: doctor,
+      room: room,
+      patient: patient,
+      date: date,
+      start: start,
+      end: end,
+      notes: notes,
     });
   }
 
@@ -45,69 +74,65 @@ class AppointmentsController {
     const appointment = appointments.find(
       (appointment) => appointment.id === id
     );
-    if (appointment) {
-      const index = appointments.indexOf(appointment);
-      appointments.splice(index, 1);
 
-      fs.writeFileSync(
-        "./server/data/appointments.json",
-        JSON.stringify(appointments, null, 2)
-      );
+    if (!appointment) return response(res, 404, "Not Found", null);
 
-      response(res, 200, "OK", {
-        id: appointment.id,
-        date: appointment.date,
-        start: appointment.start,
-        end: appointment.end,
-        doctor: appointment.doctor,
-        room: appointment.room,
-        notes: appointment.notes,
-        patient: appointment.patient,
-      });
-    } else {
-      response(res, 404, "Not Found", {
-        error: "User not found",
-      });
-    }
+    const index = appointments.indexOf(appointment);
+    appointments.splice(index, 1);
+
+    fs.writeFileSync(
+      "./server/data/appointments.json",
+      JSON.stringify(appointments, null, 2)
+    );
+
+    response(res, 200, "OK", appointment);
   }
 
   static update(req, res) {
     const { id } = req.params;
-    const { date, start, end, doctor, room, notes, patient } = req.body;
+    const { date, start, end, doctor_id, room_id, notes, patient_id } = req.body;
+
+    const doctor = doctors.find((doctor) => doctor.id === doctor_id);
+    const room = rooms.find((room) => room.id === room_id);
+    const patient = patients.find((patient) => patient.id === patient_id);
+
+    if (!doctor) return response(res, 404, "Doctor not found", null);
+    if (!room) return response(res, 404, "Room not found", null);
+    if (!patient) return response(res, 404, "Patient not found", null);
 
     const appointment = appointments.find(
       (appointment) => appointment.id === id
     );
 
-    if (appointment) {
-      appointment.date = date;
-      appointment.start = start;
-      appointment.end = end;
-      appointment.doctor = doctor;
-      appointment.room = room;
-      appointment.notes = notes;
-      appointment.patient = patient;
+    if (!appointment) return response(res, 404, "Not Found", null);
 
-      fs.writeFileSync(
-        "./server/data/appointments.json",
-        JSON.stringify(appointments, null, 2)
-      );
+    appointment.doctor_id = doctor_id;
+    appointment.patient_id = patient_id;
+    appointment.room_id = room_id;
+    appointment.doctor = doctor;
+    appointment.room = room;
+    appointment.patient = patient;
+    appointment.date = date;
+    appointment.start = start;
+    appointment.end = end;
+    appointment.notes = notes;
 
-      response(res, 200, "OK", {
-        id: appointment.id,
-        date: appointment.date,
-        start: appointment.start,
-        end: appointment.end,
-        doctor: appointment.doctor,
-        room: appointment.room,
-        notes: appointment.notes,
-        patient: appointment.patient,
-      });
-    } else {
-      response(res, 404, "Not Found", {
-        error: "User not found",
-      });
-    }
+    fs.writeFileSync(
+      "./server/data/appointments.json",
+      JSON.stringify(appointments, null, 2)
+    );
+
+    return response(res, 200, "OK", {
+      id: appointment.id,
+      date: appointment.date,
+      start: appointment.start,
+      end: appointment.end,
+      doctor: appointment.doctor,
+      room: appointment.room,
+      notes: appointment.notes,
+      patient: appointment.patient,
+    });
+
   }
 }
 

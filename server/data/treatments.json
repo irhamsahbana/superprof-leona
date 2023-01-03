@@ -1,13 +1,59 @@
 [
-    {
-        "id": "adasd134123xc",
-        "name": "Conservative Treatment",
-        "list": [
-            {
-                "id": "adasd134123xdasc",
-                "name": "Whitening",
-                "price": 1000
-            }
-        ]
-    }
+  {
+    "id": 1,
+    "name": "Oral & Maxilofacial Surgeon",
+    "list": [
+      {
+        "id": 9,
+        "tindakan": "All on 4 Implants",
+        "biaya": 175000000
+      },
+      {
+        "id": 10,
+        "tindakan": "Odontectomy (Ringan)",
+        "biaya": 2500000
+      },
+      {
+        "id": 11,
+        "tindakan": "Odontectomy (Reguler)",
+        "biaya": 3500000
+      },
+      {
+        "id": 12,
+        "tindakan": "Odontectomy (Berat)",
+        "biaya": 4500000
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Conservative Treatments",
+    "list": [
+      {
+        "id": 1,
+        "tindakan": "Scalling",
+        "biaya": 500000
+      },
+      {
+        "id": 2,
+        "tindakan": "Dental Filling",
+        "biaya": 700000
+      },
+      {
+        "id": 13,
+        "tindakan": "Extraction (Ringan)",
+        "biaya": 7000000
+      },
+      {
+        "id": 14,
+        "tindakan": "Extraction (Reguler)",
+        "biaya": 800000
+      },
+      {
+        "id": 15,
+        "tindakan": "Teeth Whitening",
+        "biaya": 3500000
+      }
+    ]
+  }
 ]
