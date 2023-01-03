@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MainService from "../../../services/MainService";
 import {
-  Box,
   Button,
   Dialog,
   DialogActions,
@@ -11,19 +10,10 @@ import {
   Select,
   Stack,
   TextField,
-  InputLabel,
-  OutlinedInput,
+  Typography,
 } from "@mui/material";
-import { setSelectedData } from "../../../redux/dokterSlice";
 
-export const TambahDataModal = ({ open, columns, onClose, onSubmit }) => {
-  // const [values, setValues] = useState(() =>
-  //   columns.reduce((acc, column) => {
-  //     acc[column.accessorKey ?? ""] = "";
-  //     return acc;
-  //   }, {})
-  // );
-
+export const TambahDataModal = ({ open, onClose, onSubmit }) => {
   const initialForm = {
     tindakan: "",
     biaya: 0,
@@ -51,7 +41,18 @@ export const TambahDataModal = ({ open, columns, onClose, onSubmit }) => {
 
   return (
     <Dialog open={open}>
-      <DialogTitle textAlign="center">Tambah Data</DialogTitle>
+      <DialogTitle textAlign="center">
+        <Typography
+          component="h1"
+          variant="h5"
+          sx={{
+            fontWeight: "bold",
+            mt: 2,
+          }}
+        >
+          Tambah Data Baru 
+        </Typography>
+      </DialogTitle>
       <DialogContent>
         <form>
           <Stack
@@ -65,7 +66,7 @@ export const TambahDataModal = ({ open, columns, onClose, onSubmit }) => {
               index < 2 ? (
                 <TextField
                   key={index}
-                  label={k}
+                  label={k.charAt(0).toUpperCase() + k.slice(1)}
                   name={k}
                   onChange={(e) =>
                     setInputData({
@@ -73,13 +74,13 @@ export const TambahDataModal = ({ open, columns, onClose, onSubmit }) => {
                       [e.target.name]: e.target.value,
                     })
                   }
+                  sx={index === 0 && { mt: 2 }}
                 />
               ) : (
                 <Select
                   name="categoryId"
                   key={index}
                   value={selected}
-                  label="Menu"
                   onChange={(e) => {
                     setInputData({ ...inputData, categoryId: e.target.value });
                     setSelected(e.target.value);
@@ -96,7 +97,7 @@ export const TambahDataModal = ({ open, columns, onClose, onSubmit }) => {
       </DialogContent>
       <DialogActions sx={{ p: "1.25rem" }}>
         <Button onClick={onClose}>Cancel</Button>
-        <Button color="secondary" onClick={handleSubmit} variant="contained">
+        <Button onClick={handleSubmit} variant="contained">
           Tambah
         </Button>
       </DialogActions>

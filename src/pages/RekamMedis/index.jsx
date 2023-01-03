@@ -1,22 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Search from "../../assets/search.svg";
-import { Button, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import MaterialReactTable from "material-react-table";
+import { Box, IconButton, Tooltip, Button, TextField } from "@mui/material";
 import axios from "axios";
 import {
   setRekamMedisQuery,
   setRekamMedisResults,
 } from "../../redux/rekamMedisSlice";
 import { useDispatch, useSelector } from "react-redux";
+import PreviewIcon from "@mui/icons-material/Preview";
 
 export default function RekamMedis() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { rekamMedisQuery, rekamMedisResults } = useSelector(
-    (state) => state.rekamMedis
-  );
+  const [rekamMedisQuery, setRekamMedisQuery] = useState("");
+  const [rekamMedisResults, setRekamMedisResults] = useState("");
+
+  // const { rekamMedisResults } = useSelector((state) => state.rekamMedis);
+
+  useEffect(() => {
+    // try {
+    //   getSearchedRekamMedis(rekamMedisQuery);
+    // } catch {
+    //   console.log("error");
+    // }
+  }, [rekamMedisResults]);
 
   const getSearchedRekamMedis = async (query) => {
     const data = await axios
@@ -26,20 +36,36 @@ export default function RekamMedis() {
         console.log(res);
         return res.data;
       });
-    dispatch(setRekamMedisResults(data));
+    setRekamMedisResults(data);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      console.log(rekamMedisResults);
       console.log(rekamMedisQuery);
       getSearchedRekamMedis(rekamMedisQuery);
-      navigate("/rekam-medis/search");
     } catch {
       alert("Error 404");
     }
   };
+
+  const cols = useMemo(
+    () => [
+      {
+        header: "No. Rekam Medis",
+        accessorKey: "no_rm",
+      },
+      {
+        header: "Nama Pasien",
+        accessorKey: "full_name",
+      },
+      {
+        header: "Transaksi Terakhir",
+        accessorKey: "address",
+      },
+    ],
+    []
+  );
 
   return (
     <>
@@ -54,7 +80,7 @@ export default function RekamMedis() {
               sx={{ padding: 0, margin: 0 }}
               label="Nama/ No. RM pasien"
               variant="outlined"
-              onChange={(e) => dispatch(setRekamMedisQuery(e.target.value))}
+              onChange={(e) => setRekamMedisQuery(e.target.value)}
             />
           </span>
           <div className="w-4"></div>
@@ -71,10 +97,34 @@ export default function RekamMedis() {
           </span>
         </div>
       </form>
-      <div className="pl-50 ml-[500px] mt-40">
-        <img className="w-48 h-auto" alt="Search" src={Search} />
-        <p className="pt-7 text-lg">Belum ada rekam medis yang dicari</p>
-      </div>
+      <Box sx={{ mt: 4 }}>
+        <MaterialReactTable
+          columns={cols}
+          data={rekamMedisResults}
+          localization={{
+            actions: "",
+          }}
+          enableEditing
+          renderRowActions={({ row, table }) => (
+            <Box>
+              <Tooltip arrow placement="left" title="Edit">
+                <Button
+                  sx={{ textTransform: "none" }}
+                  size="small"
+                  variant="outlined"
+                  startIcon={<PreviewIcon />}
+                  onClick={() => {
+                    console.log(row);
+                    navigate("/rekam-medis/selected");
+                  }}
+                >
+                  Preview
+                </Button>
+              </Tooltip>
+            </Box>
+          )}
+        />
+      </Box>
     </>
   );
 }

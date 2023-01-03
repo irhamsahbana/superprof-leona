@@ -11,39 +11,45 @@ import EditIcon from "@mui/icons-material/Edit";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import ExportToExcel from "../../components/ExportToExcel";
 import DummyKasir from "../../data/DummyKasir.json";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 
 export default function Kasir() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const dateFormat = "DD/MM/YYYY";
 
-  const cols = useMemo(() =>  [
-    {
-      Header: "Nama",
-      accessorKey: "nama",
-    },
-    {
-      Header: "Status",
-      accessorKey: "status",
-      Cell: ({ cell }) => {
-        return cell.getValue() === "Belum Lunas" ? (
-          <Chip
-            size="small"
-            variant="outlined"
-            color="error"
-            label={cell.getValue()}
-          />
-        ) : (
-          <Chip
-            size="small"
-            variant="outlined"
-            color="success"
-            label={cell.getValue()}
-          />
-        );
+  const cols = useMemo(
+    () => [
+      {
+        header: "Nama",
+        accessorKey: "nama",
       },
-    },
-  ], [])
+      {
+        header: "Status",
+        accessorKey: "status",
+        Cell: ({ cell }) => {
+          return cell.getValue() === "Belum Lunas" ? (
+            // <Chip
+            //   size="small"
+            //   variant="outlined"
+            //   color="error"
+            //   label={cell.getValue()}
+            // />
+            <Tag color="red">{cell.getValue()}</Tag>
+          ) : (
+            // <Chip
+            //   size="small"
+            //   variant="outlined"
+            //   color="success"
+            //   label={cell.getValue()}
+            // />
+            <Tag color="green">{cell.getValue()}</Tag>
+          );
+        },
+      },
+    ],
+    []
+  );
 
   const data = useMemo(() => DummyKasir, []);
 
@@ -51,6 +57,7 @@ export default function Kasir() {
     <>
       <div className="mb-5">
         <h1>Kasir</h1>
+        <p className="text-lg">Halaman untuk melakukan pemrosesan transaksi</p>
       </div>
       <div className="flex flex-row">
         <div className="mr-3">
@@ -59,15 +66,26 @@ export default function Kasir() {
             format={dateFormat}
           />
         </div>
-
-        <div>
+        <Button
+          color="primary"
+          //export all data that is currently in the table (ignore pagination, sorting, filtering, etc.)
+          // onClick={handleExportData}
+          // startIcon={<FileDownloadIcon />}
+          variant="contained"
+        >
+          Tampilkan
+        </Button>
+        {/* <div>
           <ExportToExcel excelData={data} fileName="LaporanTransaksi20092022" />
-        </div>
+        </div> */}
       </div>
       <div className="mt-4">
         <MaterialReactTable
           columns={cols}
           data={DummyKasir}
+          localization={{
+            actions: "",
+          }}
           enableEditing
           renderRowActions={({ row, table }) => (
             <Box sx={{ display: "flex" }}>
@@ -86,6 +104,26 @@ export default function Kasir() {
                   <EditIcon />
                 </IconButton>
               </Tooltip>
+            </Box>
+          )}
+          renderTopToolbarCustomActions={({ table }) => (
+            <Box
+              sx={{
+                display: "flex",
+                gap: "1rem",
+                p: "0.5rem",
+                flexWrap: "wrap",
+              }}
+            >
+              <Button
+                color="primary"
+                //export all data that is currently in the table (ignore pagination, sorting, filtering, etc.)
+                // onClick={handleExportData}
+                startIcon={<FileDownloadIcon />}
+                variant="contained"
+              >
+                Export
+              </Button>
             </Box>
           )}
         />

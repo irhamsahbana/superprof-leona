@@ -27,7 +27,10 @@ import {
   EditInvoice,
   Pembayaran,
   DokDashboard,
+  DokJadwal,
+  DokRekamMedis,
 } from "../pages";
+import DokJadwalOperasi from "../pages/DokJadwal";
 
 function Routing() {
   const { role } = useSelector((state) => state.user);
@@ -39,7 +42,7 @@ function Routing() {
           path="/"
           element={
             <PrivateRoute>
-              {role.role === "admin" ? <Dashboard /> : <DokDashboard />}
+              {role === "admin" ? <Dashboard /> : <DokDashboard />}
             </PrivateRoute>
           }
         />
@@ -99,7 +102,7 @@ function Routing() {
           path="/jadwal"
           element={
             <PrivateRoute>
-              <JadwalOperasi />
+              {role === "admin" ? <JadwalOperasi /> : <DokJadwalOperasi />}
             </PrivateRoute>
           }
         />
@@ -132,7 +135,7 @@ function Routing() {
           path="/rekam-medis"
           element={
             <PrivateRoute>
-              <RekamMedis />
+              {role === "admin" ? <RekamMedis /> : <DokRekamMedis />}
             </PrivateRoute>
           }
         />

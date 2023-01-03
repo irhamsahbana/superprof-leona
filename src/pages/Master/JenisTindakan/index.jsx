@@ -93,6 +93,9 @@ export default function ViewJenisTindakan() {
         <MaterialReactTable
           columns={cols}
           data={jenisTindakanList}
+          localization={{
+            actions: "",
+          }}
           enableEditing
           onEditingRowSave={handleSaveRowEdits}
           renderRowActions={({ row, table }) => (

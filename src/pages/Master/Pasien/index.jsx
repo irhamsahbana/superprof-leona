@@ -109,6 +109,9 @@ export default function ViewPasien() {
         <MaterialReactTable
           columns={cols}
           data={pasienList}
+          localization={{
+            actions: "",
+          }}
           initialState={{ columnVisibility: { dob: false, email: false } }}
           enableEditing
           onEditingRowSave={handleSaveRowEdits}

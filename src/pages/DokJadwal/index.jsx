@@ -3,17 +3,18 @@ import React, { useState, useMemo, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 // components, data, slices
 import MaterialReactTable from "material-react-table";
-import dayjs from "dayjs";
 import CreateDialog from "../../components/CreateDialog";
-
+import { DatePicker, Tag } from "antd";
+import dayjs from "dayjs";
 import { Delete, Edit } from "@mui/icons-material";
 import { Box, IconButton, Tooltip, Button, Chip } from "@mui/material";
 import MainService from "../../services/MainService";
 import TableContentLoader from "../../components/TableContentLoader";
 import toast, { Toaster } from "react-hot-toast";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
+import AddBoxIcon from "@mui/icons-material/AddBox";
 
-export default function JadwalOperasi() {
+export default function DokJadwalOperasi() {
   const navigate = useNavigate();
   const [jadwalList, setJadwalList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +33,7 @@ export default function JadwalOperasi() {
 
   // fetch all lists here
   useEffect(() => {
-    MainService.getAll("schedules").then((res) => {
+    MainService.getAll("schedules?q=drg.%20A").then((res) => {
       setJadwalList(res);
       console.log(jadwalList.length);
     });
@@ -43,21 +44,21 @@ export default function JadwalOperasi() {
     setShowDeleteModal(!showDeleteModal);
   };
 
-  const handleDeleteRow = useCallback(
-    (row) => {
-      if (alert(`Are you sure you want to delete ${row.getValue("jadwal")}`)) {
-        return;
-      }
-      console.log(row);
-      MainService.removeData("schedules", row.original.id);
-      setJadwalList([...jadwalList]);
-      toast.success("Jadwal berhasil dihapus!", {
-        duration: 4000,
-        position: "top-right",
-      });
-    },
-    [jadwalList]
-  );
+  //   const handleDeleteRow = useCallback(
+  //     (row) => {
+  //       if (alert(`Are you sure you want to delete ${row.getValue("jadwal")}`)) {
+  //         return;
+  //       }
+  //       console.log(row);
+  //       MainService.removeData("schedules", row.original.id);
+  //       setJadwalList([...jadwalList]);
+  //       toast.success("Jadwal berhasil dihapus!", {
+  //         duration: 4000,
+  //         position: "top-right",
+  //       });
+  //     },
+  //     [jadwalList]
+  //   );
 
   const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
     console.log(row.index);
@@ -71,22 +72,22 @@ export default function JadwalOperasi() {
     exitEditingMode(); //required to exit editing mode and close modal
   };
 
-  const handleCreateData = (values) => {
-    try {
-      MainService.addData("schedules", values).then((res) => {
-        console.log(res);
-        toast.success("Data telah berhasil ditambah!", {
-          duration: 2000,
-          position: "top-right",
-        });
-      });
-    } catch {
-      console.log("error");
-    }
-    setJadwalList([...jadwalList, values]);
+  //   const handleCreateData = (values) => {
+  //     try {
+  //       MainService.addData("schedules", values).then((res) => {
+  //         console.log(res);
+  //         toast.success("Data telah berhasil ditambah!", {
+  //           duration: 2000,
+  //           position: "top-right",
+  //         });
+  //       });
+  //     } catch {
+  //       console.log("error");
+  //     }
+  //     setJadwalList([...jadwalList, values]);
 
-    console.log(values);
-  };
+  //     console.log(values);
+  //   };
 
   const cols = useMemo(
     () => [
@@ -139,6 +140,25 @@ export default function JadwalOperasi() {
           <span className="text-blue-500 text-2xl">Jadwal Operasional</span>
         </h1>
       </div>
+      <div className="mr-3 mb-4">
+        <div className="flex flex-row">
+          <DatePicker
+            defaultValue={dayjs("12/12/2022", "DD/MM/YYYY")}
+            format={"DD/MM/YYYY"}
+          />
+
+          <Button
+            onClick={() => {
+              console.log("Tampil according to date");
+            }}
+            variant="contained"
+            sx={{ ml: 1 }}
+          >
+            Tampilkan{" "}
+          </Button>
+        </div>
+      </div>
+
       {isLoading ? (
         <TableContentLoader />
       ) : (
@@ -162,31 +182,21 @@ export default function JadwalOperasi() {
                   <AutorenewIcon />
                 </IconButton>
               </Tooltip>
-              <Tooltip arrow placement="left" title="Edit">
+              <Tooltip arrow placement="right" title="Tambah Rekam Medis">
                 <IconButton
                   onClick={() => {
-                    table.setEditingRow(row);
-                    console.log(row);
+                    console.log("Add Rekam Medis/Tindakan");
                   }}
                 >
-                  <Edit />
+                  <AddBoxIcon />
                 </IconButton>
               </Tooltip>
-              <Tooltip arrow placement="right" title="Delete">
+              {/* <Tooltip arrow placement="right" title="Delete">
                 <IconButton color="error" onClick={() => handleDeleteRow(row)}>
                   <Delete />
                 </IconButton>
-              </Tooltip>
+              </Tooltip> */}
             </Box>
-          )}
-          renderTopToolbarCustomActions={() => (
-            <Button
-              color="primary"
-              onClick={() => navigate("/jadwal/add")}
-              variant="contained"
-            >
-              Buat Jadwal Baru
-            </Button>
           )}
         />
       )}

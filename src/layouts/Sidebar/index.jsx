@@ -43,7 +43,7 @@ export default function Sidebar() {
         </div>
 
         <ul>
-          {(role.role === "admin" ? SidebarItems : DokSidebarItems).map((menuItem, i) => (
+          {(role === "admin" ? SidebarItems : DokSidebarItems).map((menuItem, i) => (
             <div key={i}>
               {menuItem.dropdown ? (
                 <>

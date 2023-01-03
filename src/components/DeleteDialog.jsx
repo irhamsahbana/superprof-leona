@@ -6,7 +6,10 @@ import {
   DialogContentText,
   DialogTitle,
   DialogContent,
+  Stack,
+  Box,
 } from "@mui/material";
+import WarningIcon from "@mui/icons-material/Warning";
 
 // must pass open component
 export default function DeleteDialog({
@@ -17,18 +20,26 @@ export default function DeleteDialog({
 }) {
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>
-        {"Apakah Anda yakin ingin menghapus data tersebut?"}
-      </DialogTitle>
-      <DialogContent>
-        <DialogContentText>{deletedItem}</DialogContentText>
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>Disagree</Button>
-        <Button variant="contained" onClick={handleDelete} autoFocus>
-          Agree
-        </Button>
-      </DialogActions>
+      <Stack>
+        <Box sx={{ display: "flex" }}>
+          <WarningIcon sx={{ color: "red" }} />
+          <DialogTitle>
+            {"Apakah Anda yakin ingin menghapus data tersebut?"}
+          </DialogTitle>
+        </Box>
+
+        <DialogContent>
+          <DialogContentText>{deletedItem}</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} variant="outlined">
+            Disagree
+          </Button>
+          <Button variant="contained" onClick={handleDelete} autoFocus>
+            Agree
+          </Button>
+        </DialogActions>
+      </Stack>
     </Dialog>
   );
 }

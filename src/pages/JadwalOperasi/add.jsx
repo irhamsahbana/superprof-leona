@@ -19,14 +19,13 @@ import { TextField, MenuItem, Select, Autocomplete } from "@mui/material";
 export default function AddJadwal() {
   const navigate = useNavigate();
   const initForm = {
-    id: null,
-    patient: {},
-    notes: null,
-    doctor: {},
-    room: {},
-    date: null,
-    start: null,
-    end: null,
+    patient_id: "",
+    notes: "",
+    doctor_id: "",
+    room_id: "",
+    date: "",
+    start: "",
+    end: "",
   };
 
   const [studioList, setStudioList] = useState([]);
@@ -55,6 +54,8 @@ export default function AddJadwal() {
     // tempData.map(async (val) => {
     //   await JadwalService.addData(val);
     // });
+
+    console.log(tempData)
     navigate("/jadwal");
     toast.success("Jadwal berhasil ditambah!", {
       duration: 4000,
@@ -114,7 +115,7 @@ export default function AddJadwal() {
               <div className="mr-10">
                 <select className="bg-gray-50 h-8 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-max px-2">
                   {studioList.map((data, i) => (
-                    <option key={i} defaultValue={data.id}>
+                    <option key={i} value={data.id}>
                       {data.studio}
                     </option>
                   ))}
@@ -123,7 +124,7 @@ export default function AddJadwal() {
               <div className="w-56">
                 <select className="bg-gray-50 h-8 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-max px-2">
                   {doctorList.map((data, i) => (
-                    <option key={i} defaultValue={data.id}>
+                    <option key={i} value={data.id}>
                       {data.nama}
                     </option>
                   ))}
@@ -160,17 +161,24 @@ export default function AddJadwal() {
                     {/* <td className="font-bold w-1/13 pr-4 text-gray-500"></td> */}
                     <td className="w-1/12">{idx + 1}</td>
                     <td className="w-2/12">
-                      <FormInput
+                      {/* <FormInput
                         placeholder="Name Pasien"
                         name={`nama`}
                         onChange={(e) => handleChange(idx, e)}
-                      />
+                      /> */}
+                      <select className="bg-gray-50 h-8 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-max px-2">
+                        {patientList.map((data, i) => (
+                          <option key={i} value={data.id}>
+                            {data.full_name}
+                          </option>
+                        ))}
+                      </select>
                     </td>
                     <td className="w-3/12">
                       <FormInput
                         width="w-full"
                         placeholder="Keterangan"
-                        name={`keterangan`}
+                        name={`notes`}
                         onChange={(e) => handleChange(idx, e)}
                       />
                     </td>

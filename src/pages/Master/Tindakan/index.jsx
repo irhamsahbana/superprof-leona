@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import MaterialReactTable from "material-react-table";
 import { Delete, Edit } from "@mui/icons-material";
 import { Box, IconButton, Tooltip, Button, Chip } from "@mui/material";
-import { ButtonIcon, ButtonAdd } from "../../../components/Button";
 import MainService from "../../../services/MainService";
 import TableContentLoader from "../../../components/TableContentLoader";
 import toast, { Toaster } from "react-hot-toast";
@@ -133,6 +132,9 @@ export default function ViewTindakan() {
         <MaterialReactTable
           columns={cols}
           data={tindakanList}
+          localization={{
+            actions: "",
+          }}
           initialState={{ density: "compact" }}
           enableEditing
           onEditingRowSave={handleSaveRowEdits}

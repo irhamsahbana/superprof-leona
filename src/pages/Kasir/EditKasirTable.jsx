@@ -20,6 +20,7 @@ import CreateDialog from "../../components/CreateDialog";
 import DeleteDialog from "../../components/DeleteDialog";
 // service
 import MainService from "../../services/MainService";
+import DeleteModal from "../../components/DeleteModal";
 
 export default function EditKasirTable(props) {
   const [openModal, setOpenModal] = useState(false); // create modal
@@ -28,9 +29,9 @@ export default function EditKasirTable(props) {
 
   const [tindakanList, setTindakanList] = useState([]); // get All
 
-  const [selectedTindakanId, setSelectedTindakanId] = useState(1);
+  // for add tindakan states
+  const [selectedTindakanId, setSelectedTindakanId] = useState(0);
   const [selectedTindakan, setSelectedTindakan] = useState({}); // get
-
   const [addedTransaction, setAddedTransaction] = useState({
     tindakan: "",
     qty: 0,
@@ -38,7 +39,10 @@ export default function EditKasirTable(props) {
     discount: 0,
     subtotal: 0,
   }); // transacition about to be added
-  const [currentTransaction, setCurrentTransaction] = useState({});
+
+  // for edit transactions
+  const [selectedTransactionId, setSelectedTransactionId] = useState(1);
+  const [selectedTransaction, setSelectedTransaction] = useState({});
 
   const diskon = [10, 15, 20];
   useEffect(() => {
@@ -86,7 +90,9 @@ export default function EditKasirTable(props) {
             <IconButton
               onClick={() => {
                 setOpenEditModal(true);
-                setSelectedTindakanId(i);
+                // array starts from 0
+                setSelectedTransactionId(i);
+                console.log(props.transaksi[selectedTransactionId]);
               }}
             >
               <EditIcon />
@@ -97,7 +103,7 @@ export default function EditKasirTable(props) {
               color="error"
               onClick={() => {
                 setOpenDeleteModal(true);
-                setSelectedTindakanId(i);
+                setSelectedTransactionId(i);
               }}
             >
               <DeleteIcon />
@@ -241,30 +247,33 @@ export default function EditKasirTable(props) {
         </Stack>
       </CreateDialog>
 
+      {/* Edit */}
       <CreateDialog
         title="Ubah Tindakan"
         open={openEditModal}
         handleClose={() => setOpenEditModal(false)}
       >
         <FormControl>
-          <Box
-            sx={{ display: "flex", justifyContent: "space-between" }}
-            spacing={2}
+          <Stack
+            sx={{ alignItems: "center", mt: 2 }}
+            spacing={1}
           >
             <TextField
               variant="outlined"
               label="Qty"
               type="number"
-              value={addedTransaction.qty || ""}
+              name="qty"
+              value={props.transaksi[selectedTransactionId].qty || ""}
               onChange={handleChange}
+              sx={{width: 120}}
             />
             <TextField
               sx={{ width: 180 }}
               variant="outlined"
               label="Diskon"
               type="number"
-              name="qty"
-              value={addedTransaction.discount || ""}
+              name="diskon"
+              defaultValue={props.transaksi[selectedTransactionId].diskon || ""}
               // TODO: fix handle change
               onChange={handleChange}
               InputProps={{
@@ -275,13 +284,18 @@ export default function EditKasirTable(props) {
                 ),
               }}
             />
-          </Box>
+          </Stack>
         </FormControl>
       </CreateDialog>
 
-      <DeleteDialog
+      {/* <DeleteDialog
         open={openDeleteModal}
         deletedItem={selectedTindakan[selectedTindakanId]}
+        handleClose={() => setOpenDeleteModal(false)}
+      /> */}
+
+      <DeleteModal
+        open={openDeleteModal}
         handleClose={() => setOpenDeleteModal(false)}
       />
     </>

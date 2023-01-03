@@ -44,3 +44,7 @@ export { default as Pembayaran } from "./KasirPembayaran";
 
 // pages for role = doctor
 export { default as DokDashboard } from "./DokDashboard";
+export { default as DokJadwal } from "./DokJadwal";
+export { default as DokRekamMedis } from "./DokRekamMedis";
+
+

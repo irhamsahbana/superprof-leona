@@ -43,11 +43,6 @@
       "id": 9,
       "nama": "drg. Maria Yosefha Kumalasari, SKG",
       "spesialis": "General Practitioner (Dokter Gigi Umum)"
-    },
-    {
-      "id": 10,
-      "nama": "drg.Chelsea",
-      "spesialis": "a"
     }
   ],
   "studios": [
@@ -69,7 +64,7 @@
     },
     {
       "studios": "",
-      "studio": "Asd",
+      "studio": "Studio 4",
       "id": 5
     }
   ],
@@ -205,6 +200,12 @@
       "biaya": "3000000",
       "categoryId": 3,
       "id": 18
+    },
+    {
+      "tindakan": "GIC Pedo Posterior",
+      "biaya": "400000",
+      "categoryId": 3,
+      "id": 19
     }
   ],
   "patients": [
@@ -240,26 +241,7 @@
       "transactions": {}
     }
   ],
-  "medical_records": [
-    {
-      "id": "B-22100002",
-      "history": {
-        "allergies": ["Paracetamol", "Teroid"],
-        "medical": ["Sinus", "Jaw Issues"]
-      },
-      "patientId": 100,
-      "odontogramId": 1
-    },
-    {
-      "id": "N-22100002",
-      "history": {
-        "allergies": ["Lateks"],
-        "medical": [""]
-      },
-      "patientId": 97,
-      "odontogramId": 2
-    }
-  ],
+  "medical_records": [],
   "odontograms": [
     {
       "id": 1,
@@ -287,6 +269,7 @@
       "dokter": "drg. A",
       "ruangan": "Studio 1",
       "pasien": "Leona",
+      "no_rm": "L-22110011",
       "keterangan": "Scalling",
       "status": "Belum datang",
       "jam_mulai": "12:00",
@@ -298,6 +281,7 @@
       "dokter": "drg. A",
       "ruangan": "Studio 2",
       "pasien": "Rose",
+      "no_rm": "R-21090011",
       "status": "Datang",
       "keterangan": "Filling",
       "jam_mulai": "14:00",

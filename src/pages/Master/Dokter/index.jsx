@@ -9,6 +9,7 @@ import { Delete, Edit } from "@mui/icons-material";
 import { Box, Button, IconButton, Tooltip } from "@mui/material";
 
 import DokterService from "../../../services/DokterService";
+import DeleteModal from "../../../components/DeleteModal";
 import TableContentLoader from "../../../components/TableContentLoader";
 import toast, { Toaster } from "react-hot-toast";
 import {
@@ -100,6 +101,9 @@ export default function ViewDokter() {
         <MaterialReactTable
           columns={cols}
           data={dokter}
+          localization={{
+            actions: "",
+          }}
           enableEditing
           enableColumnActions
           onEditingRowSave={handleSaveRowEdits}
@@ -140,15 +144,12 @@ export default function ViewDokter() {
         />
       )}
 
-      {showDeleteModal && (
-        <DeleteDialog
+        <DeleteModal
           open={showDeleteModal}
           handleClose={handleCloseDelete}
           handleDelete={handleDeleteRow}
-          deletedItem={selectedData.getValue("nama")}
+          // deletedItem={selectedData.getValue("nama")}
         />
-      )}
-
       <Toaster />
     </>
   );

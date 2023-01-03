@@ -31,11 +31,11 @@ export default function SearchRekamMedis() {
       },
       {
         header: "Nama Pasien",
-        accessorKey: "full_name",
+        accessorKey: "pasien",
       },
       {
         header: "Transaksi Terakhir",
-        accessorKey: "dob",
+        accessorKey: "address",
       },
     ],
     []
@@ -51,6 +51,9 @@ export default function SearchRekamMedis() {
       <MaterialReactTable
         columns={cols}
         data={rekamMedisResults}
+        localization={{
+          actions: "",
+        }}
         initialState={{ columnVisibility: { dob: false, email: false } }}
         enableEditing
         renderRowActions={({ row, table }) => (
@@ -58,6 +61,7 @@ export default function SearchRekamMedis() {
             <IconButton
               onClick={() => {
                 console.log(row);
+                navigate("/rekam-medis/selected");
               }}
             >
               <Edit />

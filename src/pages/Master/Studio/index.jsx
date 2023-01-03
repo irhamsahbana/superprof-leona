@@ -100,6 +100,9 @@ export default function ViewStudio() {
         <MaterialReactTable
           columns={cols}
           data={studioList}
+          localization={{
+            actions: "",
+          }}
           enableEditing
           onEditingRowSave={handleSaveRowEdits}
           renderRowActions={({ row, table }) => (

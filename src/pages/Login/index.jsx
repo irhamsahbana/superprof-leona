@@ -1,11 +1,41 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { login, setRole } from "../../redux/userSlice";
-import { useNavigate } from "react-router-dom";
-import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-// components
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Box from "@mui/material/Box";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
 import Logo from "../../assets/logo-transparent.png";
-import Footer from "../../layouts/Footer";
+// redux, routes
+import { setRole, login } from "../../redux/userSlice";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+function Copyright(props) {
+  return (
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link color="inherit" href="https://www.instagram.com/dentologybali/">
+        Dentology Aesthetic Dental Care
+      </Link>{" "}
+      2022 {"."}
+    </Typography>
+  );
+}
+
+// const theme = createTheme();
 
 export default function Login() {
   const navigate = useNavigate();
@@ -34,9 +64,9 @@ export default function Login() {
     }
 
     if (inputValues.username === "admin") {
-      dispatch(setRole({ role: "admin" }));
+      dispatch(setRole("admin"));
     } else {
-      dispatch(setRole({ role: "dokter" }));
+      dispatch(setRole("dokter"));
     }
   };
 
@@ -54,9 +84,9 @@ export default function Login() {
       setErrorMsg("Username/ password tidak terdaftar");
     } else {
       if (inputValues.username === "admin") {
-        dispatch(setRole({ role: "admin" }));
+        dispatch(setRole("admin"));
       } else {
-        dispatch(setRole({ role: "dokter" }));
+        dispatch(setRole("dokter"));
       }
       dispatch(login(inputValues));
       setErrorMsg("");
@@ -67,77 +97,88 @@ export default function Login() {
 
   return (
     <>
-      <div className="h-screen p-5 bg-gradient-to-b from-white to-sky-100">
-        <img className="w-32 h-auto" alt="dentology" src={Logo} />
-        <div className="mt-40">
-          <div className="flex flex-col sm:mx-32 md:mx-32 min-[800px]:mx-32 lg:mx-96">
-            <h1 className="text-center font-Inter font-extrabold text-3xl">
-              Login
-            </h1>
-
-            <form onSubmit={handleSubmit}>
-              <div className="flex flex-col pt-3">
-                <label
-                  htmlFor="username"
-                  className="block mb-1 font-Inter font-semibold text-gray-900"
-                >
-                  Username
-                </label>
-                <input
-                  name="username"
-                  className={`appearance-none border ${
-                    isError.general && `border-red-500`
-                  } border-gray-300 py-2 px-3 rounded-full text-gray-900 leading-none relative`}
-                  type="text"
-                  onChange={handleChange}
-                />
-                {isError ? (
-                  <div className="text-red-500 text-sm pt-2">{errorMsg}</div>
-                ) : null}
-
-                <div className="flex flex-col pt-5 relative">
-                  <label
-                    htmlFor="password"
-                    className="block mb-1 font-Inter font-semibold text-gray-900"
-                  >
-                    Password
-                  </label>
-                  <input
-                    name="password"
-                    className={`appearance-none border ${
-                      isError.general && `border-red-500`
-                    } border-gray-300 py-2 px-3 rounded-full text-gray-900 leading-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500`}
-                    type={showPwd ? `text` : `password`}
-                    onChange={handleChange}
-                  />
-                  <div
-                    onClick={() => {
-                      setShowPwd(!showPwd);
-                    }}
-                    className="flex align-middle absolute cursor-pointer top-12 pt-2 right-4 focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-                  >
-                    {showPwd ? <AiFillEye /> : <AiFillEyeInvisible />}
-                  </div>
-
-                  {isError ? (
-                    <div className="text-red-500 text-sm pt-2">{errorMsg}</div>
-                  ) : null}
-                </div>
-
-                <div id="button-area" className="pt-3 mt-8">
-                  <button
-                    type="submit"
-                    className="bg-sky-500 hover:bg-sky-300 text-white text-sm font-medium py-2 px-4 rounded-full w-full disabled:opacity-50 disabled:cursor-not-allowed disabled:transition-none disabled:transform-none"
-                  >
-                    Login
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-        <Footer />
-      </div>
+      <img className="w-36 h-auto mt-4 ml-4" alt="dentology" src={Logo} />
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Typography
+            component="h1"
+            variant="h4"
+            sx={{
+              fontWeight: "bold",
+              marginTop: 2,
+            }}
+          >
+            Login
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
+            <TextField
+              margin="normal"
+              required
+              error={isError.general ? true : false}
+              helperText={isError ? errorMsg : null}
+              fullWidth
+              id="username"
+              label="Username"
+              name="username"
+              onChange={handleChange}
+              autoComplete="username"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              error={isError.general ? true : false}
+              helperText={isError ? errorMsg : null}
+              fullWidth
+              name="password"
+              label="Password"
+              type={showPwd ? `text` : `password`}
+              id="password"
+              onChange={handleChange}
+              autoComplete="current-password"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={() => {
+                        setShowPwd(!showPwd);
+                      }}
+                    >
+                      {showPwd ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign In
+            </Button>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 4, mb: 4 }} />
+      </Container>
     </>
   );
 }

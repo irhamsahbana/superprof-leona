@@ -6,6 +6,9 @@ import { AiFillEye, AiOutlineRight } from "react-icons/ai";
 import DummySelectedHistory from "../History/DummySelectedHistory.json";
 import { useNavigate } from "react-router-dom";
 import TindakanModal from "./TindakanModal";
+import MaterialReactTable from "material-react-table";
+import { Box, IconButton, Tooltip, Button } from "@mui/material";
+import { Delete, Edit } from "@mui/icons-material";
 
 export default function CurrentRekamMedis() {
   const navigate = useNavigate();
@@ -21,53 +24,28 @@ export default function CurrentRekamMedis() {
     navigate("/odontogram");
   };
 
-  const cols = [
-    {
-      Header: "No.",
-      Cell: (row) => {
-        return <div>{Number(row.row.index + 1)}</div>;
+  const cols = useMemo(
+    () => [
+      {
+        header: "Tanggal",
+        accessorKey: "tanggal",
       },
-    },
-    {
-      Header: "Tanggal",
-      accessor: "tanggal",
-    },
-    {
-      Header: "Diagnosa",
-      accessor: "diagnosa",
-    },
-    {
-      Header: "Tindakan",
-      accessor: "tindakan",
-    },
-    {
-      Header: "Dokter yang menangani",
-      accessor: "dokter",
-    },
-    {
-      Header: "Action",
-      accessor: (row, i) => (
-        <>
-          <div>
-            <ButtonIcon
-              bgColor="bg-sky-400"
-              hoverColor="hover:bg-sky-500"
-              onClick={() => {
-                console.log("view");
-                setSelectedIndex(i);
-                setShowHistory(!showHistory);
-              }}
-              icon={<AiFillEye />}
-            />
-          </div>
-        </>
-      ),
-      id: "action",
-    },
-  ];
+      {
+        header: "Diagnosa",
+        accessorKey: "diagnosa",
+      },
+      {
+        header: "Tindakan",
+        accessorKey: "tindakan",
+      },
+      {
+        header: "Dokter yang menangani",
+        accessorKey: "dokter",
+      },
+    ],
+    []
+  );
 
-  const columns = useMemo(() => cols, [cols]);
-  const data = useMemo(() => selectedHistory, []);
   return (
     <div>
       <div className="mb-5">
@@ -145,13 +123,32 @@ export default function CurrentRekamMedis() {
       </div>
       <div>
         <Container text="History Tindakan">
-          <Table columns={columns} data={data} />
+          <MaterialReactTable
+            columns={cols}
+            data={DummySelectedHistory}
+            localization={{
+              actions: "",
+            }}
+            initialState={{ columnVisibility: { dob: false, email: false } }}
+            enableEditing
+            renderRowActions={({ row, table }) => (
+              <Tooltip arrow placement="left" title="Edit">
+                <IconButton
+                  onClick={() => {
+                    console.log(row);
+                  }}
+                >
+                  <Edit />
+                </IconButton>
+              </Tooltip>
+            )}
+          />
         </Container>
       </div>
       {showHistory && (
         <TindakanModal
           handleClose={handleClose}
-          historyData={data}
+          historyData={DummySelectedHistory}
           i={selectedIndex}
         />
       )}

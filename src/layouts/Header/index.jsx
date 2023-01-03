@@ -23,7 +23,7 @@ export default function Header() {
       key: "1",
       label: (
         <p className="text-sm font-bold">
-          {role.role === "admin" ? "Admin" : "Drg. Andy"}
+          {role === "admin" ? "Admin" : "Drg. Andy"}
         </p>
       ),
     },
