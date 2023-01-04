@@ -1,59 +1,73 @@
 [
   {
-    "id": 1,
+    "id": "AsH4moLx0I",
     "name": "Oral & Maxilofacial Surgeon",
     "list": [
       {
-        "id": 9,
-        "tindakan": "All on 4 Implants",
-        "biaya": 175000000
+        "id": "vylaSR0CH8",
+        "name": "All on 4 Implants",
+        "price": 175000000,
+        "category_id": "AsH4moLx0I"
       },
       {
-        "id": 10,
-        "tindakan": "Odontectomy (Ringan)",
-        "biaya": 2500000
+        "id": "WqHLrK90Sk",
+        "name": "Odontectomy (Ringan)",
+        "price": 2500000,
+        "category_id": "AsH4moLx0I"
       },
       {
-        "id": 11,
-        "tindakan": "Odontectomy (Reguler)",
-        "biaya": 3500000
+        "id": "NofXbho7fa",
+        "name": "Odontectomy (Reguler)",
+        "price": 3500000,
+        "category_id": "AsH4moLx0I"
       },
       {
-        "id": 12,
-        "tindakan": "Odontectomy (Berat)",
-        "biaya": 4500000
+        "id": "URH-M5H9eQ",
+        "name": "Odontectomy (Berat)",
+        "price": 4500000,
+        "category_id": "AsH4moLx0I"
       }
     ]
   },
   {
-    "id": 4,
+    "id": "Kq6twkO7u2",
     "name": "Conservative Treatments",
     "list": [
       {
-        "id": 1,
-        "tindakan": "Scalling",
-        "biaya": 500000
+        "id": "Vm_JB1R8Ht",
+        "name": "Scalling",
+        "price": 500000,
+        "category_id": "Kq6twkO7u2"
       },
       {
-        "id": 2,
-        "tindakan": "Dental Filling",
-        "biaya": 700000
+        "id": "r_aGLP-2sG",
+        "name": "Dental Filling",
+        "price": 700000,
+        "category_id": "Kq6twkO7u2"
       },
       {
-        "id": 13,
-        "tindakan": "Extraction (Ringan)",
-        "biaya": 7000000
+        "id": "xd7Q5ACYf7",
+        "name": "Extraction (Ringan)",
+        "price": 7000000,
+        "category_id": "Kq6twkO7u2"
       },
       {
-        "id": 14,
-        "tindakan": "Extraction (Reguler)",
-        "biaya": 800000
+        "id": "DNLcCaxfPz",
+        "name": "Extraction (Reguler)",
+        "price": 800000,
+        "category_id": "Kq6twkO7u2"
       },
       {
-        "id": 15,
-        "tindakan": "Teeth Whitening",
-        "biaya": 3500000
+        "id": "UQJu8aaAsS",
+        "name": "Teeth Whitening",
+        "price": 3500000,
+        "category_id": "Kq6twkO7u2"
       }
     ]
+  },
+  {
+    "id": "QTwl3cE8rqFwwr7x1GxgM",
+    "name": "All in One",
+    "list": []
   }
 ]
