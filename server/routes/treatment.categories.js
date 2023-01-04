@@ -1,8 +1,7 @@
 const route = require('express').Router()
 const TreatmentController = require('../controllers/treatment.controller')
 
-route.get('/', TreatmentController.index)
-route.post('/', TreatmentController.create)
-route.delete('/:id', TreatmentController.delete)
+route.post('/', TreatmentController.createCategory)
+route.delete('/:id', TreatmentController.deleteCategory)
 
 module.exports = route

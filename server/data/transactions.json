@@ -1,41 +1,119 @@
 [
-    {
-        "id": "dadcszxf",
-        "invoice_number": "1234567890",
-        "doctor_id": "1234567890",
-        "patient_id": "1234567890",
-        "doctor" : {
-            "id": "1234567890",
-            "name": "Dr. John Doe"
-        },
-        "patient" : {
-            "id": "1234567890",
-            "name": "John Doe"
-        },
-        "treatments": [
-            {
-                "id": "adasd134123xdasc",
-                "name": "Whitening",
-                "price": 1000,
-                "quantity": 1,
-                "discount": 20,
-                "unit": "percent",
-                "total": 800
-            },
-            {
-                "id": "adasd134123xdasc",
-                "name": "Whitening",
-                "price": 2000,
-                "quantity": 4,
-                "discount": 20,
-                "unit": "percent",
-                "total": 6400
-            }
-        ],
-        "date": "01/01/2019",
-        "total": 7200,
-        "status": "paid",
-        "diagnosis": "xxx",
-        "payment_method": "cash"
-    }
+  {
+    "id": "dadcszxf",
+    "invoice_number": "1234567890",
+    "doctor_id": "1234567890",
+    "patient_id": "1234567890",
+    "doctor": {
+      "id": "1234567890",
+      "name": "Dr. John Doe"
+    },
+    "patient": {
+      "id": "1234567890",
+      "name": "John Doe"
+    },
+    "treatments": [
+      {
+        "id": "adasd134123xdasc",
+        "name": "Whitening",
+        "price": 1000,
+        "quantity": 1,
+        "discount": 20,
+        "unit": "percent",
+        "total": 800
+      },
+      {
+        "id": "adasd134123xdasc",
+        "name": "Whitening",
+        "price": 2000,
+        "quantity": 4,
+        "discount": 20,
+        "unit": "percent",
+        "total": 6400
+      }
+    ],
+    "date": "01/01/2019",
+    "total": 7200,
+    "status": "paid",
+    "diagnosis": "xxx",
+    "payment_method": "cash"
+  },
+  {
+    "id": "wPR7xwmq9sn648Y0qdBi_",
+    "doctor_id": "_mFPAb7h3Nom6YNkWx570",
+    "patient_id": "dhajkh321",
+    "invoice_number": "1234567890",
+    "doctor": {
+      "id": "_mFPAb7h3Nom6YNkWx570",
+      "name": "Ana Sawayn",
+      "role": "doctor",
+      "specialty": "Cardiology",
+      "email": "Adalberto12@yahoo.com",
+      "password": "xgCtZFnDPcIulp5"
+    },
+    "patient": {
+      "id": "dhajkh321",
+      "identifier": "J-1",
+      "name": "John Doe",
+      "phone": "1234567890",
+      "email": "jon@doe.com",
+      "address": "123 Main St",
+      "dob": "01/01/1998",
+      "medicalHistory": "None"
+    },
+    "treatments": [
+      {
+        "id": "xd7Q5ACYf7",
+        "name": "Extraction (Ringan)",
+        "price": 7000000,
+        "quantity": 2,
+        "discount": 20,
+        "unit": "percent",
+        "total": 11200000
+      }
+    ],
+    "date": "01/01/2019",
+    "total": 800,
+    "status": "paid",
+    "diagnosis": "xxx"
+  },
+  {
+    "id": "GJM3TWYBKhYTIpfDFCB_D",
+    "doctor_id": "_mFPAb7h3Nom6YNkWx570",
+    "patient_id": "dhajkh321",
+    "invoice_number": "1234567890",
+    "doctor": {
+      "id": "_mFPAb7h3Nom6YNkWx570",
+      "name": "Ana Sawayn",
+      "role": "doctor",
+      "specialty": "Cardiology",
+      "email": "Adalberto12@yahoo.com",
+      "password": "xgCtZFnDPcIulp5"
+    },
+    "patient": {
+      "id": "dhajkh321",
+      "identifier": "J-1",
+      "name": "John Doe",
+      "phone": "1234567890",
+      "email": "jon@doe.com",
+      "address": "123 Main St",
+      "dob": "01/01/1998",
+      "medicalHistory": "None"
+    },
+    "treatments": [
+      {
+        "id": "xd7Q5ACYf7",
+        "name": "Extraction (Ringan)",
+        "price": 7000000,
+        "quantity": 2,
+        "discount": 20,
+        "unit": "percent",
+        "total": 11200000
+      }
+    ],
+    "date": "01/01/2019",
+    "total": 11200000,
+    "status": "unpaid",
+    "diagnosis": "xxx"
+  }
 ]

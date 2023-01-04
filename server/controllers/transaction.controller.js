@@ -1,5 +1,6 @@
 const fs = require("fs");
 const { nanoid } = require("nanoid");
+const _ = require("lodash");
 const response = require("../utils/response");
 
 const transactions = require("../data/transactions.json");
@@ -9,6 +10,7 @@ const treatments = require("../data/treatments.json");
 
 class TransactionController {
   static index(req, res) {
+    return response(res, 200, "Success", transactions);
   }
 
   static create(req, res) {
@@ -17,41 +19,53 @@ class TransactionController {
       patient_id,
       invoice_number,
       date,
-      total,
       status,
       payment_method,
       diagnosis,
-      treatments,
     } = req.body
 
-    const doctor = doctors.find((doctor) => doctor.id === doctor_id)
-    const patient = patients.find((patient) => patient.id === patient_id)
+    let { treatments: treatmentsReq } = req.body
+
+    const doctor = _.find(doctors, { id: doctor_id })
+    const patient = _.find(patients, { id: patient_id })
 
     if (!doctor) return response(res, 404, "Doctor not found", null)
     if (!patient) return response(res, 404, "Patient not found", null)
 
-    // checking treatments
-    const treatmentsArray = treatments.map((treatment) => {
-      const treatmentData = treatments.find(
-        (treatmentData) => treatmentData.id === treatment.id
-      )
+    const list = _.map(treatments, (el) => el.list)
+    const listTreatments = _.flattenDeep(list)
 
-      if (!treatmentData) return response(res, 404, "Treatment not found", null)
+    treatmentsReq = _.map(treatmentsReq, (treatment, index) => {
+      const treatmentData = _.find(listTreatments, { id: treatment.id })
 
-      return treatmentData
+      if (!treatmentData) return response(res, 404, "Treatment not found on index " + index, null)
+
+      return {
+        id: treatment.id,
+        name: treatmentData.name,
+        price: treatmentData.price,
+        quantity: treatment.quantity,
+        discount: treatment.discount,
+        unit: "percent",
+        total: (treatmentData.price * treatment.quantity * (100 - treatment.discount)) / 100,
+      }
     })
 
+    const total = _.sumBy(treatmentsReq, "total")
+
     const transaction = {
+      id: nanoid(),
       doctor_id: doctor_id,
       patient_id: patient_id,
       invoice_number: invoice_number,
+      doctor: doctor,
+      patient: patient,
+      treatments: treatmentsReq,
       date: date,
       total: total,
       status: status,
       payment_method: payment_method,
       diagnosis: diagnosis,
-      doctor: doctor,
-      patient: patient,
     }
 
     transactions.push(transaction)
@@ -61,10 +75,24 @@ class TransactionController {
       JSON.stringify(transactions, null, 2)
     )
 
-    response(res, 201, "Created", transaction)
+    return response(res, 201, "Created", transaction)
   }
 
   static delete(req, res) {
+    const { id } = req.params
+
+    const transaction = _.find(transactions, { id: id })
+
+    if (!transaction) return response(res, 404, "Transaction not found", null)
+
+    _.remove(transactions, { id: id })
+
+    fs.writeFileSync(
+      "./server/data/transactions.json",
+      JSON.stringify(transactions, null, 2)
+    )
+
+    response(res, 200, "Deleted", transaction)
   }
 }
 
