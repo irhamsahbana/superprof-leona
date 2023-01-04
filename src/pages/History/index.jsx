@@ -61,35 +61,41 @@ export default function History() {
       </div>
       <div className="mb-4">
         <Box sx={{ display: "flex", mb: 3 }}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
-              inputFormat="DD/MM/YYYY"
-              value={selectedDate}
-              size="small"
-              onChange={handleChange}
-              renderInput={(params) => (
-                <TextField
-                  sx={{
-                    ".MuiInputBase-input": { pt: 1.6, pb: 1.2, width: 98 },
-                    ".MuiInputBase-root-MuiOutlinedInput-root": {
-                      backgroundColor: "white",
-                    },
-                  }}
-                  {...params}
+          {/* refactor: date picker */}
+          <form>
+            <Box sx={{ display: "flex", flexDirection: "row" }}>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  inputFormat="DD/MM/YYYY"
+                  value={selectedDate}
+                  size="small"
+                  onChange={handleChange}
+                  renderInput={(params) => (
+                    <TextField
+                      sx={{
+                        ".MuiInputBase-input": { pt: 1.6, pb: 1.2, width: 98 },
+                        ".MuiInputBase-root-MuiOutlinedInput-root": {
+                          backgroundColor: "white",
+                        },
+                      }}
+                      {...params}
+                    />
+                  )}
                 />
-              )}
-            />
-          </LocalizationProvider>
-          <div className="flex">
-            <Button
-              sx={{ ml: 1, mt: 0.5, mb: 0.5 }}
-              // onClick={() => {}}
-              size="small"
-              variant="contained"
-            >
-              Tampilkan
-            </Button>
-          </div>
+              </LocalizationProvider>
+              <div className="flex">
+                <Button
+                  sx={{ ml: 1, mt: 0.5, mb: 0.5 }}
+                  // onClick={() => {}}
+                  size="small"
+                  variant="contained"
+                >
+                  Tampilkan
+                </Button>
+              </div>
+            </Box>
+          </form>
+
           <div className="flex">
             <Button
               sx={{ ml: 1, mt: 0.5, mb: 0.5 }}
@@ -110,7 +116,7 @@ export default function History() {
         localization={{
           actions: "",
         }}
-        C
+        enableEditing
         renderRowActions={({ row, table }) => (
           <Box sx={{ display: "flex" }}>
             <Tooltip arrow placement="top" title="Preview">

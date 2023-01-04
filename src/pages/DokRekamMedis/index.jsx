@@ -19,7 +19,7 @@ export default function DokRekamMedis() {
   const historyData = HistoryData[0].now;
 
   const navigate = useNavigate();
-  const showSpinner = useSpinner();
+
   // fetch all lists here
   useEffect(() => {
     MainService.getAll("schedules?q=drg.%20A").then((res) => {

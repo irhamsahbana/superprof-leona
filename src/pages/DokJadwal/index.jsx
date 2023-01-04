@@ -7,17 +7,28 @@ import CreateDialog from "../../components/CreateDialog";
 import { DatePicker, Tag } from "antd";
 import dayjs from "dayjs";
 import { Delete, Edit } from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
 import { Box, IconButton, Tooltip, Button, Chip } from "@mui/material";
 import MainService from "../../services/MainService";
 import TableContentLoader from "../../components/TableContentLoader";
 import toast, { Toaster } from "react-hot-toast";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import AddBoxIcon from "@mui/icons-material/AddBox";
+import { setTreatmentTakenToday } from "../../redux/rekamMedisSlice";
+// slice
+import {
+  setSelectedPatient,
+  setSelectedPatientsTreatment,
+} from "../../redux/tindakanSlice";
 
 export default function DokJadwalOperasi() {
   const navigate = useNavigate();
   const [jadwalList, setJadwalList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { patientToEdit, treansactionToEdit } = useSelector(
+    (state) => state.rekamMedis
+  );
 
   // list doctor, list room, list patient
 
@@ -39,26 +50,6 @@ export default function DokJadwalOperasi() {
     });
     setIsLoading(false);
   }, [jadwalList.length]);
-
-  const handleCloseDelete = () => {
-    setShowDeleteModal(!showDeleteModal);
-  };
-
-  //   const handleDeleteRow = useCallback(
-  //     (row) => {
-  //       if (alert(`Are you sure you want to delete ${row.getValue("jadwal")}`)) {
-  //         return;
-  //       }
-  //       console.log(row);
-  //       MainService.removeData("schedules", row.original.id);
-  //       setJadwalList([...jadwalList]);
-  //       toast.success("Jadwal berhasil dihapus!", {
-  //         duration: 4000,
-  //         position: "top-right",
-  //       });
-  //     },
-  //     [jadwalList]
-  //   );
 
   const handleSaveRowEdits = async ({ exitEditingMode, row, values }) => {
     console.log(row.index);
@@ -182,20 +173,18 @@ export default function DokJadwalOperasi() {
                   <AutorenewIcon />
                 </IconButton>
               </Tooltip>
-              <Tooltip arrow placement="right" title="Tambah Rekam Medis">
+              <Tooltip arrow placement="right" title="Tambah Tindakan">
                 <IconButton
                   onClick={() => {
                     console.log("Add Rekam Medis/Tindakan");
+                    navigate("/tindakan/add");
+                    // throw pasien dengan id apa
+                    // throw transaction array
                   }}
                 >
                   <AddBoxIcon />
                 </IconButton>
               </Tooltip>
-              {/* <Tooltip arrow placement="right" title="Delete">
-                <IconButton color="error" onClick={() => handleDeleteRow(row)}>
-                  <Delete />
-                </IconButton>
-              </Tooltip> */}
             </Box>
           )}
         />

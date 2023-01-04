@@ -29,6 +29,7 @@ import {
   DokDashboard,
   DokJadwal,
   DokRekamMedis,
+  DokAddTindakan,
 } from "../pages";
 import DokJadwalOperasi from "../pages/DokJadwal";
 
@@ -89,7 +90,6 @@ function Routing() {
             </PrivateRoute>
           }
         />
-
         <Route
           path="/jenis-tindakan"
           element={
@@ -201,6 +201,15 @@ function Routing() {
           element={
             <PrivateRoute>
               <Pembayaran />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/tindakan/add"
+          element={
+            <PrivateRoute>
+              <DokAddTindakan />
             </PrivateRoute>
           }
         />

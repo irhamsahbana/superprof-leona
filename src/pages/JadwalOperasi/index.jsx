@@ -4,10 +4,21 @@ import { useNavigate } from "react-router-dom";
 // components, data, slices
 import MaterialReactTable from "material-react-table";
 import dayjs from "dayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import ExpressService from "../../services/ExpressService";
 import CreateDialog from "../../components/CreateDialog";
 
 import { Delete, Edit } from "@mui/icons-material";
-import { Box, IconButton, Tooltip, Button, Chip } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  Tooltip,
+  Button,
+  Chip,
+  TextField,
+} from "@mui/material";
 import MainService from "../../services/MainService";
 import TableContentLoader from "../../components/TableContentLoader";
 import toast, { Toaster } from "react-hot-toast";
@@ -23,6 +34,7 @@ export default function JadwalOperasi() {
   const [createModalOpen, setCreateModalOpen] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showStatusModal, setShowStatusModal] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(dayjs().format());
 
   const statusKehadiran = [
     { id: 1, status: "Belum datang" },
@@ -31,14 +43,28 @@ export default function JadwalOperasi() {
   ];
 
   // fetch all lists here
+  // useEffect(() => {
+  //   ExpressService.getAll(
+  //     "v1/api/operation-schedule?filterByDate=2022-12-30T19:37:03.611Z"
+  //   ).then((res) => {
+  //     setJadwalList(res);
+  //     console.log(jadwalList.length);
+  //   });
+  //   setIsLoading(false);
+  // }, [jadwalList.length]);
+
   useEffect(() => {
-    MainService.getAll("schedules").then((res) => {
+    getScheduleByDate();
+  }, [selectedDate]);
+
+  const getScheduleByDate = () => {
+    ExpressService.getAll(
+      `v1/api/operation-schedule?filterByDate=${selectedDate}`
+    ).then((res) => {
       setJadwalList(res);
       console.log(jadwalList.length);
     });
-    setIsLoading(false);
-  }, [jadwalList.length]);
-
+  };
   const handleCloseDelete = () => {
     setShowDeleteModal(!showDeleteModal);
   };
@@ -92,19 +118,20 @@ export default function JadwalOperasi() {
     () => [
       {
         header: "Nama Pasien",
-        accessorKey: "pasien",
+        accessorKey: "patientName",
       },
       {
         header: "Dokter yang menangani",
-        accessorKey: "dokter",
+        accessorKey: "doctor",
       },
       {
         header: "Keterangan",
-        accessorKey: "keterangan",
+        accessorKey: "notes",
       },
       {
         header: "Waktu",
-        accessorFn: (row) => `${row.jam_mulai} - ${row.jam_selesai}`,
+        accessorKey: "time",
+        // accessorFn: (row) => `${row.startTime} - ${row.endTime}`,
       },
       {
         header: "Status",
@@ -135,10 +162,58 @@ export default function JadwalOperasi() {
     <>
       <div className="mb-5">
         <h1>
-          Master Data:{" "}
-          <span className="text-blue-500 text-2xl">Jadwal Operasional</span>
+          Jadwal Operasional{" "}
+          {/* <span className="text-blue-500 text-2xl">Jadwal Operasional</span> */}
         </h1>
       </div>
+
+      <form
+        onSubmit={(e, newValue) => {
+          e.preventDefault();
+          setSelectedDate(dayjs(newValue).format("DD/MM/YYYY"));
+          console.log(newValue);
+          console.log(selectedDate);
+        }}
+      >
+        <Box sx={{ display: "flex", flexDirection: "row", mb: 3 }}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              inputFormat="DD/MM/YYYY"
+              value={selectedDate}
+              size="small"
+              name="date"
+              onChange={(newValue) => {
+                setSelectedDate(dayjs(newValue));
+                console.log(newValue);
+                console.log(selectedDate);
+              }}
+              renderInput={(params) => (
+                <TextField
+                  sx={{
+                    ".MuiInputBase-input": { pt: 1.6, pb: 1.2, width: 98 },
+                    ".MuiInputBase-root-MuiOutlinedInput-root": {
+                      backgroundColor: "white",
+                    },
+                  }}
+                  {...params}
+                />
+              )}
+            />
+          </LocalizationProvider>
+          <div className="flex">
+            <Button
+              type="submit"
+              sx={{ ml: 1, mt: 0.5, mb: 0.5 }}
+              // onClick={() => {}}
+              size="small"
+              variant="contained"
+            >
+              Tampilkan
+            </Button>
+          </div>
+        </Box>
+      </form>
+
       {isLoading ? (
         <TableContentLoader />
       ) : (

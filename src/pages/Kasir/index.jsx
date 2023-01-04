@@ -29,20 +29,8 @@ export default function Kasir() {
         accessorKey: "status",
         Cell: ({ cell }) => {
           return cell.getValue() === "Belum Lunas" ? (
-            // <Chip
-            //   size="small"
-            //   variant="outlined"
-            //   color="error"
-            //   label={cell.getValue()}
-            // />
             <Tag color="red">{cell.getValue()}</Tag>
           ) : (
-            // <Chip
-            //   size="small"
-            //   variant="outlined"
-            //   color="success"
-            //   label={cell.getValue()}
-            // />
             <Tag color="green">{cell.getValue()}</Tag>
           );
         },

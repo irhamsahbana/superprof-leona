@@ -4,34 +4,58 @@ import { useSelector } from "react-redux";
 import { BsFillTrashFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-// data
-import { Studio } from "../../data/Studio";
-import { Dokter } from "../../data/Dokter";
+import dayjs from "dayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 // service
-import JadwalService from "../../services/JadwalService";
 import MainService from "../../services/MainService";
+import ExpressService from "../../services/ExpressService";
 // components
 import Container from "../../layouts/Container";
-import { ButtonMain, ButtonIcon } from "../../components/Button";
+import { ButtonMain, ButtonIcon, ButtonBack } from "../../components/Button";
 import FormInput from "../../components/FormInput";
-import { TextField, MenuItem, Select, Autocomplete } from "@mui/material";
+import {
+  TextField,
+  Box,
+  Button,
+  MenuItem,
+  Select,
+  Autocomplete,
+} from "@mui/material";
+import SaveIcon from "@mui/icons-material/Save";
 
 export default function AddJadwal() {
   const navigate = useNavigate();
-  const initForm = {
-    patient_id: "",
-    notes: "",
-    doctor_id: "",
-    room_id: "",
-    date: "",
-    start: "",
-    end: "",
-  };
+  const [selectedDoctorId, setSelectedDoctorId] = useState("");
+  const [selectedStudioId, setSelectedStudioId] = useState(0);
+  const [selectedPatientId, setSelectedPatientId] = useState("");
+
+  const [selectedDoctorName, setSelectedDoctorName] = useState("");
+  const [selectedPatientName, setSelectedPatientName] = useState("");
+
+  const [selectedDate, setSelectedDate] = useState(dayjs().format());
+
+  // useEffect(() => {
+  // }, [selectedDoctorId, selectedStudioId])
 
   const [studioList, setStudioList] = useState([]);
   const [doctorList, setDoctorList] = useState([]);
   const [patientList, setPatientList] = useState([]);
 
+  const initForm = {
+    patientName: selectedPatientName,
+    patientId: selectedPatientId,
+    note: "",
+    doctor: selectedDoctorName,
+    doctorId: selectedDoctorId,
+    room: selectedStudioId ? studioList[selectedStudioId].studio : "",
+    date: selectedDate,
+    startTime: "",
+    endTime: "",
+  };
+
+  // constant values
   // data to-be added
   const [tempData, setTempData] = useState([initForm]);
 
@@ -51,11 +75,10 @@ export default function AddJadwal() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // tempData.map(async (val) => {
-    //   await JadwalService.addData(val);
-    // });
-
-    console.log(tempData)
+    tempData.map((val) => {
+      ExpressService.addData("v1/api/operation-schedule", val);
+    });
+    console.log(tempData);
     navigate("/jadwal");
     toast.success("Jadwal berhasil ditambah!", {
       duration: 4000,
@@ -81,27 +104,51 @@ export default function AddJadwal() {
 
   return (
     <div>
+      <ButtonBack />
       <div id="header-container" className="flex flex-row justify-between">
         <div id="header-left" className="flex flex-col mb-4">
           <h1>
             Jadwal Operasi:{" "}
-            <span className="text-blue-400 text-2xl">Input</span>
+            <span className="text-blue-500 text-2xl">Input</span>
           </h1>
         </div>
         <div>
-          {/* add data button */}
-          <div className="float-right mb-3">
-            <ButtonMain
-              onClick={handleSubmit}
-              bgColor="bg-blue-400"
-              hoverColor="hover:bg-blue-500"
-              text="Save Changes"
-              type="submit"
-            />
-          </div>
+          <Button
+            color="primary"
+            onClick={handleSubmit}
+            startIcon={<SaveIcon />}
+            variant="contained"
+          >
+            Simpan Jadwal
+          </Button>
         </div>
       </div>
-
+      <Box sx={{ display: "flex", flexDirection: "row", mb: 3 }}>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker
+            inputFormat="DD/MM/YYYY"
+            value={dayjs(selectedDate)}
+            size="small"
+            name="date"
+            onChange={(newValue) => {
+              setSelectedDate(dayjs(newValue).format());
+              console.log(newValue);
+              console.log(selectedDate);
+            }}
+            renderInput={(params) => (
+              <TextField
+                sx={{
+                  ".MuiInputBase-input": { pt: 1.6, pb: 1.2, width: 98 },
+                  ".MuiInputBase-root-MuiOutlinedInput-root": {
+                    backgroundColor: "white",
+                  },
+                }}
+                {...params}
+              />
+            )}
+          />
+        </LocalizationProvider>
+      </Box>
       {/* input table form */}
       <hr />
       <form onSubmit={handleSubmit}>
@@ -113,19 +160,51 @@ export default function AddJadwal() {
             </div>
             <div className="flex flex-row">
               <div className="mr-10">
-                <select className="bg-gray-50 h-8 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-max px-2">
+                <select
+                  onChange={(e) => {
+                    setSelectedStudioId(e.target.value);
+                    console.log(e.target.value);
+                    console.log(selectedStudioId);
+                  }}
+                  className="bg-gray-50 h-8 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-max px-2"
+                >
                   {studioList.map((data, i) => (
                     <option key={i} value={data.id}>
                       {data.studio}
                     </option>
                   ))}
                 </select>
+                {/* <TextField
+                  style={{ marginTop: 20 }}
+                  label="Ruangan"
+                  fullWidth
+                  select
+                  variant="outlined"
+                  value={selectedStudioId || ""}
+                  margin="dense"
+                  onChange={(e) => setSelectedStudioId(e.target.value)}
+                >
+                  {studioList.map((option) => (
+                    <MenuItem key={option.tindakan} value={option.id}>
+                      {option.studio}
+                    </MenuItem>
+                  ))}
+                </TextField> */}
               </div>
               <div className="w-56">
-                <select className="bg-gray-50 h-8 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-max px-2">
+                <select
+                  onChange={(e) => {
+                    setSelectedDoctorId(e.target.value.id);
+                    setSelectedDoctorName(e.target.value.nama);
+                    console.log("name", selectedDoctorName);
+                    console.log(e.target.value.nama);
+                  }}
+                  className="bg-gray-50 h-8 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-max px-2"
+                >
                   {doctorList.map((data, i) => (
-                    <option key={i} value={data.id}>
+                    <option key={i} value={data}>
                       {data.nama}
+                      {console.log(data)}
                     </option>
                   ))}
                 </select>
@@ -133,12 +212,6 @@ export default function AddJadwal() {
             </div>
           </div>
         </div>
-        {/* <FormInput
-          name="tanggal"
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        /> */}
         <Container className="mt-8">
           <table className="table-auto w-full mt-4">
             <thead className="px-6 py-10 text-left font-medium text-lg text-gray-800">
@@ -166,9 +239,16 @@ export default function AddJadwal() {
                         name={`nama`}
                         onChange={(e) => handleChange(idx, e)}
                       /> */}
-                      <select className="bg-gray-50 h-8 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-max px-2">
+                      <select
+                        onChange={(e) => {
+                          setSelectedPatientId(e.target.value.id);
+                          setSelectedPatientName(e.target.value.full_name);
+                          console.log(e.target.value);
+                        }}
+                        className="bg-gray-50 h-8 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-max px-2"
+                      >
                         {patientList.map((data, i) => (
-                          <option key={i} value={data.id}>
+                          <option key={i} value={data}>
                             {data.full_name}
                           </option>
                         ))}
@@ -178,7 +258,7 @@ export default function AddJadwal() {
                       <FormInput
                         width="w-full"
                         placeholder="Keterangan"
-                        name={`notes`}
+                        name={`note`}
                         onChange={(e) => handleChange(idx, e)}
                       />
                     </td>
@@ -187,7 +267,7 @@ export default function AddJadwal() {
                         <td className="w-1/3">
                           <FormInput
                             placeholder="Waktu Mulai Operasi"
-                            name={`start`}
+                            name={`startTime`}
                             type="time"
                             onChange={(e) => handleChange(idx, e)}
                           />
@@ -198,7 +278,7 @@ export default function AddJadwal() {
                         <td className="w-1/3">
                           <FormInput
                             placeholder="Waktu Selesai Operasi"
-                            name={`end`}
+                            name={`endTime`}
                             type="time"
                             onChange={(e) => handleChange(idx, e)}
                           />

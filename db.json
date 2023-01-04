@@ -15,32 +15,32 @@
   ],
   "doctors": [
     {
-      "id": 4,
+      "id": "4",
       "nama": "drg. Made Talitha S Pinatih, Sp. Perio",
       "spesialis": "Periodontist (Spesialis Gusi dan Jaringan Penyangga Gigi)"
     },
     {
-      "id": 5,
+      "id": "5",
       "nama": "drg. Anak Agung Gde Dananjaya Agung, Sp. R.K.G.",
       "spesialis": "Radiologist (Spesialis Radiologi)"
     },
     {
-      "id": 6,
+      "id": "6",
       "nama": "drg. I Made Agus Astika, Sp. Rad. O. M.",
       "spesialis": "Radiologist (Spesialis Radiologi)"
     },
     {
-      "id": 7,
+      "id": "7",
       "nama": "drg. I Gusti Ngurah Agung Hostiadhi S, SKG",
       "spesialis": "General Practitioner (Dokter Gigi Umum)"
     },
     {
-      "id": 8,
+      "id":" 8",
       "nama": "drg. I Nyoman Putra Mahendra Suyoga, SKG",
       "spesialis": "General Practitioner (Dokter Gigi Umum)"
     },
     {
-      "id": 9,
+      "id": "9",
       "nama": "drg. Maria Yosefha Kumalasari, SKG",
       "spesialis": "General Practitioner (Dokter Gigi Umum)"
     }
@@ -210,18 +210,7 @@
   ],
   "patients": [
     {
-      "id": 1,
-      "no_rm": "A-22100011",
-      "full_name": "Anders Couves",
-      "address": "59 Farmco Parkway",
-      "email": "acouves0@xinhuanet.com",
-      "dob": "8/22/2004",
-      "phone": "611-974-2004",
-      "medical_history": {},
-      "transactions": {}
-    },
-    {
-      "id": 2,
+      "id": "2",
       "no_rm": "J-22120013",
       "full_name": "Jessica Josephine",
       "address": "9337 Fisk Plaza",
@@ -231,7 +220,7 @@
       "transactions": {}
     },
     {
-      "id": 3,
+      "id": "3",
       "no_rm": "J-21120111",
       "full_name": "Jessica Jones",
       "address": "Phishing Street",
